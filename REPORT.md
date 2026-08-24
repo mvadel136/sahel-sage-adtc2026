@@ -159,11 +159,11 @@ self-reported development benchmarks, measured under its exact conditions.
 | Generation speed | 17.7 t/s |
 | Thermal throttling | None observed on release runs (<85 °C verified) |
 
-Measurement hygiene: absolute t/s varies with machine state — four profiler
+Measurement hygiene: absolute t/s varies with machine state — five profiler
 runs of this same artifact, in the same Docker image on the same nominally
-idle laptop, measured 16.1, 17.7, 21.3 and 29.6 t/s (peak RSS was stable
-within 0.3 MB across all four). We self-report 17.7, a middle run, not the
-29.6 outlier: the audit comparator tolerates ±25%, and a self-reported figure
+idle laptop, measured 16.1, 17.7, 21.3, 28.3 and 29.6 t/s (peak RSS was
+stable within 0.3 MB across all five). We self-report 17.7, a low-middle run,
+not the fastest: the audit comparator tolerates ±25%, and a self-reported figure
 the auditor cannot reproduce is worse than a modest one. The audit's own
 measurement, on the official hardware, is the number that scores.
 
