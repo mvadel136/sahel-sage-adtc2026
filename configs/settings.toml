@@ -1,0 +1,29 @@
+# Machine-local paths and toolchain locations.
+# Every value can be overridden with an environment variable: SAHEL_<SECTION>_<KEY>
+# e.g. SAHEL_LAB_DIR=/elsewhere/adtc
+
+[lab]
+# The measurement lab (profiler, llama.cpp builds, models, frontier CSVs).
+dir = "~/devpost/adtc"
+# Audit-parity binaries (SIMD-off b10175, matches the official Docker image).
+audit_bench = "~/devpost/adtc/llama.cpp-audit/build/bin/llama-bench"
+audit_server = "~/devpost/adtc/llama.cpp-audit/build-srv/bin/llama-server"
+audit_cli = "~/devpost/adtc/llama.cpp-audit/build/bin/llama-cli"
+# Native-build tools (fast; used for quantize/imatrix/convert only, never for
+# official-facing measurements).
+native_quantize = "~/devpost/adtc/llama.cpp-audit/build-native/bin/llama-quantize"
+native_imatrix = "~/devpost/adtc/llama.cpp-audit/build-native/bin/llama-imatrix"
+convert_script = "~/devpost/adtc/llama.cpp-audit/convert_hf_to_gguf.py"
+# Python env that has adtc-profiler + lm-eval + llama-cpp-python 0.3.x.
+profiler_python = "~/devpost/adtc/venv/bin/python"
+models_dir = "~/devpost/adtc/models"
+
+[bench]
+# Core pinning for every official-facing measurement.
+taskset_cores = "0-3"
+threads = 4
+
+[repo]
+# Paths relative to the repository root.
+model_path = "model/sahelsage-v11h-Q4_0-flat.gguf"
+library_db = "app/library.db"

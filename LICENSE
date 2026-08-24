@@ -1,0 +1,46 @@
+Apache License 2.0
+
+Copyright 2026 Sahel Sage contributors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---
+
+THIRD-PARTY MATERIAL AND ATTRIBUTION
+
+This repository's CODE is Apache-2.0. The following inputs carry their own
+terms and are NOT redistributed here:
+
+* Base model — Qwen3-0.6B-Base (Alibaba Cloud), Apache-2.0.
+* Training-data teacher — Qwen2.5-7B-Instruct (Alibaba Cloud), Apache-2.0.
+* Agronomy corpus — 56 field manuals from FAO, IITA, ICRISAT, AfricaRice,
+  ILRI, CABI PlantwisePlus, WorldVeg, ICRAF, WOCAT and national extension
+  services. Only extracted text passages are indexed for offline retrieval;
+  the source PDFs are not redistributed. Each document, its publisher and its
+  licence note are recorded in training/corpus_sources.json.
+* Wolof agricultural speech — the Kallaama corpus (Gauthier, Ndiaye & Guissé,
+  2024; Orange Innovation / Jokalante / École Polytechnique de Thiès, funded by
+  Lacuna Fund), licensed CC-BY 4.0. Attribution is required and is given here
+  and in REPORT.md.
+* Replay data — ARC (AI2) and SmolTalk (HuggingFaceTB), used under their
+  respective licences.
+
+The competition submission template and profiler published by the Africa Deep
+Tech Foundation are GPLv3. This repository is an independent implementation and
+does not incorporate their source; it only consumes the profiler as an external
+measurement tool.
+
+NO WARRANTY FOR AGRICULTURAL OR VETERINARY ADVICE. This software produces
+machine-generated guidance that has not been certified by a licensed agronomist
+or veterinarian. It is an aid to a human decision-maker, not a substitute for
+professional advice. See the Limitations section of REPORT.md.

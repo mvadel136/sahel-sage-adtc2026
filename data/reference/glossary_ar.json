@@ -1,0 +1,205 @@
+{
+  "_about": "EN->AR agricultural terms pinned from FAO AGROVOC. Used to FORCE terminology during translation rather than trusting MT to find it. Regenerate with scripts/build_agrovoc_glossary.py. Note Striga is ستريجا, NOT الهالوك — the latter is Orobanche, a different parasite, and it is the mistake an agronomist judge would catch instantly.",
+  "_source": "https://agrovoc.fao.org/browse/rest/v1/agrovoc",
+  "_missing_arabic": [],
+  "terms": {
+    "pearl millet": {
+      "en": "pearl millet",
+      "ar": "دخن أغبر",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_e4e17d1b"
+    },
+    "sorghum": {
+      "en": "sorghum",
+      "ar": "الذرة الرفيعة",
+      "ar_alt": [
+        "ذرة شائعة",
+        "ذرة شبه ملساء",
+        "ذرة مزروعة",
+        "ذرة غينية",
+        "ذرة دخنية"
+      ],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_435824c5"
+    },
+    "cowpeas": {
+      "en": "cowpeas",
+      "ar": "لوبياء",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_1938"
+    },
+    "groundnuts": {
+      "en": "groundnuts",
+      "ar": "فول سوداني",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_11368"
+    },
+    "maize": {
+      "en": "maize",
+      "ar": "ذرة صفراء",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_12332"
+    },
+    "rice": {
+      "en": "rice",
+      "ar": "أرز",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_6599"
+    },
+    "Striga": {
+      "en": "Striga",
+      "ar": "ستريجا",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_7453"
+    },
+    "Orobanche": {
+      "en": "Orobanche",
+      "ar": "جعفيل",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5427"
+    },
+    "Newcastle disease": {
+      "en": "Newcastle disease",
+      "ar": "مرض نيوكاسل",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5165"
+    },
+    "peste des petits ruminants": {
+      "en": "peste des petits ruminants",
+      "ar": "طاعون المجترات الصغيرة",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_16789"
+    },
+    "Haemonchus contortus": {
+      "en": "Haemonchus contortus",
+      "ar": "Haemonchus contortus",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_27207"
+    },
+    "anthelmintics": {
+      "en": "anthelmintics",
+      "ar": "طاردات الديدان",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_475"
+    },
+    "aflatoxins": {
+      "en": "aflatoxins",
+      "ar": "أفلاتوكسين",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_8638"
+    },
+    "mycotoxins": {
+      "en": "mycotoxins",
+      "ar": "سموم فطرية",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5026"
+    },
+    "storage": {
+      "en": "storage",
+      "ar": "تخزين",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_7427"
+    },
+    "seed storage": {
+      "en": "seed storage",
+      "ar": "تخزين البذور",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_6938"
+    },
+    "stored products pests": {
+      "en": "stored products pests",
+      "ar": "آفات المنتجات المخزونة",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_7433"
+    },
+    "soil salinity": {
+      "en": "soil salinity",
+      "ar": "ملوحة التربة",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_35317"
+    },
+    "leaching": {
+      "en": "leaching",
+      "ar": "نض",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_15591"
+    },
+    "drainage": {
+      "en": "drainage",
+      "ar": "صرف",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_2372"
+    },
+    "farmyard manure": {
+      "en": "farmyard manure",
+      "ar": "سماد المزرعة",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_2810"
+    },
+    "nitrogen fertilizers": {
+      "en": "nitrogen fertilizers",
+      "ar": "أسمدة نتروجينية",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5195"
+    },
+    "water harvesting": {
+      "en": "water harvesting",
+      "ar": "حصاد المياه",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_25305"
+    },
+    "soil conservation": {
+      "en": "soil conservation",
+      "ar": "صيانة التربة",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_7165"
+    },
+    "dunes": {
+      "en": "dunes",
+      "ar": "كثبان",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_2410"
+    },
+    "windbreaks": {
+      "en": "windbreaks",
+      "ar": "مصدات الرياح",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_8398"
+    },
+    "vaccination": {
+      "en": "vaccination",
+      "ar": "تلقيح",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_15123"
+    },
+    "pesticides": {
+      "en": "pesticides",
+      "ar": "مبيدات الآفات",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5739"
+    },
+    "insecticides": {
+      "en": "insecticides",
+      "ar": "مبيدات الحشرات",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_3887"
+    },
+    "browse plants": {
+      "en": "browse plants",
+      "ar": "نباتات العلق",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_9458"
+    },
+    "oilseed cakes": {
+      "en": "oilseed cakes",
+      "ar": "كسب",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_5336"
+    },
+    "Spodoptera frugiperda": {
+      "en": "Spodoptera frugiperda",
+      "ar": "Spodoptera frugiperda",
+      "ar_alt": [],
+      "uri": "http://aims.fao.org/aos/agrovoc/c_25452"
+    }
+  }
+}

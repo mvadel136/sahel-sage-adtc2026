@@ -1,0 +1,222 @@
+{
+ "_about": "Real ways a Sahelian farmer or extension agent asks about each verified fact in sahel_reference.json. These drive training rows (training/reference_qa.py) so the weights and the embedded reference block teach the SAME answer — a model trained to contradict its own system prompt is worse than one trained on neither. Phrasings are deliberately uneven in register: some are typed carefully, some are terse and lowercase, because that is what a chat box receives.",
+ "questions": {
+  "seasons": [
+   "What are the seasons here and how do I plan my farming year?",
+   "what months are the rains in the sahel",
+   "My cousin in France plans by spring and autumn. Does that work here?",
+   "when is the growing season",
+   "What should I be doing on the farm during the dry season?"
+  ],
+  "sowing": [
+   "When should I sow my millet?",
+   "The first rain came last night. Should I plant now or wait?",
+   "how do i know the rains have really started",
+   "I sowed and then it stopped raining and the seedlings died. What should I have done?",
+   "what is the right time to plant sorghum"
+  ],
+  "millet_spacing": [
+   "How far apart should I sow my millet and how much seed do I need?",
+   "how deep do i plant millet seed",
+   "How many plants should I leave in each pocket?",
+   "I have one hectare for millet. How much seed should I buy?",
+   "The extension agent said my millet is too crowded. How should I space it next year?"
+  ],
+  "striga": [
+   "Purple flowering weeds are attached to the roots of my sorghum. What are they?",
+   "there is a purple weed growing on my millet roots every year",
+   "How do I get rid of striga in my field?",
+   "The same weed comes back every season no matter what I pull. Why?",
+   "should i just pull the purple weeds or is there something better"
+  ],
+  "faw": [
+   "Caterpillars are eating the whorls of my young maize and leaving wet sawdust. What is it?",
+   "worms in the middle of my maize plants what do i do",
+   "Something is eating the new leaves of my maize from the centre. Is it a fungus?",
+   "How do I control fall armyworm without buying chemicals?",
+   "My neighbour lost his maize to worms last year. How do I stop the same happening to mine?"
+  ],
+  "ppr": [
+   "My goats have fever, runny nose and sores in the mouth, and some have died. What is this?",
+   "goats dying with mouth sores and discharge from the nose",
+   "Several sheep are sick with fever and mouth ulcers. What should I do first?",
+   "Is this the same disease that kills chickens?",
+   "Do I need to tell anyone when my goats get sick like this?"
+  ],
+  "newcastle": [
+   "My village chickens are dying suddenly in large numbers. What is the cause?",
+   "chickens healthy yesterday dead today what happened",
+   "How do I stop my chickens dying every year at the same time?",
+   "I have no fridge. Is there a vaccine I can still use for my chickens?",
+   "How often do I need to vaccinate my chickens?"
+  ],
+  "haemonchus": [
+   "My sheep are thin with pale gums but they are still eating. What should I check?",
+   "goats losing condition and the inside of the eyelid looks white",
+   "One of my sheep has swelling under the jaw. What causes that?",
+   "Should I treat the whole flock for worms or only some of them?",
+   "how do i know which of my sheep need worm treatment"
+  ],
+  "camel_feed": [
+   "How should I feed my camels in the late dry season when the pasture is finished?",
+   "what do i give my goats when there is no grass left",
+   "Is molasses enough to keep my animals going through the dry season?",
+   "My animals are losing weight in the hot season even though they eat. Why?",
+   "Which trees can my animals browse when the pasture is finished?"
+  ],
+  "salinity": [
+   "White salt crust is forming on my irrigated plot. What can I do?",
+   "my soil has gone white and the crop is failing",
+   "Will drip irrigation fix my salty soil?",
+   "Should I add gypsum to salty land?",
+   "Can I still grow anything on land that has gone salty?"
+  ],
+  "manure": [
+   "I only have a small amount of manure. How should I use it on my millet?",
+   "is it better to spread manure everywhere or put it in the planting hole",
+   "How can I get more out of the little manure my animals produce?",
+   "My field is big and my manure heap is small. Where should I put it?",
+   "how much manure should i use on my field"
+  ],
+  "water": [
+   "My field is on a slope and the rain runs off before it soaks in. What can I do?",
+   "how do i keep rain water on my field without a pump",
+   "The soil is hard and crusted and water just runs away. How do I fix it?",
+   "What are zai pits and are they worth the work?",
+   "what is a demi-lune and how do i make one"
+  ],
+  "dunes": [
+   "Sand is blowing in from the dunes and burying my garden. How do I stop it?",
+   "sand covering my field every year what can i do",
+   "I keep shovelling the sand away and it comes back. What am I doing wrong?",
+   "What can I plant to hold the sand back from my plot?",
+   "the dune is moving towards my village what do we do"
+  ],
+  "grain_storage": [
+   "I have just harvested my maize and want to store it without weevils eating it. What should I do?",
+   "weevils are eating my stored grain",
+   "Are the ordinary woven sacks good enough for storing my harvest?",
+   "How dry does my grain need to be before I put it in the store?",
+   "Can I put insecticide on the grain to protect it?"
+  ],
+  "aflatoxin": [
+   "How do I keep my groundnuts from developing mould in storage?",
+   "some of my groundnuts look shrivelled and dark is that a problem",
+   "Can I still press mouldy groundnuts for oil?",
+   "Is it safe to feed mouldy nuts to my animals?",
+   "How dry do my groundnuts need to be before I store them?"
+  ],
+  "cowpea_pests": [
+   "My cowpea plants have black insects clustered on the growing tips. What are they?",
+   "the leaves on my cowpea are curling and there are small black insects",
+   "How do I control aphids on cowpea?",
+   "something is eating my cowpea pods, what should I look for",
+   "when should i start checking my cowpea for insects"
+  ],
+  "colostrum": [
+   "My goat gave birth two days ago and the kid is weak and not suckling. What should I do?",
+   "newborn lamb is not standing to feed",
+   "How important is the first milk for a kid?",
+   "the doe has no milk, what can i give the kid",
+   "how long after birth must a kid drink colostrum"
+  ],
+  "compost": [
+   "I have crop residues and animal dung but no fertiliser. How do I make compost?",
+   "how do i make compost before the rains",
+   "My compost heap is not breaking down. Why?",
+   "can i put weeds in the compost",
+   "what do i mix to make good compost"
+  ],
+  "vegetable_storage": [
+   "My onions rot within a month of harvest. How should I store them?",
+   "how do i cure onions after lifting",
+   "why do my onions go soft in the store",
+   "can i keep onions in a sack",
+   "what is the right way to dry onions"
+  ],
+  "tomato_problems": [
+   "My tomato plants wilt in the afternoon and recover at night. What is wrong?",
+   "lower leaves on my tomato are turning yellow and it wilts",
+   "is my tomato problem blight",
+   "tomato plants collapsed and did not come back",
+   "how do i tell water stress from disease in tomato"
+  ],
+  "rangeland": [
+   "How should I manage grazing so the pasture recovers?",
+   "the rangeland around my village is bare, what can be done",
+   "is it better to move the herd further or rest the land",
+   "how do i get more grass for the dry season",
+   "why is the ground bare around the well"
+  ],
+  "trypanosomiasis": [
+   "My cattle keep losing condition and have pale gums. What could it be?",
+   "animals getting thin in tsetse area",
+   "what is nagana",
+   "my donkey is weak and pale, is it worms",
+   "how do i protect cattle from tsetse"
+  ],
+  "fmnr": [
+   "How can I get more trees on my field without buying seedlings?",
+   "what is farmer managed natural regeneration",
+   "there are stumps in my field, should i clear them",
+   "how do trees help my millet",
+   "how do i protect young trees from goats"
+  ],
+  "microdose": [
+   "I cannot afford much fertiliser. How do I get the most from a small amount?",
+   "what is microdosing fertiliser",
+   "should i broadcast the fertiliser or put it in the hole",
+   "small bag of fertiliser for a big field, what do i do",
+   "does putting fertiliser with the seed burn it"
+  ],
+  "dry_season_feed": [
+   "Pasture is finished. What do I feed my animals?",
+   "how do i keep goats fed in the dry season",
+   "are crop residues good feed",
+   "can animals live on straw alone",
+   "how should i store groundnut haulms"
+  ],
+  "poultry_housing": [
+   "My chickens keep disappearing and the chicks die. What should I do?",
+   "how do i keep village chickens alive",
+   "chicks are dying but the adults are fine",
+   "do i need a chicken house",
+   "should i separate a sick bird"
+  ],
+  "groundnut": [
+   "When should I lift my groundnuts?",
+   "how do i dry groundnuts after harvest",
+   "my groundnut pods break off in the soil when i pull",
+   "what soil suits groundnut",
+   "how do i avoid mould in groundnut"
+  ],
+  "sorghum": [
+   "Should I grow sorghum or maize where rain is unreliable?",
+   "birds are eating my sorghum",
+   "which sorghum variety should i choose",
+   "does sorghum survive a dry spell",
+   "how should i sow sorghum in heavy soil"
+  ],
+  "goat_health": [
+   "What are the most common problems in goats?",
+   "my goats have diarrhoea",
+   "goat is coughing after cold nights",
+   "how do i stop disease spreading in my herd",
+   "what should i check on a sick goat"
+  ],
+  "weather_advice": [
+   "Will it rain enough this season for my millet?",
+   "when should i plant, the rains have not started properly",
+   "It rained once last week. Should I sow my sorghum now?",
+   "what does the weather forecast say for planting",
+   "some of my maize seeds did not come up after sowing"
+  ],
+  "market_advice": [
+   "What price will maize be this year?",
+   "should i sell my millet now or store it",
+   "The trader offers a low price at harvest. What can I do?",
+   "how can i get a better price for my grain",
+   "A man is selling a cheap goat that looks unwell. Good deal?"
+  ]
+ }
+}

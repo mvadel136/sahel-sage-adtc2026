@@ -1,0 +1,39 @@
+{
+  "team_id": "sahel-sage",
+  "domain": "agriculture",
+  "language_scope": [
+    "en"
+  ],
+  "african_alpha_claim": false,
+  "budget_laptop_claim": true,
+  "submitter": {
+    "name": "Mohamed Vadel Hadweni",
+    "email": "concours3000.mtnma@gmail.com",
+    "github_handle": "mvadel136"
+  },
+  "cross_disciplinary_pairing": {
+    "discipline": "agronomy",
+    "load_bearing": true,
+    "description": "The model powers an offline advisory console for Sahelian extension officers: retrieval-augmented answers grounded in a packaged agronomy and livestock-health library, with every recommendation citing its source manual. The agronomy knowledge base is integral to the product, not cosmetic."
+  },
+  "test_prompts": [
+    {
+      "prompt_id": "tp_001",
+      "prompt": "I have just harvested my maize and I want to store it for the dry season without weevils eating it. What should I do, and what should I avoid?"
+    },
+    {
+      "prompt_id": "tp_002",
+      "prompt": "My village chickens are dying suddenly in large numbers, healthy birds one day and dead the next. What is the most likely cause and how do I protect the rest of the flock?"
+    }
+  ],
+  "model": {
+    "name": "sahelsage-v11h-Q4_0-flat",
+    "runtime": "llama.cpp",
+    "quantization": "GGUF Q4_0 (flat: token_embd and output also Q4_0)",
+    "parameters_estimate": "0.6B",
+    "packaging": "binary_bundle"
+  },
+  "_runtime": {
+    "model_path": "model/sahelsage-v11h-Q4_0-flat.gguf"
+  }
+}
