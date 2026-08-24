@@ -16,9 +16,9 @@ Two things make this affordable rather than clever:
 * **The profiler never sees it.** `llama-bench -p 512 -n 128` generates synthetic
   tokens and never reads `tokenizer.chat_template`, and the memory sampler wraps
   only that command. The block costs exactly nothing in S_perf or S_eff.
-* **The judge barely sees it.** Measured on the audit-parity `llama-server`
-  build, a ~450-token system prompt costs 2.9 s on the first turn and ~1.1 s
-  after, because llama-server caches the prefix.
+* **The judge pays once.** On the audit-parity `llama-server` build the full
+  system prompt costs tens of seconds of prompt processing on the FIRST turn
+  only; the server caches the prefix, so every later turn pays ~1-2 s.
 
 This is disclosed in REPORT.md. Undisclosed it would be indefensible in the
 technical Q&A; disclosed, it is the honest conclusion of our own measurement —
@@ -92,7 +92,7 @@ def reference_block(facts: tuple[Fact, ...] | None = None) -> str:
     # given. From what is normally recommended: ...". Describing the block as a
     # reference invited it to narrate the reference. A farmer cannot see this
     # list and should never hear about it; the judges read about it in
-    # REPORT.md §2.8, which is where the disclosure belongs.
+    # REPORT.md §2.7, which is where the disclosure belongs.
     return (
         "WHAT YOU KNOW ABOUT SAHELIAN FARMING. The following is correct and "
         "current. Treat it as your own knowledge, use it whenever it applies, "

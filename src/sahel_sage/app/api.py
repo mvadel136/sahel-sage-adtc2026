@@ -1,6 +1,6 @@
 """HTTP surface of the offline console.
 
-Ports app/server.py onto the new modules. Two structural changes:
+The console HTTP surface. Two structural changes:
 
 * The app is built by `create_app(build_context)` instead of importing a
   module-level singleton, so a test can inject a fake backend and a tmp
@@ -138,7 +138,7 @@ def create_app(build_context: Callable[[], AppContext]) -> FastAPI:
 
     @app.post("/api/search")
     def search(req: Ask, request: Request) -> dict:
-        pack = retrieve(req.question, req.lang, req.k or 4, context(request))
+        pack = retrieve(req.question, req.lang, req.k or 8, context(request))
         return {
             "citations": [c.to_dict() for c in pack.items],
             "confidence": pack.confidence,

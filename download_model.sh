@@ -15,7 +15,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_DIR="$HERE/model"
 MODEL_FILE="$MODEL_DIR/sahelsage-v11h-Q4_0-flat.gguf"
 
-# Pinned by commit, filled in at release time by scripts/release_model.sh
+# Pinned by commit and checksum at release time
 HF_REPO="${SAHEL_HF_REPO:-mvadel136/SahelSage-Qwen3-0.6B}"
 HF_REVISION="${SAHEL_HF_REVISION:-9e0b8f4706cef5a311318e68b7337be32b7b8aff}"
 MODEL_URL="https://huggingface.co/${HF_REPO}/resolve/${HF_REVISION}/sahelsage-v11h-Q4_0-flat.gguf"

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from functools import lru_cache
 
 from sahel_sage.app.context import AppContext
 from sahel_sage.core.prompts import EvidenceItem, Status, render_raw
@@ -185,9 +186,6 @@ def _repair_prompt(base_prompt: str, bad_text: str) -> str:
 
 def _source_text(pack: EvidencePack) -> str:
     return " ".join(c.text for c in pack.items)
-
-
-from functools import lru_cache
 
 
 @lru_cache(maxsize=1)

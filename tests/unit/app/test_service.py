@@ -335,8 +335,8 @@ def test_ui_file_has_no_stale_twin():
     A full round of UX fixes once went only to the visible copy, and the
     tester kept seeing the old page — worse than a bug, an invisible one.
     They must be byte-identical."""
-    from sahel_sage.core.config import repo_root
     import sahel_sage.app.api as api
+    from sahel_sage.core.config import repo_root
 
     visible = (repo_root() / "app" / "ui" / "index.html").read_bytes()
     served = api.UI_FILE.read_bytes()

@@ -13,7 +13,7 @@ Two deliberate departures from the legacy ``app/llm.py``:
   wrap the prompt in markers the model never saw in training — a train/serve
   mismatch, which is the most expensive class of scoring defect we can ship.
   So both entry points post to ``/v1/completions`` with a rendered string.
-* **The binary path comes from configs/settings.toml** (``lab.audit_server``),
+* **The binary is resolved by default_server_binary()** (``lab.audit_server``),
   the audit-parity build, instead of an environment variable read at import.
 
 Everything here is offline by construction: the only host contacted is
@@ -24,8 +24,8 @@ from __future__ import annotations
 
 import json
 import os
-import signal
 import shutil
+import signal
 import socket
 import subprocess
 import time

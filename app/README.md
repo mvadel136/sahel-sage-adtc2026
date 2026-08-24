@@ -1,8 +1,8 @@
 # The advisory console
 
 The offline product around the model: SQLite FTS5 retrieval over 56 field
-manuals (`library.db`, 11,050 passages — a build product, regenerable with
-`uv run sage index build`), citation-first answers, and refusal instead of
+manuals (`library.db`, 11,050 passages — built from the manual corpus, which is not
+shipped; the database ships ready to use), citation-first answers, and refusal instead of
 guessing when the library does not cover a question.
 
 ## Run it

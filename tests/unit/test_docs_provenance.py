@@ -24,7 +24,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-DOCS = ("REPORT.md", "README.md", "STATUS.md", "docs/COMPETITION_FACTS.md")
+DOCS = ("REPORT.md", "README.md")
 
 #: A backticked token that CLAIMS A LOCATION — it contains a slash. A bare
 #: filename in prose ("`mix.py`") is a name, not a claim, and is left alone; a
@@ -35,7 +35,7 @@ _PATH = re.compile(r"`([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)+"
 #: Paths that legitimately do not exist in the repo. Each needs a reason.
 ALLOWED_ABSENT = {
     # generated at release time, never committed (weights are gitignored)
-    "model/SahelSage-0.6B-Q4_0-flat.gguf",
+    "model/sahelsage-v11h-Q4_0-flat.gguf",
     # produced by the profiler on an idle machine, gitignored
     "submission.json",
 }

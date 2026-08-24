@@ -33,7 +33,7 @@ loop under greedy decoding.
 a kind, and its stats count rows *before* dedup — so a stratum can silently
 collapse (v2 shipped 1 scope row of 240; v3 shipped 120 of 450). Every
 generator here therefore produces distinct questions AND distinct answers by
-construction, and `scripts/build_dataset_v4.py` asserts the realized counts.
+construction, and the dataset build asserts the realized counts.
 """
 
 from __future__ import annotations

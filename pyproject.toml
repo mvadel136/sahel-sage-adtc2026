@@ -21,7 +21,6 @@ dev = [
     "jinja2>=3.1",  # verifies the GGUF chat template against render_raw
     "uvicorn>=0.29",  # `sage app run` — the end-to-end check needs a real server
     "ruff>=0.6",
-    "pre-commit>=3.7",
 ]
 
 [project.scripts]

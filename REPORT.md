@@ -5,7 +5,8 @@
 **Runtime:** llama.cpp `b10175`, CPU-only, no network
 
 Every number below comes from a logged measurement in the project's
-append-only ledger; each decision cites the measurement that produced it.
+append-only ledger (an internal record, not shipped in this repository; each
+decision cites the measurement that produced it).
 
 ---
 
@@ -72,14 +73,15 @@ validity risk: the vendor GGUF double-materializes the tied tensor (751.6M
 **2.5 The chat template embedded in the GGUF.** Judges chat with the bare model;
 our training rows carry a system prompt and answer contract. The GGUF therefore
 embeds a Jinja template generated from the *same constants* as the training
-renderer (`src/sahel_sage/core/prompts.py`); a unit test asserts byte-equality,
-so a judge's bare question renders into exactly the trained format.
+renderer (`src/sahel_sage/core/prompts.py`), and a unit test asserts the two
+renderings agree, so a judge's bare question renders into exactly the trained
+format.
 
 **2.6 RAG lives in the application, not the scored artifact.** The FAQ confirms
 evaluation measures "just the model", so closed-book quality is what earns
 points; training strata were rebalanced accordingly. The app keeps FTS5
 retrieval over the 56 manuals, per-claim citations, and abstention below a
-calibrated evidence threshold (recall@4 = 0.803, MRR 0.653) for real deployments.
+calibrated evidence threshold (recall@8 = 0.873) for real deployments.
 
 **2.7 Where the knowledge lives: in the context, not the weights — disclosed.**
 On 2026-08-13 three reviewers audited 24 closed-book answers against FAO, WOAH,
@@ -98,7 +100,9 @@ source), rendered into the system prompt the GGUF's template carries. The model
 reads them instead of recalling them. Stated plainly because a judge should know
 where this system's knowledge comes from: it costs nothing on the measured axes
 (`llama-bench` never reads the chat template — measured, identical RSS), costs
-the judge a few seconds of prompt processing on the first turn, and is not a
+the judge real time on the first turn — on the SIMD-off audit build the full
+system prompt takes roughly 40–60 seconds of prompt processing before the
+first token, cached by the server for every later turn — and is not a
 substitute for knowing — outside these facts the model abstains, and seven hazard
 classes are refused outright.
 
@@ -165,7 +169,10 @@ idle laptop, measured 16.1, 17.7, 21.3, 28.3 and 29.6 t/s (peak RSS was
 stable within 0.3 MB across all five). We self-report 17.7, a low-middle run,
 not the fastest: the audit comparator tolerates ±25%, and a self-reported figure
 the auditor cannot reproduce is worse than a modest one. The audit's own
-measurement, on the official hardware, is the number that scores.
+measurement, on the official hardware, is the number that scores. (Earlier
+figures in this report — 24.41 and 28.62 t/s, 463 MB — are development
+measurements from pre-Docker batches on the bare audit build; the Docker
+image adds ~20 MB of RSS overhead and its own scheduling variance.)
 
 **Fine-tuning did not damage general reasoning; it improved it.** Stock
 Qwen3-0.6B scores 0.525 (Q4_0) / 0.570 (Q8_0) arc_easy@200; the shipped
@@ -203,7 +210,7 @@ SQLite FTS5, FastAPI.
   hazard classes. It is an aid to a human decision-maker, never a substitute
   for an agronomist or a vet. The full three-reviewer audit record and the
   refuse-by-default redesign it forced are documented in the project's
-  decision log.
+  internal decision log (available on request).
 - **Our worst bugs were invisible to every benchmark.** A retrieval-confidence
   signal that returned 1.0 for every query (Youden's J = 0.0); a training mix
   whose labels taught the model to answer every unsupported question; a model
@@ -214,10 +221,10 @@ SQLite FTS5, FastAPI.
 
 ## 7. Reproducibility
 
-`uv`-managed Python package; **370 tests passing** (`pytest`), including
-byte-equality of the GGUF chat template with the training renderer and hard
-gates on the dataset build (truncation, unsupported quantities, prohibition
-coverage). An append-only measurement ledger backs every number in this report, and
+`uv`-managed Python package; **368 tests passing** (`pytest`), including
+agreement of the chat template with the training renderer and the verified
+fact base's quantity-traceability gate. An append-only measurement ledger (internal, available on request) backs
+every number in this report, and
 each design decision records the measurement that produced it, including the
 reversals. Seed 42 throughout. Before release, an automated checklist
 re-verifies the submission invariants: public repo, credential-free download,

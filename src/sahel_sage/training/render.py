@@ -80,7 +80,7 @@ def facts_for(rec: dict) -> tuple | None:
     the 65-character opening every refusal shares and diverged the moment the
     answer had to depend on the question.
 
-    Returning `None` means "all fifteen", and that is the deliberate default
+    Returning `None` means "the whole block", and that is the deliberate default
     whenever a row has no usable metadata. Guessing a subset for a row we cannot
     classify risks stripping the one fact its answer depends on, which turns a
     grounded target into an unsupported one. A slightly long prompt is a cost;
@@ -92,7 +92,7 @@ def facts_for(rec: dict) -> tuple | None:
     by_id = {f.id: f for f in all_facts}
     meta = rec.get("meta") or {}
 
-    # At inference the block is ALWAYS all fifteen facts — the chat template
+    # At inference the block is ALWAYS all full fact block — the chat template
     # has no idea what was asked. Training every row on a short subset would
     # therefore trade one distribution mismatch for another, which is the exact
     # mistake being fixed here (only 22% of rows matched the judged format).

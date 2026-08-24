@@ -14,7 +14,12 @@ import socket
 from dataclasses import dataclass
 from pathlib import Path
 
-from sahel_sage.app.backend import default_server_binary, ChatBackend, LlamaServerBackend, LlamaServerConfig
+from sahel_sage.app.backend import (
+    ChatBackend,
+    LlamaServerBackend,
+    LlamaServerConfig,
+    default_server_binary,
+)
 from sahel_sage.core.config import load_retrieval, load_settings
 from sahel_sage.retrieval.store import NullRetriever, Retriever, open_retriever
 

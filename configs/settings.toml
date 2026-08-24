@@ -3,6 +3,9 @@
 # e.g. SAHEL_LAB_DIR=/elsewhere/adtc
 
 [lab]
+# These are the author's measurement-lab paths. The console does NOT need
+# them: the server binary resolves SAHEL_LLAMA_SERVER, then this file, then
+# PATH — on any other machine, install llama.cpp and the fallbacks apply.
 # The measurement lab (profiler, llama.cpp builds, models, frontier CSVs).
 dir = "~/devpost/adtc"
 # Audit-parity binaries (SIMD-off b10175, matches the official Docker image).

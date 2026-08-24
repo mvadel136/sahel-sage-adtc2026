@@ -1,5 +1,6 @@
 # ADTC rule: never commit model weights
 model/*.gguf
+model/llama-server.log
 *.gguf
 
 # Secrets

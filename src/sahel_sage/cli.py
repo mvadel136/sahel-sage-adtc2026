@@ -96,7 +96,7 @@ def cmd_app_run(args: argparse.Namespace) -> int:
 _NOT_MIGRATED = {
     "eval-arc": "eval/arc_runner.py (legacy)",
     "eval-judge": "eval/judge_eval.py (legacy)",
-    "fetch": "training/fetch_corpus.py (legacy)",
+    "fetch": "the corpus fetcher (not shipped)",
 }
 
 
@@ -145,7 +145,7 @@ def main() -> int:
     run.add_argument("--model", type=Path, default=None, help="GGUF (default: configs/settings.toml)")
     run.add_argument("--db", type=Path, default=None, help="library.db (default: settings)")
     run.add_argument("--host", default="127.0.0.1")
-    run.add_argument("--port", type=int, default=8080)
+    run.add_argument("--port", type=int, default=8090)
     run.add_argument("--threads", type=int, default=None)
     # 8192, not 4096: ADR-006 renders all EIGHT retrieved passages into the
     # prompt (~3.7k tokens with the question), and a 4096 window left the

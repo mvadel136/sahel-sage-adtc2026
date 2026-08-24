@@ -113,8 +113,7 @@ _NO_SOURCES = """
 #: which rule sat on the margin. A worked example leverages the format prior
 #: instead of fighting it: the model is shown the refusal *in the answer
 #: contract it always follows*. Literature: in-context refusal demonstrations
-#: measurably harden refusal behaviour (Wei et al., arXiv:2310.06387); few-shot
-#: examples strengthen role-anchored prompts specifically (arXiv:2602.04294).
+#: measurably harden refusal behaviour (Wei et al., arXiv:2310.06387).
 #: Kept short (~150 tokens) to limit TTFT cost and echo risk; the wording is
 #: deliberately NOT the app's fixed refusal text, so verbatim echo of the app
 #: answer cannot be blamed on the template.
@@ -167,7 +166,7 @@ def system_prompt(has_sources: bool, lang: str = "en", facts=None) -> str:
     rather than memorise one constant.
 
     It must never narrow at inference. `chat_template()` calls this with no
-    subset, so the shipped GGUF always carries all fifteen — guarded by
+    subset, so the shipped GGUF always carries every fact — guarded by
     `test_reference.py::test_the_block_is_embedded_in_the_gguf_chat_template`.
 
     Imported lazily: `core.reference` reads a data file, and `prompts` is
