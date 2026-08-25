@@ -3,7 +3,7 @@
 REPORT.md opens by staking its credibility on provenance: "every number traces
 to a row in `experiments/ledger.csv` or a named log under `frontier/`". A judge
 or an LLM auditor who spot-checks that claim and hits a missing file has learned
-something worse than "one path is stale" — they have learned the report's
+something worse than "one path is stale", they have learned the report's
 central promise is unverified.
 
 That was the state until 17 Aug: `frontier/` did not exist in the repo at all
@@ -26,7 +26,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 DOCS = ("REPORT.md", "README.md")
 
-#: A backticked token that CLAIMS A LOCATION — it contains a slash. A bare
+#: A backticked token that CLAIMS A LOCATION, it contains a slash. A bare
 #: filename in prose ("`mix.py`") is a name, not a claim, and is left alone; a
 #: path is a promise about where to look, and that is what gets checked.
 _PATH = re.compile(r"`([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)+"

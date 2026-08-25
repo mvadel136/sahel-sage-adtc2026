@@ -1,7 +1,7 @@
 """Extraction routing must follow the bytes, not the filename.
 
 The legacy pipeline trusted the URL suffix, so PDFs served from suffix-less
-URLs were saved as .html and shredded by the tag-stripper — these tests pin
+URLs were saved as .html and shredded by the tag-stripper, these tests pin
 the fix.
 """
 

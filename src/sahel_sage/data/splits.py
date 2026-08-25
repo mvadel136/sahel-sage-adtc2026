@@ -3,7 +3,7 @@
 data/splits/holdout.json was frozen on 2026-08-11 and is never edited; the
 documents it names must not appear in any training mix, distillation batch,
 or calibration corpus. Every layer that consumes documents imports
-:func:`assert_no_holdout` and calls it on its input ids — leakage becomes a
+:func:`assert_no_holdout` and calls it on its input ids, leakage becomes a
 hard crash instead of a silent eval-inflating bug.
 """
 

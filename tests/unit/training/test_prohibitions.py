@@ -48,7 +48,7 @@ def test_every_generated_question_is_still_prohibited(rows: list[dict]) -> None:
     """The generator asserts this internally; this is the regression guard.
 
     If someone widens PHRASINGS with a question `screen()` does not catch, the
-    model would be trained to refuse something the app happily passes through —
+    model would be trained to refuse something the app happily passes through,
     and the two surfaces would disagree about what is dangerous.
     """
     for r in rows:
@@ -81,7 +81,7 @@ def test_rows_carry_no_evidence_and_claim_none(rows: list[dict]) -> None:
     """A refusal is not grounded in a passage, so it must not claim to be.
 
     Empty `gate_passages` also makes the numeric gate treat any quantity in the
-    answer as unsupported — correct here, since these answers must contain none.
+    answer as unsupported, correct here, since these answers must contain none.
     """
     for r in rows:
         assert r["meta"]["passage_ids"] == []

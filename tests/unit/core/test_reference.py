@@ -2,7 +2,7 @@
 
 Judges chat with the bare GGUF: no retrieval, no deny-list, no application code.
 Whatever the embedded chat template carries is the model's entire evidence base,
-so these facts are load-bearing in a way ordinary training data is not — a wrong
+so these facts are load-bearing in a way ordinary training data is not, a wrong
 number here is a wrong number the inference numeric gate will happily accept,
 because it now appears in a source.
 """
@@ -69,14 +69,14 @@ def test_the_block_fits_the_latency_budget() -> None:
     is about ten seconds, once, at the start of a conversation.
 
     What it buys is measured too. Asked about black insects on cowpea tips, the
-    15-fact model answered "fall armyworm, a destructive pest in maize fields" —
+    15-fact model answered "fall armyworm, a destructive pest in maize fields",
     confidently wrong. With the topic present it answers "these are aphids, not
     armyworm". Out-of-block questions scored 1-2/5; that is the failure this
     budget exists to permit fixing.
 
     Raised again to 2600 on 22 Aug for the weather_advice and market_advice
     facts: the organizers define agriculture as "crop, livestock, weather, and
-    market advisory", and two of those four quarters had no coverage at all — a
+    market advisory", and two of those four quarters had no coverage at all, a
     hidden prompt landing there scored an unnecessary zero. The measured TTFT
     slope is ~15.5 ms/token ((57.11-38.99) s / (2786-1619) tokens), so the +230
     tokens cost ~3.5 s, once, on the first turn only.
@@ -89,8 +89,8 @@ def test_the_block_fits_the_latency_budget() -> None:
 
 
 def test_the_whole_closed_book_prompt_fits_the_conversation_budget() -> None:
-    """The full system prompt — base rules, reference block, safety
-    demonstration — must leave room for a five-question judge conversation in a
+    """The full system prompt, base rules, reference block, safety
+    demonstration, must leave room for a five-question judge conversation in a
     default-context (4096) llama-server. Measured 22 Aug: turn 5 of a real
     five-question conversation used 3,504 tokens with a ~2,700-token prompt;
     every prompt token above that eats directly into that margin. approx_tokens
@@ -133,7 +133,7 @@ def test_the_block_is_embedded_in_the_gguf_chat_template() -> None:
         ("faw", "not a fungus"),       # fungicide does nothing
         # Stated positively on purpose. The first version said woven sacks are
         # "NOT airtight" and the model inverted it into "avoid hermetic bags,
-        # they do not kill storage insects" — it kept the negation and attached
+        # they do not kill storage insects": it kept the negation and attached
         # it to the wrong noun. A 0.6B model drops or moves negations, so the
         # load-bearing claim has to be the affirmative one.
         ("grain_storage", "hermetic bags kill storage weevils"),
@@ -189,7 +189,7 @@ def test_facts_sharing_vocabulary_each_name_their_own_domain(
     facts = {f.id: f.text.lower() for f in load_reference()}
     a, b = facts[a_id], facts[b_id]
     assert shared in a and shared in b, (
-        f"{a_id}/{b_id} no longer share {shared!r} — update or drop this pair"
+        f"{a_id}/{b_id} no longer share {shared!r}, update or drop this pair"
     )
     # each fact must anchor itself: its own id-word (or a stated scope) has to
     # appear more than once, so no single clause floats free of its subject
@@ -199,7 +199,7 @@ def test_facts_sharing_vocabulary_each_name_their_own_domain(
             "aflatoxin": "groundnut", "ppr": "ppr", "newcastle": "chicken",
         }[fid]
         assert text.count(anchor) >= 2, (
-            f"{fid} names its subject {text.count(anchor)}x — too few anchors to "
+            f"{fid} names its subject {text.count(anchor)}x, too few anchors to "
             f"stop a clause drifting to {a_id if fid == b_id else b_id}"
         )
 
@@ -219,7 +219,7 @@ def test_no_system_prompt_clause_reads_as_permission_alone() -> None:
     """A rule's clauses get reproduced separately, so each must be safe alone.
 
     Measured, not theorised. A rule was added reading "...say to rinse it three
-    times, puncture it and take it to a collection point" — correct DISPOSAL
+    times, puncture it and take it to a collection point", correct DISPOSAL
     advice. The model reproduced the prohibition verbatim in **Likely issue**,
     then emitted "Wash the empty container thoroughly before using it for water,
     food or feed" as step 1 of **What to do**, then restated the prohibition in
@@ -249,7 +249,7 @@ def test_no_system_prompt_clause_reads_as_permission_alone() -> None:
             r"\bspray tank\b|\bcollection point\b", s, re.I
         ), (
             f"this clause reads as permission when lifted out alone: {s!r}\n"
-            "Carry the prohibition into the sentence — it WILL be reproduced "
+            "Carry the prohibition into the sentence, it WILL be reproduced "
             "on its own, as **What to do** step 1."
         )
 
@@ -258,13 +258,13 @@ def test_the_scope_rule_never_tells_the_model_to_answer_a_dose() -> None:
     """Fix the over-refusal without inviting the number. Both are live failures.
 
     Adding hazard rules pushed the model into "I cannot help with pesticide
-    application — it is not a farming question", which is false, and a judge
+    application, it is not a farming question", which is false, and a judge
     marks a wrongly-refused fair question as harshly as a wrong one. So a scope
     rule is needed.
 
     But the first version of that rule read "...are all farming questions and
     must be answered". The model read "must be answered" as "give the number"
-    and started emitting mixing rates and inventing quantities (100 kg, 1 kg) —
+    and started emitting mixing rates and inventing quantities (100 kg, 1 kg),
     turning a harmless over-refusal into the blocking failure. An instruction to
     ANSWER is one short step from an instruction to answer *with the dose*.
 
@@ -284,7 +284,7 @@ def test_the_scope_rule_never_tells_the_model_to_answer_a_dose() -> None:
     assert scope, "no rule keeps pesticide questions inside the model's subject"
     rule = " ".join(scope)
     assert not re.search(r"\bmust be answered\b", rule, re.I), (
-        "'must be answered' reads to the model as 'give the number' — measured, "
+        "'must be answered' reads to the model as 'give the number', measured, "
         "not theorised: it produced mixing rates and invented quantities."
     )
     # and the surrounding rules must still forbid stating the number

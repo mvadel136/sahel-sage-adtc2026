@@ -3,15 +3,15 @@
 Same table design as app/rag.py (docs, chunks, external-content FTS5, vectors,
 meta), with two FTS5 upgrades for a bilingual French/English corpus:
 
-* ``remove_diacritics 2`` — accent-insensitive matching ("ble" finds "blé").
+* ``remove_diacritics 2``, accent-insensitive matching ("ble" finds "blé").
   Variant 2 is the corrected algorithm that also folds diacritics expressed as
   combining codepoints; variant 1 misses those.
-* ``prefix='2 3'`` — 2- and 3-char prefix indexes make ``term*`` queries cheap,
+* ``prefix='2 3'``, 2- and 3-char prefix indexes make ``term*`` queries cheap,
   a poor man's French stemmer (no porter: it is English-only and mangles
   French morphology).
 
 The ``vectors`` table stays in the schema for a future dense leg, but no code
-path writes to it — the embedding leg was optional and unused.
+path writes to it, the embedding leg was optional and unused.
 """
 
 from __future__ import annotations

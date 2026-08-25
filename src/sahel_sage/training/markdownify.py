@@ -2,7 +2,7 @@
 
 ADR-005: human judges chat with the bare model and rank markdown structure
 higher than ALL-CAPS labels, which read as machine output. The machine-readable
-``STATUS:`` enum is dropped from visible output entirely — the app derives a
+``STATUS:`` enum is dropped from visible output entirely, the app derives a
 more reliable signal from retrieval confidence (ADR-004).
 
     LIKELY ISSUE: x            ->  **Likely issue**
@@ -19,7 +19,7 @@ more reliable signal from retrieval confidence (ADR-004).
 
 Deterministic and lossless for the citation markers: ``[n]`` survives verbatim,
 because groundedness evaluation counts them. Conversion returns ``None`` when
-the input cannot be parsed into at least an issue and one action — the caller
+the input cannot be parsed into at least an issue and one action, the caller
 drops the row rather than train on a malformed target.
 """
 
@@ -52,7 +52,7 @@ def split_sections(text: str) -> dict[str, list[str]]:
     """ALL-CAPS labelled text -> {LABEL: [lines]}. Tolerant, never raises."""
     # The 7B teacher occasionally ran the whole contract onto one line. Left
     # inline, the tail (`… TIMING: … STATUS: ANSWERED`) would be swallowed into
-    # an action bullet and survive into the markdown target — two such rows
+    # an action bullet and survive into the markdown target: two such rows
     # were the only ALL-CAPS residue left in dataset-v4.
     text = _INLINE_LABEL_RE.sub(r"\n\1:", text)
     sections: dict[str, list[str]] = {}

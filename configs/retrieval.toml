@@ -4,7 +4,7 @@
 #
 # Read by core.config.load_retrieval(); carried to the request path on
 # AppContext.confidence_threshold. tests/unit/test_config.py fails if this file
-# stops being read — it was written, cited in REPORT.md, and ignored by every
+# stops being read, it was written, cited in REPORT.md, and ignored by every
 # code path for two days.
 
 [retrieval]
@@ -40,7 +40,7 @@ rrf_k = 60
 #   0.72  sens 0.874  spec 0.600  J 0.474   <- shipped
 #   0.82  sens 0.782  spec 0.700  J 0.482
 #
-# 0.72 is kept for three reasons. The cost asymmetry now favours specificity —
+# 0.72 is kept for three reasons. The cost asymmetry now favours specificity,
 # since ADR-006 a false positive means answering with no evidence, which is the
 # failure that produced the audit's dangerous answers, while a false negative is
 # only a refusal. But the negative set is 20 adversarial questions, so those

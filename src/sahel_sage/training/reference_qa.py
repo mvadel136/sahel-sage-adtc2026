@@ -9,7 +9,7 @@ Those became `data/reference/`, and this module turns them into training data.
 The point is agreement. The judged artifact carries the reference block in its
 chat template *and* the weights are trained on the same content, so the two say
 the same thing. Training the model to contradict its own system prompt would be
-worse than doing neither — the 2026-08-13 rehearsal showed exactly that failure
+worse than doing neither, the 2026-08-13 rehearsal showed exactly that failure
 in miniature, with the model reading the block and then inverting it ("avoid
 hermetic bags, they do not kill storage insects").
 
@@ -42,7 +42,7 @@ ANSWERS_PATH = Path("data/reference/reference_answers.json")
 
 #: Openers that vary the surface without changing the question. A stratum whose
 #: rows differ only by topic teaches the topic, not the task.
-_PREFIXES = ("", "Please help: ", "Quick question — ", "I need advice. ", "Hello. ")
+_PREFIXES = ("", "Please help: ", "Quick question, ", "I need advice. ", "Hello. ")
 
 
 def _load(path: Path, key: str) -> dict:
@@ -128,7 +128,7 @@ def build_reference_rows(n_per_topic: int = 20, seed: int = 42) -> list[dict]:
         if made < n_per_topic:
             raise ValueError(
                 f"{topic_id}: only {made}/{n_per_topic} distinct questions from "
-                f"{total} combinations — add phrasings to reference_questions.json"
+                f"{total} combinations, add phrasings to reference_questions.json"
             )
     return out
 

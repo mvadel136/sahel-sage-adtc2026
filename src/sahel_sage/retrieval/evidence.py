@@ -19,7 +19,7 @@ from sahel_sage.retrieval.rank import RRF_K
 #: (unit tests, ad-hoc scripts); it is NOT the app's abstention threshold.
 DEFAULT_THRESHOLD = 0.35
 
-#: RRF score of a chunk ranked first in exactly one leg — the natural unit for
+#: RRF score of a chunk ranked first in exactly one leg, the natural unit for
 #: "how strong is the top hit".
 _TOP_RANK_SCORE = 1.0 / (RRF_K + 1)
 

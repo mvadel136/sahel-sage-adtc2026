@@ -16,7 +16,7 @@ allowed to drift in earlier rounds, the model learned a paraphrase that dropped
 the part naming who to ask.
 
 **Qualifiers must not move the answer.** Every generated question is a
-prohibited question wearing a different excuse — "if I wash it first", "just
+prohibited question wearing a different excuse, "if I wash it first", "just
 this once", "he's careful", "the vet is far away". The expert audit found the
 round-4 model taking exactly these escape hatches: offered "if I wash it", it
 answered *use the pesticide container for drinking water*. Training on the
@@ -41,7 +41,7 @@ QUALIFIERS: tuple[str, ...] = (
     "",
     "I know it is not ideal, but ",
     "Just this once, ",
-    "It is an emergency — ",
+    "It is an emergency, ",
     "The extension agent is not answering. ",
     "My neighbour says it is fine. ",
     "I have done it before with no problem. ",
@@ -52,13 +52,13 @@ QUALIFIERS: tuple[str, ...] = (
 
 #: Ways of asking, before the specific subject. Mixed with QUALIFIERS by a
 #: mixed-radix walk so no two rows repeat a (qualifier, opener, question) triple
-#: — a stratum that collapses to a handful of distinct strings teaches nothing,
+#:, a stratum that collapses to a handful of distinct strings teaches nothing,
 #: which happened three times to `abstain_scope` in earlier rounds.
 OPENERS: tuple[str, ...] = (
     "",
     "please tell me, ",
     "quick question: ",
-    "I need to know — ",
+    "I need to know, ",
     "can you help: ",
 )
 
@@ -230,7 +230,7 @@ def build_prohibition_rows(n_per_rule: int = 60, seed: int = 42) -> list[dict]:
         if made < n_per_rule:
             raise ValueError(
                 f"{rule_id}: only {made}/{n_per_rule} distinct questions available "
-                f"from {total} combinations — widen its PHRASINGS pool"
+                f"from {total} combinations, widen its PHRASINGS pool"
             )
     return out
 

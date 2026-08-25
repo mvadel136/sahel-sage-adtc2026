@@ -20,7 +20,7 @@ def test_full_names_resolves_leading_pronouns():
 
 
 def test_full_names_leaves_midsentence_pronouns_alone():
-    """A wrong resolution injects a false fact — worse than a pronoun."""
+    """A wrong resolution injects a false fact, worse than a pronoun."""
     text = "Farmers say it grows well when they plant it early."
     assert full_names(text, "Millet") == text
 
@@ -47,7 +47,7 @@ def test_entity_of_skips_boilerplate_title_words():
 
 
 def test_raw_rows_carry_holdout_metadata(tmp_path):
-    """mixer's holdout guard only inspects meta.source_docs — if raw rows lack
+    """mixer's holdout guard only inspects meta.source_docs, if raw rows lack
     it, holdout text would enter training silently."""
     txt = tmp_path / "txt"
     txt.mkdir()

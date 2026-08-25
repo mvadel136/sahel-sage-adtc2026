@@ -7,8 +7,8 @@ hand-written relevance set, no teacher calls, no annotator bias.
 
 Two things are measured:
 
-1. **Retrieval quality** — recall@k and MRR against the source document.
-2. **Threshold calibration** — the distribution of EvidencePack.confidence for
+1. **Retrieval quality**, recall@k and MRR against the source document.
+2. **Threshold calibration**, the distribution of EvidencePack.confidence for
    IN-corpus questions (should be answerable) vs OUT-of-corpus questions
    (agriculture-shaped but unanswerable, plus off-domain). The shipped
    threshold is chosen from the sweep that maximises Youden's J

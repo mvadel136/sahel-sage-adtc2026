@@ -5,7 +5,7 @@ provenance metadata. Output: a SQLite database (docs + chunks + FTS5).
 
 Chunking is section-aware via the canonical implementation in core.textproc:
 manuals are written as headed sections, and a chunk that keeps its heading
-retrieves far better than a fixed-width window — the heading is usually the
+retrieves far better than a fixed-width window, the heading is usually the
 exact farmer-facing topic ("Controlling storage pests").
 """
 

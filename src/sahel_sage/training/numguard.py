@@ -1,7 +1,7 @@
 """Numeric-invention gate: drop any training answer that states a number it was not given.
 
 Round 4, asked for a pesticide rate, produced *"if you need 100 ml of pesticide
-per litre…"* — a fabricated concentration, despite a system prompt forbidding
+per litre…"*, a fabricated concentration, despite a system prompt forbidding
 exactly that. A model that invents doses is a harm risk, not a scoring problem.
 
 The chosen fix is filtering, not preference tuning. Preference tuning on
@@ -9,7 +9,7 @@ near-identical pairs ("same answer, with and without an invented number") is
 the documented worst case for likelihood displacement: DPO **reduced refusal
 rates from 80.5%→54.8% and 74.4%→33.4%** in arXiv 2410.08847 precisely when
 chosen and rejected responses share embeddings. Filtering cannot backfire that
-way — the model simply never sees an invented number.
+way, the model simply never sees an invented number.
 
 Rule: a quantity in an answer must appear in that answer's source text.
 Numbers with no source are dropped, and the record is reported so the gate's
@@ -17,7 +17,7 @@ strictness is visible rather than silent.
 
 Deliberately NOT flagged: bare ordinals and small counts used structurally
 ("step 2", "3 weeks"), because time and counts are usually reasoning the model
-should keep. The gate targets *measured quantities* — the ones that hurt.
+should keep. The gate targets *measured quantities*, the ones that hurt.
 """
 
 from __future__ import annotations
@@ -82,7 +82,7 @@ def gate_records(
 
     `source_for` maps passage_id -> chunk text. A record with no resolvable
     source is judged against an empty source, so ANY measured quantity in a
-    closed-book answer is unsupported by construction — which is the intent:
+    closed-book answer is unsupported by construction, which is the intent:
     closed-book answers must not state doses.
     """
     source_for = source_for or {}

@@ -14,8 +14,8 @@ about to get is the model's second choice. A farmer does not know what a
 The failure is inherited, not invented: earlier datasets contain grounded rows
 whose answers legitimately say *"the extracts do not cover this"*, because on
 the app path the model really is looking at numbered extracts. Once those
-phrasings leak into closed-book rows — where there are no extracts and the
-reader can see none — the model has learned to reference a document that, from
+phrasings leak into closed-book rows, where there are no extracts and the
+reader can see none, the model has learned to reference a document that, from
 the judge's side of the screen, does not exist.
 
 So the rule is contextual rather than absolute: **an answer may mention its
@@ -55,7 +55,7 @@ def meta_leaks(answer: str) -> list[str]:
 def _was_given_evidence(rec: dict) -> bool:
     """True when the row's prompt actually contains numbered extracts.
 
-    `passage_ids` — not `gate_passages`. A derived closed-book row keeps its
+    `passage_ids`, not `gate_passages`. A derived closed-book row keeps its
     origin passages for the numeric gate but is rendered *without* them, so it
     may not talk about extracts the reader cannot see.
     """

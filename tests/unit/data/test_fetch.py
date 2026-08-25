@@ -33,7 +33,7 @@ def test_existing_file_is_reused_without_fetching(tmp_path, monkeypatch):
 
 
 def test_download_named_by_magic_bytes_not_url(tmp_path, monkeypatch):
-    # the URL has no .pdf suffix; the bytes say PDF — the file must land as .pdf
+    # the URL has no .pdf suffix; the bytes say PDF: the file must land as .pdf
     def fake_fetch(url, dest):
         dest.write_bytes(b"%PDF-1.5\n" + b"x" * (fx.MIN_BYTES + 1))
         return True

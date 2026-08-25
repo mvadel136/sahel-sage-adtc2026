@@ -2,7 +2,7 @@
 
 The app never links against llama.cpp and never imports a Python binding: it
 talks HTTP to a ``llama-server`` process it owns. That keeps the boundary
-honest — the exact same GGUF the audit measures is the one the app answers
+honest, the exact same GGUF the audit measures is the one the app answers
 from, and the model can be swapped by changing one path.
 
 Two deliberate departures from the legacy ``app/llm.py``:
@@ -10,7 +10,7 @@ Two deliberate departures from the legacy ``app/llm.py``:
 * **Raw completions, not chat completions.** The shipped model is Base-trained
   on the raw contract rendering from ``core.prompts.render_raw``. Routing the
   app through ``/v1/chat/completions`` would let llama.cpp's chat template
-  wrap the prompt in markers the model never saw in training — a train/serve
+  wrap the prompt in markers the model never saw in training, a train/serve
   mismatch, which is the most expensive class of scoring defect we can ship.
   So both entry points post to ``/v1/completions`` with a rendered string.
 * **The binary is resolved by default_server_binary()** (``lab.audit_server``),
@@ -88,7 +88,7 @@ def default_server_binary() -> Path:
     """
     # An explicit override outranks the config: SAHEL_LLAMA_SERVER exists so
     # the console can run on a NATIVE build. The audit build keeps all SIMD
-    # off to mirror the competition sandbox — right for scored numbers, but a
+    # off to mirror the competition sandbox: right for scored numbers, but a
     # 10-20x reading-speed handicap no real deployment would accept.
     env = os.environ.get("SAHEL_LLAMA_SERVER")
     if env and Path(env).expanduser().exists():

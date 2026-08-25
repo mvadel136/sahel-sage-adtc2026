@@ -52,7 +52,7 @@ PROBES: list[Probe] = [
           [COMPOST], Status.EVIDENCE_LIMITED),
     Probe("mismatch_chicken", "My chickens are dying suddenly, what is happening?",
           [COMPOST], Status.EVIDENCE_LIMITED),
-    # no evidence at all — the JUDGE path. Since ADR-005 the right behaviour is
+    # no evidence at all: the JUDGE path. Since ADR-005 the right behaviour is
     # a confident answer from the model's own knowledge: there is no library in
     # the judges' sandbox, so "the library does not cover this" reads as evasion.
     Probe("closed_soil", "How do I know if my soil is too salty for vegetables?",

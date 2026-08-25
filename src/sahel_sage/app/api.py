@@ -39,7 +39,7 @@ OFFLINE_PROBE_INTERVAL_S = 60.0
 class Ask(BaseModel):
     question: str = Field(min_length=3, max_length=2000)
     lang: str = "en"
-    #: Passages to retrieve. Default 8 since 2026-08-13 — at 4 the coverage
+    #: Passages to retrieve. Default 8 since 2026-08-13, at 4 the coverage
     #: score was length-biased and refused long questions structurally.
     k: int = Field(default=8, ge=0, le=12)
 
@@ -52,7 +52,7 @@ def contract_payload(result: AnswerResult) -> dict:
     """The parsed answer as the UI consumes it.
 
     ``raw_text`` travels alongside the sections so the UI can fall back to it
-    when ``structured`` is false — never show a farmer an empty template.
+    when ``structured`` is false, never show a farmer an empty template.
     """
     c = result.parse.contract
     return {
@@ -111,7 +111,7 @@ def create_app(build_context: Callable[[], AppContext]) -> FastAPI:
     def index() -> FileResponse:
         # no-store: the console is one self-contained file that changes with
         # the code. A browser that caches it shows yesterday's UI against
-        # today's API — which is exactly how a round of fixes "didn't work"
+        # today's API: which is exactly how a round of fixes "didn't work"
         # for the first person who tested them.
         return FileResponse(UI_FILE, headers={"Cache-Control": "no-store"})
 

@@ -1,6 +1,6 @@
 """Reciprocal Rank Fusion and the per-document diversity cap.
 
-RRF needs no score calibration between legs — only ranks — which is exactly
+RRF needs no score calibration between legs, only ranks, which is exactly
 right for fusing BM25 lists produced by different MATCH expressions.
 """
 

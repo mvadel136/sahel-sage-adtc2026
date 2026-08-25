@@ -1,4 +1,4 @@
-"""Coverage confidence must actually discriminate — the previous heuristic
+"""Coverage confidence must actually discriminate, the previous heuristic
 returned 1.0 for every query (ADR-004)."""
 
 import sqlite3

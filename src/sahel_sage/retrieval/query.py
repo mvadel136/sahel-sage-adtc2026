@@ -1,7 +1,7 @@
 """Query-side text handling: tokenizing, stopwords, synonyms, FTS5 sanitizing.
 
 Recall matters more than elegance here. A farmer writes "my goats have
-diarrhea", the manual says "enteritis in small ruminants" — pure lexical search
+diarrhea", the manual says "enteritis in small ruminants", pure lexical search
 misses that, so queries are expanded with a small curated agronomy synonym map
 before they hit FTS5. The map is deliberately small: a large auto-generated map
 adds noise faster than recall. French equivalents sit beside the English
@@ -129,7 +129,7 @@ def sanitize_fts_query(user_text: str) -> str:
 
     Tokenizes with the same regex as retrieval, drops stopwords and short
     tokens, and re-emits each term double-quoted (implicit AND between terms).
-    May return "" when nothing survives — callers must treat that as no query.
+    May return "" when nothing survives, callers must treat that as no query.
     """
     return " ".join(quote(t) for t in tokenize(user_text))
 

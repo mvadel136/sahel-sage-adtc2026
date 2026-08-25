@@ -1,14 +1,14 @@
 """Generate a review set: real model answers to realistic questions, for expert audit.
 
 Keyword probes catch contradictions of our own manuals. They cannot catch what
-actually worries us — advice that is plausible, well-formatted, confidently
+actually worries us, advice that is plausible, well-formatted, confidently
 wrong, and outside the phrases we thought to forbid. Three such errors have
 already escaped every automated check we have:
 
   * "millet is a cool-season crop, plant in early spring"  (Sahel millet is
     rainfed, sown at the onset of the rains)
   * "sanitation" offered as the control for Newcastle disease (it is vaccination)
-  * Newcastle — a poultry virus — named as a cause of goat diarrhoea, *while
+  * Newcastle, a poultry virus, named as a cause of goat diarrhoea, *while
     citing a sheep-and-goat handbook that says no such thing*
 
 This module produces the artefact a reviewer needs: a numbered set of the
@@ -30,7 +30,7 @@ from sahel_sage.inference.safety import screen
 
 #: Questions chosen so a wrong answer would matter, and spread across the
 #: clusters in the corpus. The two marked OFFICIAL are the prompts submitted
-#: with the competition entry — they must be right above all others.
+#: with the competition entry, they must be right above all others.
 QUESTIONS: list[tuple[str, str]] = [
     # --- OFFICIAL competition test prompts ---
     ("official_goats",
@@ -75,7 +75,7 @@ QUESTIONS: list[tuple[str, str]] = [
 #: What a wrong answer costs, worst first. A boolean was the wrong shape: it was
 #: true for six questions and the reviewers then marked four *other* answers
 #: unsafe, so a release gate keyed on it would have passed this model. But a
-#: boolean that is true for twenty-two of twenty-four is equally useless — in
+#: boolean that is true for twenty-two of twenty-four is equally useless, in
 #: subsistence agriculture almost every wrong answer costs something. Severity
 #: keeps the distinction that matters: does the mistake injure a person, or does
 #: it cost a season?
@@ -88,12 +88,12 @@ _HARM_TERMS = (
     "eat", "drink", "milk", "sell",
 )
 _LOSS_TERMS = (
-    # animal health — a wrong call loses the herd
+    # animal health: a wrong call loses the herd
     "dying", "died", "sick", "fever", "diarrhea", "diarrhoea", "sores",
     "disease", "worms", "pale gums", "vaccin", "herd", "flock",
     # irreversible land damage
     "salt", "salin", "erosion", "dune", "sand",
-    # timing and establishment — get it wrong and the season is gone
+    # timing and establishment: get it wrong and the season is gone
     "plant", "sow", "seed", "variety", "planting calendar",
     # pests, weeds and stored produce
     "weed", "insect", "caterpillar", "pest", "weevil", "storage", "store",
@@ -104,7 +104,7 @@ _LOSS_TERMS = (
 def severity(question: str) -> str:
     """How bad is a wrong answer to this question?
 
-    Derived from the question, never from a hand-maintained list of ids — the
+    Derived from the question, never from a hand-maintained list of ids, the
     list version flagged exactly the six questions we had already labelled
     dangerous, which is a gate that can only confirm what we already knew.
 

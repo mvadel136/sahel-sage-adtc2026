@@ -56,7 +56,7 @@ def test_prompt_is_the_raw_contract_rendering(fake_backend, make_ctx, strong_cit
 def test_low_coverage_refuses_instead_of_answering(fake_backend, make_ctx, weak_citations):
     """Changed 2026-08-13: this used to answer behind a caution banner.
 
-    The expert audit found the banner did nothing — a 0.6B model asked to answer
+    The expert audit found the banner did nothing, a 0.6B model asked to answer
     without evidence answers from its pretraining prior, fluently and wrongly.
     Below the calibrated threshold the model is now never called at all.
     """
@@ -170,7 +170,7 @@ def test_stream_yields_pack_then_tokens_then_result(fake_backend, make_ctx, stro
 class TestTheGateIsActuallyWired:
     """Both halves of the sufficiency decision must reach `retrieve`.
 
-    The bug this guards against is not a wrong threshold — it is a threshold
+    The bug this guards against is not a wrong threshold, it is a threshold
     that is computed, documented, and then never passed in. Each test moves one
     input and requires the outcome to follow.
     """
@@ -314,8 +314,8 @@ def test_numeric_gate_accepts_verified_reference_numbers():
     """The reference block is the one other legitimate home for a number.
 
     The gate once discarded a correct maize-storage answer for saying "13%
-    moisture" — a quantity that is test-enforced to appear in its cited FAO
-    source — because the retrieved passages happened not to repeat it. Numbers
+    moisture", a quantity that is test-enforced to appear in its cited FAO
+    source, because the retrieved passages happened not to repeat it. Numbers
     from `data/reference/` are verified by construction and must not read as
     invented."""
     from sahel_sage.app.service import _reference_text
@@ -333,7 +333,7 @@ def test_ui_file_has_no_stale_twin():
     """Two copies of the console UI exist: app/ui/ (the visible one people
     edit) and src/sahel_sage/app/ui/ (the one the server actually serves).
     A full round of UX fixes once went only to the visible copy, and the
-    tester kept seeing the old page — worse than a bug, an invisible one.
+    tester kept seeing the old page, worse than a bug, an invisible one.
     They must be byte-identical."""
     import sahel_sage.app.api as api
     from sahel_sage.core.config import repo_root

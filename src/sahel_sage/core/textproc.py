@@ -29,7 +29,7 @@ _PAGE_NUM = re.compile(r"[\d ivxlcIVXLC.\-]{1,8}")
 
 
 def is_wordlike(tok: str) -> bool:
-    t = tok.strip(".,;:()[]\"'’-").lower()  # noqa: RUF001 — the curly quote is deliberate
+    t = tok.strip(".,;:()[]\"'’-").lower()  # noqa: RUF001: the curly quote is deliberate
     if not t or not t.isalpha():
         return False
     return 1 <= len(t) <= 20 and bool(VOWELS & set(t))
@@ -39,7 +39,7 @@ def line_is_text(line: str) -> bool:
     """Reject lines that survived PDF extraction as garbage.
 
     Some PDFs embed subset fonts with a shifted encoding, so extraction returns
-    strings like 'WKHSURGXFWLYLW\\DQG...' — syntactically text, semantically
+    strings like 'WKHSURGXFWLYLW\\DQG...', syntactically text, semantically
     noise. A line has to look like language to survive.
     """
     toks = line.split()
@@ -90,7 +90,7 @@ def chunk(
     """Paragraph-packing chunker with word-tail overlap between chunks.
 
     A "paragraph" larger than target_words is hard-split into word windows
-    first — extracted manuals often collapse to few blank lines, and without
+    first, extracted manuals often collapse to few blank lines, and without
     this a whole 26k-word document packs into a single chunk (found the hard
     way: `distill --estimate` reported 56 chunks for 56 documents).
     """

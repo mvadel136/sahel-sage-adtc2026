@@ -1,4 +1,4 @@
-"""sage — the single command entrypoint.
+"""sage, the single command entrypoint.
 
 Subcommands map 1:1 to library functions; anything not yet migrated says so
 and points at the legacy script instead of failing cryptically.
@@ -149,7 +149,7 @@ def main() -> int:
     run.add_argument("--threads", type=int, default=None)
     # 8192, not 4096: ADR-006 renders all EIGHT retrieved passages into the
     # prompt (~3.7k tokens with the question), and a 4096 window left the
-    # answer ~300 tokens of room — silent truncation waiting to happen.
+    # answer ~300 tokens of room: silent truncation waiting to happen.
     run.add_argument("--ctx", type=int, default=8192)
     run.add_argument(
         "--strict-offline",

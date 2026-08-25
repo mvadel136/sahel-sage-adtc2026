@@ -6,7 +6,7 @@ domain specific texts", and agricultural-veterinary text is exactly that: a
 sentence can be fluent, grammatical, natural Arabic and still call Striga by
 the name of a different parasitic plant.
 
-The concrete case: `ستريجا` is Striga. `الهالوك` and `جعفيل` are *Orobanche* —
+The concrete case: `ستريجا` is Striga. `الهالوك` and `جعفيل` are *Orobanche*,
 broomrape. Both are real Arabic words for real parasitic weeds of cereals, and
 a reviewer checking that the Arabic reads well would pass the substitution
 without blinking. An agronomist judge would catch it in one line and stop
@@ -16,8 +16,8 @@ So the terms are pinned from FAO AGROVOC (`data/reference/glossary_ar.json`)
 and this module checks translations against them, rather than hoping the model
 found the right word. Two directions:
 
-* **required** — if the English says "Striga", the Arabic must contain `ستريجا`
-* **forbidden** — and it must NOT contain `الهالوك` or `جعفيل`, which name a
+* **required**, if the English says "Striga", the Arabic must contain `ستريجا`
+* **forbidden**, and it must NOT contain `الهالوك` or `جعفيل`, which name a
   different plant
 
 The forbidden direction is the one that matters. A missing term is a weak
@@ -82,11 +82,11 @@ _PROCLITIC = re.compile(r"\b(?:[وفبكل]?ال|[وفبكل])(?=\S)")
 #: Orthographic variants that carry no meaning difference and that a translator
 #: chooses freely: alif forms, final ya/alif-maqsura, ta-marbuta.
 #: (RUF001 flags Arabic alef and heh as look-alikes for Latin l and o. They are
-#: Arabic on purpose — this is the module that folds Arabic orthography.)
+#: Arabic on purpose, this is the module that folds Arabic orthography.)
 _FOLD = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ى": "ي", "ة": "ه"})  # noqa: RUF001
 
-#: Tashkil (short-vowel marks). Never emitted by us — they cost 5.6x the tokens
-#: — but a translator may include them, and they must not defeat a match.
+#: Tashkil (short-vowel marks). Never emitted by us, they cost 5.6x the tokens
+#:, but a translator may include them, and they must not defeat a match.
 _TASHKIL = re.compile(r"[ً-ْٰـ]")
 
 

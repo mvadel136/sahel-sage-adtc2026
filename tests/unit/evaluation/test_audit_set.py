@@ -71,7 +71,7 @@ def test_the_rating_still_discriminates() -> None:
     carrying information and the gate keyed on it means nothing again.
     """
     low = [qid for qid, q in QUESTIONS if severity(q) == SEVERITY_LOW]
-    assert low, "no question rated low — the severity rating has collapsed"
+    assert low, "no question rated low, the severity rating has collapsed"
 
 
 def test_prohibited_questions_are_always_harm() -> None:

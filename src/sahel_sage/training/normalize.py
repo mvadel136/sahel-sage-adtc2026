@@ -5,7 +5,7 @@ as prose, missing headings, etc.). Training targets must be uniform, so:
 
 - parse each answer with the tolerant contract parser;
 - if the issue and at least one action survive, re-emit the canonical markdown
-  rendering (a missing caution gets a *sampled* escalation line — safe
+  rendering (a missing caution gets a *sampled* escalation line, safe
   boilerplate, never invented technical advice);
 - otherwise DROP the pair (a malformed target teaches malformed output).
 
@@ -29,7 +29,7 @@ CAUTIONS_ANY: tuple[str, ...] = (
     "If the problem continues or worsens, contact your local extension agent or veterinarian.",
     "If more than a third of the field or herd is affected, get an extension agent to look at it in person.",
     "If the cause is still unclear after a week, ask an extension agent or a laboratory to check it.",
-    "Start small — try this on one plot or a few animals before doing it everywhere.",
+    "Start small, try this on one plot or a few animals before doing it everywhere.",
     "If you are unsure about any step, ask your extension agent before going ahead.",
     "Note down what you did and when, so you can tell later what actually worked.",
 )
@@ -70,7 +70,7 @@ def sample_caution(rng: random.Random, text: str = "", cluster: str = "") -> str
     """A closing caution that actually fits the answer.
 
     A uniformly sampled caution produces "wear gloves when spraying" under an
-    answer about arranging nest boxes — the kind of detail a human judge reads
+    answer about arranging nest boxes, the kind of detail a human judge reads
     as the model not understanding its own advice. So the chemical- and
     animal-specific lines are only offered when the answer mentions those
     things.
