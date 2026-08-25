@@ -206,7 +206,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             issue='I will not give you a number, and I will not invent an example one. No one can give you a mixing rate without seeing your container: the correct rate differs for every product, crop and pest, and is set by whoever registered that product in your country.',
             actions=[
                 'The only trustworthy rate is the one printed on the label of your own container, for your crop and your pest.',
-                'If you cannot read the label, take the container itself to your agro-dealer or extension agent and have them read it to you. Do not describe it from memory — take the container.',
+                'If you cannot read the label, take the container itself to your agro-dealer or extension agent and have them read it to you. Do not describe it from memory; take the container.',
                 'If the container has no label, do not use it.',
                 'Tell me the crop and what you are seeing, and I will help with prevention, monitoring and non-chemical control instead.',
             ],
@@ -234,7 +234,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             r"\b(?:family|children|we)\b[\s\S]{0,40}\beat\b[\s\S]{0,60}\bspray\w*\b",
         ),
         response=_refusal(
-            issue='Do not harvest or sell it yet. Every pesticide has a pre-harvest interval — the days that must pass between the last spray and harvest. It is printed on the label and differs for every product.',
+            issue='Do not harvest or sell it yet. Every pesticide has a pre-harvest interval: the days that must pass between the last spray and harvest. It is printed on the label and differs for every product.',
             actions=[
                 'Find the container you sprayed from and read the pre-harvest interval on the label.',
                 'Count that many days from the day you sprayed, not from today.',
@@ -316,7 +316,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
                 'If no vet can reach you, tell me what you are seeing and I will help with the care that does not need a drug.',
             ],
             timing='Move and water the animal now; call the vet today.',
-            caution='Damage to the liver, kidneys or gut often shows only when it is too late to reverse, and there is no safe waiting time established for milk or meat afterwards — the residues reach whoever drinks or eats from that animal.',
+            caution='Damage to the liver, kidneys or gut often shows only when it is too late to reverse, and there is no safe waiting time established for milk or meat afterwards; the residues reach whoever drinks or eats from that animal.',
         ),
     ),
     Prohibition(
@@ -408,7 +408,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             r"[\s\S]{0,80}\b(?:spray|apply|mix|pesticid\w*|insecticid\w*|herbicid\w*|chemical)",
         ),
         response=_refusal(
-            issue="No one under 18 may spray, mix or carry pesticides — not a child, not a strong teenager of fifteen or sixteen — and this does not depend on how careful they are. A young body absorbs more chemical for its size than an adult's, and the harm falls on organs and nerves that are still developing.",
+            issue="No one under 18 may spray, mix or carry pesticides, not a child, not a strong teenager of fifteen or sixteen, and this does not depend on how careful they are. A young body absorbs more chemical for its size than an adult's, and the harm falls on organs and nerves that are still developing.",
             actions=[
                 'Let the spraying wait. Almost no pest problem gets seriously worse in the few days it takes for an adult to be available.',
                 'Ask another adult, or hire one for the day.',
@@ -416,7 +416,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
                 'Give the child other work. There is plenty; this is not it.',
             ],
             timing='Wait for an adult, however long that takes.',
-            caution='Protective equipment is made for adult bodies and does not seal on a child. Pesticide application is classified internationally as hazardous work that no one under 18 should do — including mixing, loading, spraying and washing the equipment afterwards.',
+            caution='Protective equipment is made for adult bodies and does not seal on a child. Pesticide application is classified internationally as hazardous work that no one under 18 should do, including mixing, loading, spraying and washing the equipment afterwards.',
         ),
     ),
     Prohibition(

@@ -1,7 +1,7 @@
 # The advisory console
 
 The offline product around the model: SQLite FTS5 retrieval over 56 field
-manuals (`library.db`, 11,050 passages — built from the manual corpus, which is not
+manuals (`library.db`, 11,050 passages, built from the manual corpus, which is not
 shipped; the database ships ready to use), citation-first answers, and refusal instead of
 guessing when the library does not cover a question.
 
@@ -31,4 +31,4 @@ The model file must be present first: `bash download_model.sh`.
 | `app/ui/index.html` | the single-file console UI |
 | `app/library.db` | FTS5 index of the 56 manuals |
 
-Answers are English — the submission's declared language scope.
+Answers are English, the submission's declared language scope.

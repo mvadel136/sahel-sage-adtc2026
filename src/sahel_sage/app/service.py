@@ -45,7 +45,7 @@ NO_EVIDENCE_TEXT = (
     "**Who can help:** your extension agent, your veterinary auxiliary, or a "
     "neighbouring farmer who has dealt with the same problem.\n\n"
     "If you can describe the crop or animal and exactly what you are seeing, try "
-    "again — a more specific question sometimes matches something I do have."
+    "again; a more specific question sometimes matches something I do have."
 )
 
 #: Shown when the model wrote a number that is in no retrieved passage. The
@@ -54,7 +54,7 @@ NO_EVIDENCE_TEXT = (
 INVENTED_NUMBER_TEXT = (
     "I'm not going to answer that one.\n\n"
     "I drafted an answer and it contained a quantity that does not appear in any "
-    "of my sources — which means I invented it. A made-up rate, dose or "
+    "of my sources, which means I invented it. A made-up rate, dose or "
     "measurement is worse than no answer at all, so I have discarded it.\n\n"
     "The passages I found are listed below; read them directly, and take any "
     "measurement from a product label or from your extension agent rather than "
