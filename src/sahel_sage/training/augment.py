@@ -20,12 +20,12 @@ full fine-tuning. So this module, not a bigger model, is the fix.
 
 Three transforms, each cheap and each independently attested:
 
-- `full_names`   — pronouns and bare references replaced by the entity name.
+- `full_names`  , pronouns and bare references replaced by the entity name.
                    FAO prose is pronoun-dense ("it should be sown when…"), and
                    a pronoun teaches nothing retrievable.
-- `permute`      — sentence order shuffled within a chunk, so facts are learned
+- `permute`     , sentence order shuffled within a chunk, so facts are learned
                    as facts rather than as positions in a paragraph.
-- `source_tag`   — every example prefixed with its document, which turned a 20x
+- `source_tag`  , every example prefixed with its document, which turned a 20x
                    junk-induced capacity loss into 2x in the same series
                    (Physics 3.3).
 """
@@ -64,7 +64,7 @@ def full_names(text: str, entity: str) -> str:
 
     Only sentence-initial subject pronouns are touched. Mid-sentence pronouns
     are ambiguous and a wrong resolution injects a false fact into training
-    data — the one outcome worse than leaving the pronoun alone.
+    data, the one outcome worse than leaving the pronoun alone.
     """
     if not entity:
         return text

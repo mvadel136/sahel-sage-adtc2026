@@ -77,7 +77,7 @@ fi
 mv "$TMP" "$MODEL_FILE"
 if ! verify "$MODEL_FILE"; then
     rm -f "$MODEL_FILE"
-    echo "ERROR: fresh download failed its checksum — network corruption or a" >&2
+    echo "ERROR: fresh download failed its checksum, network corruption or a" >&2
     echo "changed upstream file. Re-run this script; if it persists, check" >&2
     echo "https://huggingface.co/${HF_REPO}" >&2
     exit 1

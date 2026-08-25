@@ -20,7 +20,7 @@ VALID_LANGS = frozenset({"en", "fr"})
 class Source:
     """One corpus source record, mirroring a corpus_sources.json entry.
 
-    The provenance fields (status/sha256/word_count) are not in the JSON —
+    The provenance fields (status/sha256/word_count) are not in the JSON,
     they are filled in by the fetch/extract pipeline so a registry instance
     can carry the outcome of a run without a parallel bookkeeping structure.
     """

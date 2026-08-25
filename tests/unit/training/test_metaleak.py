@@ -8,7 +8,7 @@ container question:
 
 The reader cannot see any reference, so this is both confusing and a signal that
 what follows is a fallback. It is inherited from grounded training rows, where
-"the extracts do not cover this" is a perfectly correct thing to say — the gate
+"the extracts do not cover this" is a perfectly correct thing to say, the gate
 therefore has to be contextual, not a blanket ban.
 """
 
@@ -63,7 +63,7 @@ def test_grounded_rows_may_discuss_their_extracts() -> None:
 
 def test_derived_closed_book_rows_may_not() -> None:
     """A row derived from a grounded one keeps `gate_passages` for the numeric
-    gate but is rendered without extracts — so it must not mention them."""
+    gate but is rendered without extracts, so it must not mention them."""
     derived = {"id": "d", "a": "The extracts do not cover this.",
                "meta": {"passage_ids": [], "gate_passages": ["c1"]}}
     kept, stats = gate_records([derived])

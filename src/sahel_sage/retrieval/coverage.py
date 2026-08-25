@@ -1,4 +1,4 @@
-"""Does the library actually cover this question? — IDF-weighted term coverage.
+"""Does the library actually cover this question?, IDF-weighted term coverage.
 
 The first confidence heuristic (fullness x RRF strength) saturated at 1.0 for
 every query, in-corpus or not: FTS5 returns *something* for any query sharing a
@@ -12,14 +12,14 @@ the query actually found in the retrieved passages?**
     coverage = sum(idf(t) for matched t) / sum(idf(t) for all query terms t)
 
 with idf(t) = log(N / (1 + df(t))) and df from SQLite's `fts5vocab` table (the
-documented way to read an FTS5 index's document frequencies —
+documented way to read an FTS5 index's document frequencies,
 sqlite.org/fts5.html#the_fts5vocab_virtual_table). A term the corpus has never
 seen has df = 0, so it carries the maximum weight into the denominator and
 nothing into the numerator: asking about wasabi or a market price drags
 confidence down exactly as it should, while a common word like "my" or "farm"
 barely moves it.
 
-Rare-term dominance is the property we want — it is the same intuition BM25
+Rare-term dominance is the property we want, it is the same intuition BM25
 encodes, applied to answerability rather than ranking.
 """
 
@@ -56,7 +56,7 @@ def idf(df: int, n_chunks: int) -> float:
     """Smoothed IDF; an unseen term (df=0) gets the maximum weight.
 
     Uses the +1 smoothing of scikit-learn's TfidfVectorizer(smooth_idf=True):
-    `log((1+N)/(1+df)) + 1`. The trailing +1 matters here — an unsmoothed IDF
+    `log((1+N)/(1+df)) + 1`. The trailing +1 matters here, an unsmoothed IDF
     is exactly 0 for a term present in every chunk, which on a small corpus
     zeroes the whole weight sum and makes a fully covered question score 0.0
     (caught by tests/unit/retrieval/test_coverage.py). Every term must retain
@@ -73,7 +73,7 @@ def coverage_confidence(
 ) -> float:
     """Fraction of the query's *information* (IDF mass) present in the passages.
 
-    Returns 0.0 when there is nothing to weigh — a query of only stopwords
+    Returns 0.0 when there is nothing to weigh, a query of only stopwords
     tells us nothing about coverage, and claiming confidence there would be a
     false positive in the direction that matters (answering when we should not).
     """

@@ -1,7 +1,7 @@
 """A whole console, wired to a real library index and a fake model.
 
-The point of these tests is the HTTP contract the UI depends on — event names,
-their order, and the JSON shapes — so everything below the API is real except
+The point of these tests is the HTTP contract the UI depends on, event names,
+their order, and the JSON shapes, so everything below the API is real except
 the model itself. No subprocess, no socket, no llama-server.
 """
 

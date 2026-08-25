@@ -1,11 +1,11 @@
-"""Kallaama corpus extraction — authentic Wolof agricultural language.
+"""Kallaama corpus extraction, authentic Wolof agricultural language.
 
 Kallaama (Gauthier, Ndiaye & Guissé 2024, Lacuna Fund, CC-BY 4.0) provides
 transcribed Senegalese radio/extension speech about agriculture in Wolof,
 Pulaar and Sereer, plus written text corpora. We use the TEXT layer only:
 
 - checked Wolof transcriptions (.trs, ~13 h validated): real farmer/extension
-  vocabulary and phrasing — the ground truth our NLLB translations and the
+  vocabulary and phrasing, the ground truth our NLLB translations and the
   agronomy glossary are anchored to.
 - wolof.txt written corpus (~1.1M words, general domain): Wolof LM text.
 
@@ -14,7 +14,7 @@ card wherever these texts contribute to the model or glossary.
 
 .trs files are Transcriber XML; segments live as text nodes between sync tags.
 Code-switched French tokens are marked `word :fra`; we keep the words and drop
-the markers (the real language IS code-switched — erasing that would make the
+the markers (the real language IS code-switched, erasing that would make the
 data less authentic, but the markers themselves are transcription metadata).
 """
 

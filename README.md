@@ -4,7 +4,7 @@
 
 Sahel Sage is an on-device language model + advisory console for agricultural
 extension officers, cooperatives and agro-pastoral communities in Mauritania
-and across the Sahel — where connectivity is scarce, cloud AI is unaffordable,
+and across the Sahel, where connectivity is scarce, cloud AI is unaffordable,
 and the region's one shared laptop must do everything.
 
 Built for the [Africa Deep Tech Challenge 2026](https://adtc-2026.devpost.com)
@@ -13,15 +13,15 @@ running on `llama.cpp` with GGUF weights.
 
 ## What it does
 
-- Answers practical agro-pastoral questions — livestock health, pasture and
-  drought tactics, cropping, storage, planting-time and selling-time decisions
-  — **entirely offline**, in English.
+- Answers practical agro-pastoral questions (livestock health, pasture and
+  drought tactics, cropping, storage, planting-time and selling-time decisions)
+  **entirely offline**, in English.
 - The advisory console (`app/`) grounds answers in a packaged 56-manual
   agronomy and livestock-health library and **cites the source manual for
   every recommendation**, declining to answer when the library does not cover
   a question.
 - Seven hazard classes (pesticide doses, veterinary drugs, container reuse,
-  minors spraying, and more) are **refused in code before the model runs** —
+  minors spraying, and more) are **refused in code before the model runs**,
   see REPORT.md and `src/sahel_sage/inference/safety.py`.
 
 ## Quick start
@@ -33,7 +33,7 @@ pip install "git+https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler.gi
 adtc-profiler run --submission . --mode participant --output submission.json
 ```
 
-Run the advisory console — see [`app/README.md`](app/README.md). It needs a
+Run the advisory console, see [`app/README.md`](app/README.md). It needs a
 `llama-server` binary from [llama.cpp](https://github.com/ggml-org/llama.cpp)
 (any recent release; set `SAHEL_LLAMA_SERVER` if it is not on PATH):
 
@@ -46,6 +46,19 @@ Run the test suite:
 ```bash
 uv sync --all-extras && uv run pytest
 ```
+
+## What it looks like
+
+**[▶ Watch the two-minute demo](docs/demo.mp4)** (narrated; the console answering
+live, fully offline).
+
+| | |
+|---|---|
+| ![The landing view: dune footage embedded in the single offline file, live status, count-up statistics](docs/screenshots/01-console-hero.jpg) | ![A cited answer: pipeline stepper, coverage 0.86 against the 0.72 refuse line, live tokens per second, retrieval-strength bars](docs/screenshots/02-cited-answer.jpg) |
+| ![An evidence passage opened: the exact manual excerpt behind citation 1, on device](docs/screenshots/03-evidence-passage.jpg) | ![A hazard-class refusal, stamped REFUSED IN CODE, with the coverage gauge stopping short of the refuse line](docs/screenshots/04-safety-refusal.jpg) |
+| ![The working console in the dark theme: the shelf drawn as 56 spines sized by real passage counts](docs/screenshots/05-console-dark.jpg) | ![The console on a phone](docs/screenshots/06-mobile.jpg) |
+
+More detail in [REPORT.md §7](REPORT.md).
 
 ## What is in this repository
 
@@ -62,4 +75,4 @@ data/reference/      The verified fact base the model ships with (auditable)
 
 ## Team
 
-Sahel Sage — Mauritania 🇲🇷 · ADTC 2026 team `sahel-sage`
+Sahel Sage, Mauritania 🇲🇷 · ADTC 2026 team `sahel-sage`

@@ -2,7 +2,7 @@
 
 The judged artifact carries the facts in its chat template and the weights are
 trained on the same content. If those two disagree the model is being taught to
-contradict its own system prompt, which is worse than doing neither — the
+contradict its own system prompt, which is worse than doing neither, the
 2026-08-13 rehearsal showed the model reading "hermetic bags kill storage
 insects" and answering "avoid hermetic bags, they do not kill storage insects".
 """
@@ -54,7 +54,7 @@ def test_no_answer_states_an_untraceable_quantity(rows: list[dict]) -> None:
 
     A dose or rate the model learns here is one it will state confidently
     forever, and the inference numeric gate cannot catch it because the model is
-    not quoting a retrieved passage — it is recalling.
+    not quoting a retrieved passage, it is recalling.
     """
     sources = {f.id: f.source for f in load_reference()}
     for r in rows:
@@ -116,7 +116,7 @@ def test_every_answer_addresses_the_farmer_in_second_person(rows: list[dict]) ->
         by_topic.setdefault(r["meta"]["topic"], r["a"])
     for topic, answer in by_topic.items():
         assert re.search(r"\b(you|your)\b", answer, re.I), (
-            f"{topic} never says 'you' or 'your' — the model has no second-person "
+            f"{topic} never says 'you' or 'your', the model has no second-person "
             "anchor and will echo the farmer's 'my' back at them"
         )
 

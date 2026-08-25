@@ -1,25 +1,25 @@
-"""Derive the non-grounded training strata from existing data — no teacher calls.
+"""Derive the non-grounded training strata from existing data, no teacher calls.
 
 Round-4 rewrite (ADR-005). The judges chat with the **bare model** through
-their own client: no retrieval app, no evidence block, and — if the chat
-template is ever bypassed — no system prompt and no cues either. Round 3
+their own client: no retrieval app, no evidence block, and, if the chat
+template is ever bypassed, no system prompt and no cues either. Round 3
 trained 9,082 rows that all carried system prompt + evidence + cues, so a bare
 question was off-distribution and the model rambled past its answer until the
 token cap. These generators build the missing behaviours out of material we
 already trust:
 
-- ``closed_book``   — a grounded pair with the evidence removed. Answers
+- ``closed_book``  , a grounded pair with the evidence removed. Answers
   **confidently** from its own knowledge, no citations, no hedging, and never
   mentions a "library" the judge cannot see. (v3 wrongly made these
   EVIDENCE_LIMITED, which reads as evasion on every judge question.)
-- ``abstain_limited`` — a real question shown MISMATCHED extracts: one sentence
+- ``abstain_limited``, a real question shown MISMATCHED extracts: one sentence
   saying the extracts do not cover it, then general practice, never a citation.
-- ``abstain_scope`` — out-of-domain questions, short friendly redirect.
-- ``greeting``     — the judge's literal first turn ("hi", "what can you do?").
+- ``abstain_scope``, out-of-domain questions, short friendly redirect.
+- ``greeting``    , the judge's literal first turn ("hi", "what can you do?").
   No contract headings: a greeting answered with "**Likely issue**" is a
   first-impression failure.
-- ``bare``         — existing pairs rendered with NO system prompt and NO cue.
-- ``multi_turn``   — 2-3 turn conversations (clarification / refinement /
+- ``bare``        , existing pairs rendered with NO system prompt and NO cue.
+- ``multi_turn``  , 2-3 turn conversations (clarification / refinement /
   drill-down / topic switch) where only the last assistant turn is trained.
 
 Two dataset-wide invariants are enforced here rather than hoped for:
@@ -30,7 +30,7 @@ thousands of rows is exactly the repetition hook that made the round-3 model
 loop under greedy decoding.
 
 *Dedup safety.* The mixer dedups on normalized question and exact answer within
-a kind, and its stats count rows *before* dedup — so a stratum can silently
+a kind, and its stats count rows *before* dedup, so a stratum can silently
 collapse (v2 shipped 1 scope row of 240; v3 shipped 120 of 450). Every
 generator here therefore produces distinct questions AND distinct answers by
 construction, and the dataset build asserts the realized counts.
@@ -184,7 +184,7 @@ _SCOPE_PREFIXES = (
 #: status is OUT_OF_SCOPE (contract.infer_status).
 _SCOPE_REFUSALS = (
     "{topic} is not a farming, livestock or rural livelihood question, so it is outside what I cover.",
-    "I cannot help with {lower} — it is not a farming, livestock or land-management topic.",
+    "I cannot help with {lower}, it is not a farming, livestock or land-management topic.",
     "{topic} sits outside my area: I am not a general assistant, only a farming and livestock advisor.",
     "That is a question about {lower}, not about farming, livestock, soil or water, so I have to pass.",
     "{topic} is not a farming question, and answering it well is somebody else's job, not mine.",
@@ -206,7 +206,7 @@ _SCOPE_CAUTIONS = (
     "Pest and disease identification, and what to do about them without harming yourself, is my speciality.",
     "I can help you plan a season: what to sow, when to sow it, and how to prepare the land.",
     "Feed shortages, dry-season grazing and watering points are topics I can advise on.",
-    "Anything about farming, herding, soil, water or rural livelihoods is fair game — ask away.",
+    "Anything about farming, herding, soil, water or rural livelihoods is fair game, ask away.",
 )
 
 
@@ -236,7 +236,7 @@ def derive_abstain_scope(n: int, rng: random.Random | None = None) -> list[dict]
 
 
 # --------------------------------------------------------------------------
-# closed book / bare — confident, uncited answers
+# closed book / bare: confident, uncited answers
 # --------------------------------------------------------------------------
 
 
@@ -287,7 +287,7 @@ def derive_closed_book(pairs: list[dict], n: int, rng: random.Random) -> list[di
 
     v3 made this stratum say "the offline library does not cover this question"
     whenever no evidence was present. In the app that is right; in the judges'
-    sandbox — where there is no library — it reads as evasion on every single
+    sandbox, where there is no library, it reads as evasion on every single
     question, which is why it is reversed here.
     """
     return _confident_rows(rng.sample(pairs, min(n, len(pairs))), "closed_book", ":cb", rng)
@@ -295,13 +295,13 @@ def derive_closed_book(pairs: list[dict], n: int, rng: random.Random) -> list[di
 
 def derive_bare_questions(pairs: list[dict], n: int, rng: random.Random) -> list[dict]:
     """Same content as closed_book, but rendered with NO system prompt and NO
-    cue (see training.render) — the shape the judge's client may actually send
+    cue (see training.render), the shape the judge's client may actually send
     if the GGUF chat template is ignored."""
     return _confident_rows(rng.sample(pairs, min(n, len(pairs))), "bare", ":bare", rng)
 
 
 # --------------------------------------------------------------------------
-# abstain_limited — mismatched extracts
+# abstain_limited: mismatched extracts
 # --------------------------------------------------------------------------
 
 _LIMITED_OPENERS = (
@@ -376,7 +376,7 @@ def derive_abstain_limited(pairs: list[dict], n: int, rng: random.Random) -> lis
 
 
 # --------------------------------------------------------------------------
-# greetings — the judge's literal first turn
+# greetings: the judge's literal first turn
 # --------------------------------------------------------------------------
 
 _GREETING_EXTRA = (
@@ -451,7 +451,7 @@ _GREET_HELLOS = (
     "Hello!",
     "Good to hear from you.",
     "Welcome.",
-    "Hello — glad you are here.",
+    "Hello, glad you are here.",
     "Greetings, and thank you for asking.",
     "Hello.",
     "Good day.",
@@ -474,7 +474,7 @@ _GREET_WHAT = (
 _GREET_TOPICS = (
     "I can help with crops and seed choice, pests and diseases, livestock health and feeding, soil fertility, water, and storing your harvest.",
     "Ask me about planting and sowing dates, crop pests, animal health, soil, irrigation or post-harvest storage.",
-    "My ground is crops, livestock, soil, water and rural livelihoods — from choosing a variety to keeping weevils out of the grain store.",
+    "My ground is crops, livestock, soil, water and rural livelihoods, from choosing a variety to keeping weevils out of the grain store.",
     "I cover field crops, vegetables, cattle, goats, sheep and poultry, plus soil, water and storage.",
     "Bring me questions about sowing dates, pests, animal health, soil fertility, water and grain storage.",
     "Crops, herds, soil, water and post-harvest work are all within what I can advise on.",
@@ -525,25 +525,25 @@ def derive_greetings(n: int = 120, rng: random.Random | None = None) -> list[dic
 # multi-turn conversations
 # --------------------------------------------------------------------------
 
-#: (model's ONE clarifying question, the farmer's reply) — paired, and split by
+#: (model's ONE clarifying question, the farmer's reply), paired, and split by
 #: cluster, so a poultry conversation never asks how much of the *field* is
 #: affected. A mismatched clarification teaches the model that its own question
 #: does not have to relate to the answer.
-#: Universally applicable clarifiers — scale, season, means, urgency. These fit
+#: Universally applicable clarifiers, scale, season, means, urgency. These fit
 #: ANY agricultural question, which is why they carry the non-symptom half of
 #: the bucket.
 _CLARIFY_GENERAL = (
-    ("Before I answer — is this for a small plot, or across the whole farm?",
+    ("Before I answer, is this for a small plot, or across the whole farm?",
      "Just one plot for now, about half a hectare."),
     ("One question first: which season are you in, the rains or the dry season?",
      "We are at the start of the rains."),
-    ("First, tell me what you have to work with — hand tools only, or equipment too?",
+    ("First, tell me what you have to work with, hand tools only, or equipment too?",
      "Hand tools only, and one ox plough I can borrow."),
     ("Quick question so my answer fits: is this for your own household or for selling?",
      "Mostly for selling at the weekly market."),
     ("One thing first: have you tried anything for this already?",
      "Not yet, this is the first time I am dealing with it."),
-    ("Before I go further — how soon do you need to act?",
+    ("Before I go further, how soon do you need to act?",
      "As soon as possible, within the next few days."),
     ("Let me check one thing: are you working alone, or do you have help for the labour?",
      "My family helps, so four of us in total."),
@@ -552,7 +552,7 @@ _CLARIFY_GENERAL = (
 )
 
 _CLARIFY_PLANT = (
-    ("Before I answer — how much of the field is affected, a few plants or most of it?",
+    ("Before I answer, how much of the field is affected, a few plants or most of it?",
      "It is spreading; about half the field looks affected now."),
     ("One question first: are the plants still young, or already flowering?",
      "They are still young, only a few weeks after sowing."),
@@ -560,32 +560,32 @@ _CLARIFY_PLANT = (
      "It is rainfed, sandy soil, in the north."),
     ("First, tell me: did this start after a rain, or during the dry spell?",
      "It started right after the last rain."),
-    ("Quick question so I answer the right thing — is it on the leaves, the stems or the roots?",
+    ("Quick question so I answer the right thing, is it on the leaves, the stems or the roots?",
      "Mostly on the leaves, and now some stems too."),
     ("One thing first: has it stayed in one spot, or is it moving across the field?",
      "Only one corner so far, but it looks like it is moving."),
     ("Before I go further: how long has it been like this?",
      "About a week now, and it is getting worse."),
-    ("Tell me one thing first — did you apply anything to the field recently?",
+    ("Tell me one thing first, did you apply anything to the field recently?",
      "No, I have not applied anything this season."),
 )
 
 _CLARIFY_ANIMAL = (
     ("One question first: how many animals are showing this, and since when?",
      "Three of them, since about three days ago."),
-    ("Before I answer — are they still eating and drinking normally?",
+    ("Before I answer, are they still eating and drinking normally?",
      "They are eating less than usual but still drinking."),
     ("First, tell me: are these young animals or adults?",
      "They are young ones, under a year old."),
     ("Let me ask one thing first: is the rest of the herd normal?",
      "Most of the herd is fine, it is only those few."),
-    ("Quick question — has the feed or the watering point changed recently?",
+    ("Quick question, has the feed or the watering point changed recently?",
      "Yes, we moved to a new watering point last week."),
     ("One thing first: is there fever, or are they cold to the touch?",
      "They feel hot and they are breathing fast."),
     ("Before I go further: have they been vaccinated this year?",
      "No, they have not been vaccinated."),
-    ("Tell me one thing first — is it getting worse, or holding steady?",
+    ("Tell me one thing first, is it getting worse, or holding steady?",
      "It is getting worse each day."),
 )
 
@@ -603,7 +603,7 @@ _REFINE_ASKS = (
 _REFINE_LEADS = (
     "Then work with what you already have.",
     "You can still make progress without buying anything.",
-    "No problem — the cheap version of this still works.",
+    "No problem, the cheap version of this still works.",
     "Leave the purchase aside and do the free part first.",
     "There is a low-cost way through this.",
     "Then start with labour rather than inputs.",
@@ -679,10 +679,10 @@ def derive_multi_turn(pairs: list[dict], n: int, rng: random.Random) -> list[dic
     """2-3 turn conversations; only the FINAL assistant turn is trained.
 
     Four buckets, each roughly n/4:
-      clarification — the model asks ONE targeted question, then answers;
-      refinement    — "I can't afford that" -> adapted, cheaper advice;
-      drill-down    — "explain step 2" -> that step only, short;
-      topic switch  — an unrelated new question, with no stale context.
+      clarification, the model asks ONE targeted question, then answers;
+      refinement   , "I can't afford that" -> adapted, cheaper advice;
+      drill-down   , "explain step 2" -> that step only, short;
+      topic switch , an unrelated new question, with no stale context.
 
     Turn-2 answers are deliberately short (60-120 words) and never repeat the
     full five-heading structure: the system prompt promises exactly that, and

@@ -15,7 +15,7 @@ from sahel_sage.app.context import AppContext
 from sahel_sage.retrieval.evidence import Citation
 from sahel_sage.retrieval.rank import RRF_K
 
-#: RRF score of a chunk ranked first in one leg — the unit build_pack
+#: RRF score of a chunk ranked first in one leg, the unit build_pack
 #: normalizes against. Two legs agreeing on the same chunk doubles it.
 ONE_LEG = 1.0 / (RRF_K + 1)
 

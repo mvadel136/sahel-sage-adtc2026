@@ -2,7 +2,7 @@
 
 Round 4 said millet is "a cool-season crop, plant in early spring or late
 autumn" and treated Newcastle disease with "sanitation". Neither is a knowledge
-gap — both are Qwen3's Northern-Hemisphere pretraining prior surviving our
+gap, both are Qwen3's Northern-Hemisphere pretraining prior surviving our
 fine-tune.
 
 The mechanism is documented and it is about *magnitude*, not correctness: an
@@ -18,7 +18,7 @@ Two consequences shape this module:
    prior-consistent one, so each conflict expands into several phrasings.
 2. **Name the wrong answer.** Stating the correct fact is not enough when a
    competing fact is already strongly encoded; the correction must be
-   contrastive — "not X; Z" — so the wrong association is explicitly suppressed.
+   contrastive, "not X; Z", so the wrong association is explicitly suppressed.
 
 Every entry carries the corpus statement that justifies it, exactly like
 `evaluation/factcheck.py`. Ground truth is FAO/ICRISAT/WOCAT text, not ours.
@@ -156,7 +156,7 @@ CONFLICTS: tuple[PriorConflict, ...] = (
     ),
 )
 
-_PREFIXES = ("", "Please tell me: ", "Quick question — ", "I want to know, ")
+_PREFIXES = ("", "Please tell me: ", "Quick question, ", "I want to know, ")
 
 
 def build_counter_prior(

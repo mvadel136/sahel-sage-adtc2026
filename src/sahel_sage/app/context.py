@@ -4,7 +4,7 @@ The legacy server kept a module-level ``STATE`` dict, which made the answer
 pipeline untestable without booting a subprocess and made the "is the backend
 ready?" question a `dict.get` away from a 500. AppContext is built once in the
 FastAPI lifespan, attached to ``app.state``, and passed explicitly into the
-pipeline — so tests hand it a fake backend and a tmp library instead.
+pipeline, so tests hand it a fake backend and a tmp library instead.
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ class AppContext:
     k: int = 8
     #: Result of the most recent probe; None when no probe has run (the
     #: monitor only runs under --strict-offline, so "unknown" is the honest
-    #: value everywhere else — never report an unverified claim as verified).
+    #: value everywhere else, never report an unverified claim as verified).
     internet_seen: bool | None = None
 
     @property

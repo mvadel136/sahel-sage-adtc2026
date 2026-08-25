@@ -1,14 +1,14 @@
 """Verified reference facts, shipped inside the GGUF so the model reads instead of recalls.
 
 The expert audit of 2026-08-13 found the model inventing every quantity it
-produced — 25 mg/kg of paracetamol for a cow, 100 ml/L of pesticide, 200 kg/ha
+produced, 25 mg/kg of paracetamol for a cow, 100 ml/L of pesticide, 200 kg/ha
 of millet seed sown 100 mm deep. None of those numbers exist in any source. The
 diagnosis was not a training failure: a 0.6B model is a competent *reader* and
 an unreliable *knower*, and five rounds of teaching it facts did not change that.
 
 So the facts move out of the weights and into the context. `reference_block()`
 renders `data/reference/sahel_reference.json` into the system prompt, which
-`prompts.chat_template()` bakes into the GGUF — so it reaches every conversation
+`prompts.chat_template()` bakes into the GGUF, so it reaches every conversation
 a judge has with the bare model, with no retrieval and no application code.
 
 Two things make this affordable rather than clever:
@@ -21,7 +21,7 @@ Two things make this affordable rather than clever:
   only; the server caches the prefix, so every later turn pays ~1-2 s.
 
 This is disclosed in REPORT.md. Undisclosed it would be indefensible in the
-technical Q&A; disclosed, it is the honest conclusion of our own measurement —
+technical Q&A; disclosed, it is the honest conclusion of our own measurement,
 we know where this model's knowledge can and cannot live.
 """
 
@@ -64,8 +64,8 @@ def unsourced_quantities(facts: tuple[Fact, ...] | None = None) -> dict[str, lis
     """Fact id -> quantities stated in `text` that do not appear in `source`.
 
     The same gate that filters training data, turned on our own reference file.
-    A number here is authoritative for the whole system — the model may state it
-    and the inference numeric gate will accept it — so it must be traceable.
+    A number here is authoritative for the whole system, the model may state it
+    and the inference numeric gate will accept it, so it must be traceable.
     """
     facts = facts if facts is not None else load_reference()
     return {

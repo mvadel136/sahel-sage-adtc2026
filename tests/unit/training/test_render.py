@@ -178,7 +178,7 @@ def test_a_row_with_no_usable_metadata_keeps_the_whole_block():
     """The default must be "all fifteen", never a guess.
 
     Stripping the one fact an answer depends on turns a grounded target into an
-    unsupported one — a defect, where a slightly long prompt is merely a cost.
+    unsupported one, a defect, where a slightly long prompt is merely a cost.
     Rows with no cluster and no topic are exactly where a selector would be
     guessing, so it must decline to.
     """
@@ -191,7 +191,7 @@ def test_some_rows_keep_the_full_block_so_inference_stays_in_distribution():
     """At inference the template always emits all fifteen facts.
 
     Shortening every training row would trade one distribution mismatch for
-    another — the exact mistake being fixed, where only 22% of rows matched the
+    another, the exact mistake being fixed, where only 22% of rows matched the
     judged format. A deterministic slice therefore keeps the full block.
     """
     from sahel_sage.training.render import facts_for
@@ -218,8 +218,8 @@ def test_dropping_the_system_prompt_leaves_no_debris_when_facts_are_subset():
 
     `render_raw` and the `len(system_prompt(...))` slice must receive the
     identical subset. Give one the subset and the other the full block and the
-    slice lands mid-sentence, leaving prompt debris that still trains — on
-    garbage — and that no other test looks for. This row is chosen to be one
+    slice lands mid-sentence, leaving prompt debris that still trains, on
+    garbage, and that no other test looks for. This row is chosen to be one
     the dropout actually fires on.
     """
     from sahel_sage.training.render import drop_system_prompt, render_record

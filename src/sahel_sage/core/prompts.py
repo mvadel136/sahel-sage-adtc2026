@@ -1,4 +1,4 @@
-"""THE prompt, answer-contract and chat-template registry — single source of truth.
+"""THE prompt, answer-contract and chat-template registry, single source of truth.
 
 Training data generation, app inference, evaluation, AND the chat template
 embedded in the shipped GGUF all render from this module. Nothing outside this
@@ -7,7 +7,7 @@ file may define a system prompt, an evidence-block format, or the answer shape.
 Two facts from the official rules drive the design (ADR-002, ADR-006):
 
 1. **Judges chat with the bare model**, in English, through their own browser
-   UI — our retrieval app is not in that loop. So when no extracts are present
+   UI, our retrieval app is not in that loop. So when no extracts are present
    the model must answer *confidently from its own knowledge*; referring to a
    "library" the judge cannot see reads as evasion.
 2. **The judge's client applies the GGUF's chat template.** `CHAT_TEMPLATE`
@@ -15,7 +15,7 @@ Two facts from the official rules drive the design (ADR-002, ADR-006):
    on, so the judge's question lands in-distribution automatically. It is
    generated from the same constants as `render_raw`, so the two cannot drift.
 
-Answer shape (markdown — human judges rank markdown structure higher than
+Answer shape (markdown, human judges rank markdown structure higher than
 ALL-CAPS labels, which read as machine output):
 
     **Likely issue**
@@ -91,7 +91,7 @@ _WITH_SOURCES = """
 - You have been given numbered extracts from agricultural manuals. Base the answer on them, mark each sentence that uses one with its number like [1], and list the numbers you used under **Sources**.
 - If the extracts do not cover the question, say so in one sentence, answer from general practice instead, and do not cite them."""
 
-#: The closed-book branch — what the judges' sandbox reaches, since they chat
+#: The closed-book branch, what the judges' sandbox reaches, since they chat
 #: with the bare GGUF and there is no retrieval in front of it.
 #:
 #: This used to read "Answer from your own agronomic knowledge." That single
@@ -109,7 +109,7 @@ _NO_SOURCES = """
 #:
 #: Why a demonstration and not another rule: the rules above ALREADY forbid
 #: container reuse, and at the judge's temperature (0.8) the v11/v12 weights
-#: still complied on 7/15 and 4/15 samples — two training rounds only moved
+#: still complied on 7/15 and 4/15 samples, two training rounds only moved
 #: which rule sat on the margin. A worked example leverages the format prior
 #: instead of fighting it: the model is shown the refusal *in the answer
 #: contract it always follows*. Literature: in-context refusal demonstrations
@@ -151,7 +151,7 @@ EVIDENCE_HEADER = "EXTRACTS FROM THE OFFLINE LIBRARY:"
 def system_prompt(has_sources: bool, lang: str = "en", facts=None) -> str:
     """The system prompt, including the verified reference block when closed-book.
 
-    The block is attached only on the no-sources branch — the path the judges'
+    The block is attached only on the no-sources branch, the path the judges'
     sandbox takes, where the model has no retrieval and would otherwise answer
     from a pretraining prior it cannot be trusted with. When real extracts are
     supplied (the app path) they are better evidence than the block and the
@@ -159,14 +159,14 @@ def system_prompt(has_sources: bool, lang: str = "en", facts=None) -> str:
 
     `facts` narrows the block to a subset, and exists for TRAINING only. The
     full fifteen facts are 1,521 of the 1,892 constant prefix tokens on every
-    closed-book row, which left the actual question at 1.6% of the input — and
+    closed-book row, which left the actual question at 1.6% of the input, and
     the model duly learned the part of each answer that does not depend on the
     question, and not the part that does. A row that carries only the facts its
     question needs restores that signal, and teaches the model to *use* a block
     rather than memorise one constant.
 
     It must never narrow at inference. `chat_template()` calls this with no
-    subset, so the shipped GGUF always carries every fact — guarded by
+    subset, so the shipped GGUF always carries every fact, guarded by
     `test_reference.py::test_the_block_is_embedded_in_the_gguf_chat_template`.
 
     Imported lazily: `core.reference` reads a data file, and `prompts` is
@@ -198,7 +198,7 @@ class EvidenceItem:
 #:
 #: Raised 4000 -> 12000 on 2026-08-13 when k went from 4 to 8 passages. At 4000
 #: only three or four extracts survived truncation, so retrieving eight would
-#: have improved the *coverage score* while the model still saw four — claiming
+#: have improved the *coverage score* while the model still saw four, claiming
 #: confidence from evidence it was never given. Eight full extracts render to
 #: ~3.1k tokens, which is why build_context() also raised n_ctx to 8192.
 EVIDENCE_CHAR_BUDGET = 12000
@@ -281,7 +281,7 @@ def chat_template(lang: str = "en") -> str:
 
     Deliberately minimal: minja (llama.cpp's Jinja engine) implements only the
     filters used by mainstream model templates, so this uses none. The default
-    system prompt is injected whenever the caller supplies no system message —
+    system prompt is injected whenever the caller supplies no system message,
     which is the expected case in the judges' sandbox.
     """
     default_system = _jinja_escape(system_prompt(has_sources=False, lang=lang))

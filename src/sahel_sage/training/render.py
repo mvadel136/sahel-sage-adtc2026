@@ -1,15 +1,15 @@
 """Render mixed dataset records into (prompt, completion) training pairs.
 
-ALL rendering happens here, in the repo, testably — the Kaggle trainer stays a
+ALL rendering happens here, in the repo, testably, the Kaggle trainer stays a
 dumb consumer of {"prompt", "completion"} rows and masks loss on the prompt
 tokens. Two styles, matching ADR-001's two round-1 candidates:
 
-- "raw":    the Base-model path — core.prompts.render_raw(), i.e. exactly the
+- "raw":    the Base-model path, core.prompts.render_raw(), i.e. exactly the
             plain-text format the official evaluator would present.
-- "chatml": the Instruct path — Qwen ChatML with an EMPTY THINK PREFILL baked
+- "chatml": the Instruct path, Qwen ChatML with an EMPTY THINK PREFILL baked
             into the prompt so the completion never contains think tokens.
 
-Round-4 additions (ADR-005) — all of them exist because the judge chats with
+Round-4 additions (ADR-005), all of them exist because the judge chats with
 the **bare model**, and the round-3 model, having never seen a question outside
 the full system-prompt + evidence + cue envelope, drifted off-format on a bare
 question and generated invented turns until the token cap:
@@ -23,12 +23,12 @@ question and generated invented turns until the token cap:
   record id, so it is deterministic, stable across rebuilds, and independent of
   record order.
 
-Grounded rows are left exactly as they were — that is the application path, and
+Grounded rows are left exactly as they were, that is the application path, and
 it is the one path we have measured as working.
 
 Record kinds handled: grounded_chunk (evidence pack = its source chunk as
 extract [1]), closed_book / abstain_* / greeting / wolof (no extracts), bare,
-multi_turn, replay_arc ("text" passthrough — already in the profiler's
+multi_turn, replay_arc ("text" passthrough, already in the profiler's
 Question:/Answer: shape), replay_chat (user/assistant messages).
 """
 
@@ -58,7 +58,7 @@ DEFAULT_DROPOUT = 0.2
 _FULL_BLOCK_RATE = 0.25
 
 #: Which reference facts a row's cluster plausibly needs. Deliberately generous
-#: — a fact that is present but unused costs a few tokens, while a fact that is
+#:, a fact that is present but unused costs a few tokens, while a fact that is
 #: missing makes the target answer unsupported by its own prompt, which is worse
 #: than the problem being solved.
 _CLUSTER_FACTS: dict[str, tuple[str, ...]] = {
@@ -92,7 +92,7 @@ def facts_for(rec: dict) -> tuple | None:
     by_id = {f.id: f for f in all_facts}
     meta = rec.get("meta") or {}
 
-    # At inference the block is ALWAYS all full fact block — the chat template
+    # At inference the block is ALWAYS all full fact block: the chat template
     # has no idea what was asked. Training every row on a short subset would
     # therefore trade one distribution mismatch for another, which is the exact
     # mistake being fixed here (only 22% of rows matched the judged format).
@@ -109,7 +109,7 @@ def facts_for(rec: dict) -> tuple | None:
     if (int(digest[:8], 16) % 1000) < _FULL_BLOCK_RATE * 1000:
         return None
 
-    # reference_topic rows name their fact exactly — no guessing needed.
+    # reference_topic rows name their fact exactly: no guessing needed.
     topic = meta.get("topic")
     if topic in by_id:
         return (by_id[topic],)
@@ -175,7 +175,7 @@ def _raw_prompt(question: str, items: list[EvidenceItem], lang: str,
 
     The strip is by LENGTH, so `facts` must be the identical subset in both
     calls. Pass it to one and not the other and the slice lands mid-sentence,
-    leaving prompt debris that no test looks for — the row still trains, just
+    leaving prompt debris that no test looks for, the row still trains, just
     on garbage. That is why the subset is computed once by the caller and
     threaded, rather than recomputed here.
     """
@@ -197,7 +197,7 @@ def render_record(
     if kind == "raw_text":
         # Mixed training (Physics of LMs 3.1: 9.7% -> 86.6% held-out
         # extraction). An empty prompt means the trainer masks nothing, so the
-        # whole chunk carries LM loss — plain continuation learning on the
+        # whole chunk carries LM loss: plain continuation learning on the
         # manuals, interleaved with the Q&A in the same shuffle.
         return {"prompt": "", "completion": rec["text"].rstrip()}
 
@@ -255,7 +255,7 @@ def render_record(
     items = _evidence_for(rec, chunks) if kind in ("grounded_chunk", "abstain_limited") else []
     drop_system = drop_system_prompt(rec, dropout)
     # Only the closed-book branch carries the block at all, so this is a no-op
-    # for grounded rows — but computing it once here is what guarantees the two
+    # for grounded rows: but computing it once here is what guarantees the two
     # calls inside _raw_prompt agree.
     facts = None if items else facts_for(rec)
 

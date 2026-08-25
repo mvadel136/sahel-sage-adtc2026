@@ -2,7 +2,7 @@
 
 Round 4 answered "when should I plant millet?" with *"Millet is a cool-season
 crop, so planting is best in the dry season, which runs from October to May."*
-That is flatly wrong for the Sahel — millet is sown at the onset of the rains —
+That is flatly wrong for the Sahel, millet is sown at the onset of the rains,
 and our own corpus says so (`wocat-rangeland-ssa`: "sowed immediately after the
 onset of the rainy season"). Perfect markdown, total confidence, dangerous
 advice. Nothing else we measure could catch it: arc_easy is multiple-choice and
@@ -10,7 +10,7 @@ the behaviour probes only check structure and status.
 
 This module checks *content*. Each probe asserts terms that must appear and
 terms that must not, and **every assertion carries the corpus quote that
-justifies it** — so the ground truth is FAO/ICRISAT/WOCAT text, not our opinion.
+justifies it**, so the ground truth is FAO/ICRISAT/WOCAT text, not our opinion.
 
 The bar is deliberately crude (term presence, not entailment): it is meant to
 catch confident contradictions of the manuals, which is the failure that
@@ -61,7 +61,7 @@ PROBES: list[FactProbe] = [
         required=[["water", "rehydration", "fluid"], ["vet", "veterinar"]],
         forbidden=["antibiotic injection of", "human medicine"],
         source="esgpip-sheep-goat-handbook: rehydration, isolation, escalate if persistent/bloody",
-        note="Fluids first, isolate, escalate — not diet advice.",
+        note="Fluids first, isolate, escalate, not diet advice.",
         tags=["livestock"],
     ),
     FactProbe(
@@ -111,7 +111,7 @@ PROBES: list[FactProbe] = [
         required=[["parasit", "worm", "coccidi", "bacter", "feed", "diet"]],
         # Newcastle is a POULTRY virus. The round-4 model named it as a goat
         # disease WHILE citing the ESGPIP sheep-and-goat handbook, which says
-        # no such thing — a citation-faithfulness failure, worse than a plain
+        # no such thing: a citation-faithfulness failure, worse than a plain
         # knowledge gap because the source lends it false authority.
         forbidden=["newcastle", "avian influenza", "fowl pox"],
         source="esgpip-sheep-goat-handbook: goat diarrhoea causes are parasites, "

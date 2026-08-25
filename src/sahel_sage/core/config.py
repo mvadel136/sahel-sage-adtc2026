@@ -84,7 +84,7 @@ class ConfidenceCfg(BaseModel):
 
 
 class RetrievalSettings(BaseModel):
-    """configs/retrieval.toml — the calibrated abstention threshold lives here.
+    """configs/retrieval.toml, the calibrated abstention threshold lives here.
 
     This file existed and was cited in REPORT.md for two days before anything
     read it, so the app silently ran on the uncalibrated default instead. There

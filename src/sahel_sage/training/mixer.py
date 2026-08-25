@@ -104,7 +104,7 @@ def build_dataset(
     #
     # Two primary sources (arXiv:2312.05934, arXiv:2402.05119) find small models
     # do not absorb facts by fine-tuning, and our own recall probe measured 5.6%
-    # on exactly this content — so the round is paying its largest bill for
+    # on exactly this content: so the round is paying its largest bill for
     # knowledge the model is not keeping. Facts belong in the reference block,
     # which ships in the template, and in the app's retrieval index. Neither is
     # touched by this cap; nothing is deleted, and raising the number rebuilds
@@ -128,14 +128,14 @@ def build_dataset(
     # --- replay: arc raw completions (all) + chat (capped, math filtered) ---
     #
     # Off by default from v7. Replay exists to stop a fine-tune forgetting
-    # general ability, measured on arc_easy and instruction-formatting — and
+    # general ability, measured on arc_easy and instruction-formatting: and
     # neither is scored here. The competition's accuracy half is five human
     # conversations with the bare GGUF.
     #
     # It was not merely neutral. `replay_arc` rows are "Question: ...\nAnswer:"
     # with ~21-character completions and no system prompt, so 1,100 rows were
     # teaching a terse factoid distribution against a contract asking for
-    # 150-250 words in four named sections — and they did it in an input format
+    # 150-250 words in four named sections: and they did it in an input format
     # the judged path never produces. Together with replay_chat that was 13.6%
     # of the mix spent training away from the target behaviour.
     if include_replay:
@@ -160,7 +160,7 @@ def build_dataset(
     for rec in records:
         kind = rec.get("kind", "unknown")
         # Strata where one answer is deliberately taught many ways. Answer-dedup
-        # would keep exactly one row per topic or rule — it collapsed 300
+        # would keep exactly one row per topic or rule: it collapsed 300
         # reference rows to 15 and 420 prohibition rows to 7 on the first v6
         # build, the same way `abstain_scope` went 450 -> 81 -> 12 -> 1 across
         # three earlier rounds before anyone noticed.

@@ -15,7 +15,7 @@ ALL-CAPS labels:
 
 Two consequences for this module:
 
-1. **`Status` is inferred, never parsed.** The visible `STATUS:` enum is gone —
+1. **`Status` is inferred, never parsed.** The visible `STATUS:` enum is gone,
    it read as machine output to a human judge, and the app derives a better
    signal from retrieval confidence (ADR-004). Uncertainty is now expressed in
    natural language, so we classify that language instead.
@@ -138,14 +138,14 @@ def parse(text: str, valid_source_ids: set[int] | None = None) -> ParseResult:
     """Parse model output into an AnswerContract. Never raises.
 
     valid_source_ids: the [n] numbers actually present in the evidence pack;
-    citations outside it are reported (and stripped from .sources) — a model
+    citations outside it are reported (and stripped from .sources), a model
     citing a passage it was never shown is a groundedness defect, not a
     rendering choice.
     """
     # The model sometimes runs a heading straight on from the previous
     # sentence ("…stemborer damage. **What to do**"), and a heading the line
     # loop cannot see turned a perfectly good striga answer into
-    # EVIDENCE_LIMITED — plus one wasted repair decode on a CPU where decodes
+    # EVIDENCE_LIMITED: plus one wasted repair decode on a CPU where decodes
     # are the whole latency budget. Give every mid-line heading its newline
     # back before parsing.
     text = _MIDLINE_HEADING_RE.sub(lambda m: "\n" + m.group(1), text)
@@ -176,7 +176,7 @@ def parse(text: str, valid_source_ids: set[int] | None = None) -> ParseResult:
         if m and m.group(1).strip():
             c.actions.append(m.group(1).strip())
         elif line.strip() and not c.actions:
-            # model wrote prose actions without numbering — keep as one action
+            # model wrote prose actions without numbering: keep as one action
             c.actions.append(line.strip())
     c.actions = c.actions[:5]
 

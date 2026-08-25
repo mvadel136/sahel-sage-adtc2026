@@ -1,6 +1,6 @@
 """The answer pipeline: retrieve → render → generate → parse → repair.
 
-Pure logic on purpose. No FastAPI, no subprocess, no globals — the pipeline
+Pure logic on purpose. No FastAPI, no subprocess, no globals, the pipeline
 takes an AppContext and a ChatBackend port, so every rule below is testable
 against a fake backend in milliseconds.
 
@@ -45,7 +45,7 @@ NO_EVIDENCE_TEXT = (
     "**Who can help:** your extension agent, your veterinary auxiliary, or a "
     "neighbouring farmer who has dealt with the same problem.\n\n"
     "If you can describe the crop or animal and exactly what you are seeing, try "
-    "again — a more specific question sometimes matches something I do have."
+    "again; a more specific question sometimes matches something I do have."
 )
 
 #: Shown when the model wrote a number that is in no retrieved passage. The
@@ -54,7 +54,7 @@ NO_EVIDENCE_TEXT = (
 INVENTED_NUMBER_TEXT = (
     "I'm not going to answer that one.\n\n"
     "I drafted an answer and it contained a quantity that does not appear in any "
-    "of my sources — which means I invented it. A made-up rate, dose or "
+    "of my sources, which means I invented it. A made-up rate, dose or "
     "measurement is worse than no answer at all, so I have discarded it.\n\n"
     "The passages I found are listed below; read them directly, and take any "
     "measurement from a product label or from your extension agent rather than "
@@ -206,7 +206,7 @@ def _finalize(
     One, not a loop: a repair costs a second full decode on a CPU-only laptop,
     and a model that failed the format twice will not find it on a third try.
     If the repair comes back no better than the original, the original is kept
-    — a retry must never make the answer worse.
+   , a retry must never make the answer worse.
     """
     valid_ids = set(range(1, len(pack.items) + 1))
     first = parse(text, valid_source_ids=valid_ids)
@@ -226,11 +226,11 @@ def _finalize(
     # since dataset-v5; the audit showed the model still inventing a 100 mg/kg
     # paracetamol dose and a 100 ml/L pesticide concentration at inference, so
     # it runs here too. A number absent from every retrieved passage was made up
-    # — unless it comes from the verified reference block. Those facts are the
+    #, unless it comes from the verified reference block. Those facts are the
     # one other place a number can legitimately live: every quantity in them is
     # test-enforced to appear in its own cited primary source, and the model was
     # trained on them. Without this, the gate discarded a correct maize-storage
-    # answer for saying "13% moisture" — our own verified number — because the
+    # answer for saying "13% moisture": our own verified number, because the
     # retrieved passages happened not to repeat it.
     invented = unsupported_quantities(
         result.raw_text, _source_text(pack) + " " + _reference_text()
@@ -251,7 +251,7 @@ def _finalize(
         parse=result,
         repaired=repaired,
         # An answer whose structure we could not read is not an answer we
-        # present as confident — since ADR-005 the status is INFERRED from the
+        # present as confident: since ADR-005 the status is INFERRED from the
         # answer's language, so an unparseable blob would otherwise infer
         # ANSWERED by default.
         status=resolve_status(pack, result.contract.status if result.ok else None),
@@ -303,7 +303,7 @@ def answer_stream(question: str, lang: str, k: int, ctx: AppContext) -> Iterator
     """Streaming variant: citations up front, tokens as they decode, contract last.
 
     The pack is emitted before the first token so the reader can show its
-    sources while the model is still thinking — on this hardware that is
+    sources while the model is still thinking, on this hardware that is
     several seconds of otherwise blank screen. Any repair happens after the
     stream ends and is not itself streamed: the UI replaces the raw blob with
     the parsed sections when the final event arrives.

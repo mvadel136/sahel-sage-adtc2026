@@ -6,7 +6,7 @@ of the downloaded content, not by the URL suffix. The URL-suffix heuristic
 saved six PDFs served from suffix-less URLs as .html and mis-extracted them.
 """
 
-# NOTE: the bare `extract`/`fetch` functions are deliberately not re-exported —
+# NOTE: the bare `extract`/`fetch` functions are deliberately not re-exported,
 # they would shadow the `sahel_sage.data.extract` / `.fetch` submodules on
 # `from sahel_sage.data import ...`. Import them from their modules.
 from sahel_sage.data.extract import extract_source, sniff_format

@@ -40,7 +40,7 @@ def test_caller_system_prompt_appends_and_ours_survives(tpl):
     """A judge's chat UI may quietly send its own system message ("You are a
     helpful assistant."). Under the old replace rule that single line deleted
     the reference block and every safety instruction from the judged
-    conversation. The caller's text is honoured — appended after ours — but
+    conversation. The caller's text is honoured, appended after ours, but
     the facts and the safety rules always render."""
     out = tpl.render(messages=[{"role": "system", "content": "CUSTOM"},
                                {"role": "user", "content": "hi"}],

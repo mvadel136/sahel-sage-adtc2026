@@ -2,7 +2,7 @@
 
 The expert audit of 2026-08-13 found five dangerous answers in twenty-four. All
 five came from questions whose *class* is unsafe for a generative model to
-answer at all — a pesticide mixing rate, a pre-harvest interval, an antibiotic
+answer at all, a pesticide mixing rate, a pre-harvest interval, an antibiotic
 decision, a human drug given to a cow, a pesticide container reused for drinking
 water, a twelve-year-old sent to spray. Every one of those was already forbidden
 in the system prompt (`core.prompts._BASE`), and the model overrode the prompt
@@ -13,7 +13,7 @@ So prohibitions stop being instructions and become code. Two gates:
 **Pre-generation.** `screen()` matches the question against a curated set of
 absolute prohibitions and returns a fixed, human-written answer. The model is
 never consulted. This is the gate that makes the five dangerous outputs
-impossible rather than unlikely — a guarantee, not a probability.
+impossible rather than unlikely, a guarantee, not a probability.
 
 **Post-generation.** `unsupported_quantities()` (imported from the training-time
 gate, which has been applied to datasets since v5) is re-applied to what the
@@ -29,8 +29,8 @@ Design notes:
   not the request, and there is no path from a matched prohibition to a
   generated answer.
 * Refusals are written to be useful. "I can't help with that" teaches a farmer
-  to stop asking; naming who *can* answer — the label, the dealer, the extension
-  agent, the vet — is the part that has value offline.
+  to stop asking; naming who *can* answer, the label, the dealer, the extension
+  agent, the vet, is the part that has value offline.
 * Scope follows the Plantwise green/yellow split (CABI Pest Management Decision
   Guides): prevention, monitoring, physical and biological control are safe to
   advise anywhere; chemical control is jurisdiction-specific and is refused.
@@ -89,7 +89,7 @@ class Prohibition:
     #: Matched against the lowercased question. Any hit fires the rule.
     patterns: tuple[re.Pattern[str], ...]
     response: str
-    #: Why this is absolute, in one line — quoted in REPORT.md and in the
+    #: Why this is absolute, in one line, quoted in REPORT.md and in the
     #: adversarial test suite so the rationale cannot drift from the rule.
     rationale: str
 
@@ -101,7 +101,7 @@ class Prohibition:
 #: Tokens Deep"). Seven differently-worded refusals therefore taught seven
 #: separate weak transitions out of the question and into a decline. One shared
 #: prefix teaches a single strong one, and the specific reasoning follows it
-#: unchanged — the farmer still gets a different answer for each topic.
+#: unchanged, the farmer still gets a different answer for each topic.
 #:
 #: Kept short deliberately: it is the token sequence doing the work, so it has
 #: to be reachable from any prohibited question, not tuned to one of them.
@@ -112,7 +112,7 @@ def _refusal(issue: str, actions: list[str], timing: str, caution: str) -> str:
     """Assemble a refusal in the answer contract, behind the shared opening.
 
     Written as a function rather than seven hand-formatted strings so the
-    contract shape and the opening cannot drift apart between rules — which is
+    contract shape and the opening cannot drift apart between rules, which is
     exactly how the prose-versus-contract mismatch got into round 6.
     """
     steps = "\n".join(f"{i}. {a}" for i, a in enumerate(actions, 1))
@@ -130,7 +130,7 @@ def _p(*sources: str) -> tuple[re.Pattern[str], ...]:
 
 # The `[\s\S]{0,N}` filler between the two halves of a two-part pattern
 # crosses sentence boundaries on purpose: farmers state the situation and then
-# ask, in that order — "My son is 12. Can he spray the field?" — and a first
+# ask, in that order: "My son is 12. Can he spray the field?", and a first
 # version of these rules used `[^?.]`, which missed three of the six questions
 # the expert audit had flagged as dangerous. Bounded by length instead.
 
@@ -142,7 +142,7 @@ _CHEMICAL = (
 )
 
 #: Active ingredients a Sahelian farmer is likely to name directly. These are
-#: mostly legal, registered products — they are here so that a *rate* question
+#: mostly legal, registered products, they are here so that a *rate* question
 #: is caught when the farmer names the chemical instead of the word "pesticide".
 #: Banned products live in their own rule below and are refused outright.
 _ACTIVE_INGREDIENT = (
@@ -168,7 +168,7 @@ _HOW_MUCH = (
 
 #: The equipment a rate question is asked in terms of. "How much X in a 15 litre
 #: knapsack?" names no chemical class at all. Deliberately excludes bucket,
-#: drum, tank and watering can — "how much water in the watering can for my
+#: drum, tank and watering can, "how much water in the watering can for my
 #: seedlings" is a perfectly good question and must not be refused.
 _SPRAY_KIT = r"(?:knapsack|back ?pack sprayer|sprayer|spray tank|spray pump)"
 
@@ -191,7 +191,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             rf"{_HOW_MUCH}\b[\s\S]{{0,60}}\b{_SPRAY_KIT}",
             # Asking to CONFIRM or ADJUST a rate is asking for a rate. Writing
             # only "how much X" caught the textbook phrasing and missed every
-            # way a farmer actually raises it — with a number already in hand,
+            # way a farmer actually raises it: with a number already in hand,
             # or by asking to go stronger.
             r"\b(?:is|are)\b[\s\S]{0,30}\b(?:spoon|cap|capful|lid|handful|scoop|"
             r"sachet|glass)\b[\s\S]{0,40}\bper\b",
@@ -206,7 +206,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             issue='I will not give you a number, and I will not invent an example one. No one can give you a mixing rate without seeing your container: the correct rate differs for every product, crop and pest, and is set by whoever registered that product in your country.',
             actions=[
                 'The only trustworthy rate is the one printed on the label of your own container, for your crop and your pest.',
-                'If you cannot read the label, take the container itself to your agro-dealer or extension agent and have them read it to you. Do not describe it from memory — take the container.',
+                'If you cannot read the label, take the container itself to your agro-dealer or extension agent and have them read it to you. Do not describe it from memory; take the container.',
                 'If the container has no label, do not use it.',
                 'Tell me the crop and what you are seeing, and I will help with prevention, monitoring and non-chemical control instead.',
             ],
@@ -234,7 +234,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             r"\b(?:family|children|we)\b[\s\S]{0,40}\beat\b[\s\S]{0,60}\bspray\w*\b",
         ),
         response=_refusal(
-            issue='Do not harvest or sell it yet. Every pesticide has a pre-harvest interval — the days that must pass between the last spray and harvest. It is printed on the label and differs for every product.',
+            issue='Do not harvest or sell it yet. Every pesticide has a pre-harvest interval: the days that must pass between the last spray and harvest. It is printed on the label and differs for every product.',
             actions=[
                 'Find the container you sprayed from and read the pre-harvest interval on the label.',
                 'Count that many days from the day you sprayed, not from today.',
@@ -290,7 +290,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             r"\b(?:paracetamol|acetaminophen|ibuprofen|aspirin|diclofenac"
             r"|amoxicillin capsules?|human (?:medicine|drug|tablet|pill|dose))\b",
             r"\b(?:medicine|tablet|pill|drug)s?\b[\s\S]{0,40}\bfrom the (?:pharmacy|clinic|chemist)\b",
-            # "my cow is in pain, can I use my own medicine?" — a farmer naming
+            # "my cow is in pain, can I use my own medicine?": a farmer naming
             # no drug at all. Found by the training generator, not by us.
             r"\b(?:my|our|your) own (?:medicine|tablets?|pills?|drugs?)\b",
             r"\b(?:medicine|tablets?|pills?|drugs?) (?:i|we) (?:take|use|have)\b",
@@ -316,7 +316,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
                 'If no vet can reach you, tell me what you are seeing and I will help with the care that does not need a drug.',
             ],
             timing='Move and water the animal now; call the vet today.',
-            caution='Damage to the liver, kidneys or gut often shows only when it is too late to reverse, and there is no safe waiting time established for milk or meat afterwards — the residues reach whoever drinks or eats from that animal.',
+            caution='Damage to the liver, kidneys or gut often shows only when it is too late to reverse, and there is no safe waiting time established for milk or meat afterwards; the residues reach whoever drinks or eats from that animal.',
         ),
     ),
     Prohibition(
@@ -328,14 +328,14 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
         patterns=_p(
             # A NARROWER chemical list than _CHEMICAL here. That one includes
             # "treatment", "product" and "spray" so it can catch "what treatment
-            # dose" — useful for a rate question, wrong for naming a vessel.
+            # dose": useful for a rate question, wrong for naming a vessel.
             # "cold treatment container" for strawberries matched it and refused
             # a perfectly good storage question.
             r"\b(?:empty |used |old )?"
             r"(?:pesticid\w*|insecticid\w*|herbicid\w*|fungicid\w*|acaricid\w*"
             r"|weedkiller|agrochemical|chemical) "
             r"(?:container|bottle|can|drum|jerr?y ?can|tin)\b",
-            # The vessel needs a reuse signal — chemical, empty, or washed —
+            # The vessel needs a reuse signal: chemical, empty, or washed,
             # before this fires. Without one it matched "I have a pallet of
             # strawberries ... what cold treatment ... store", refusing an
             # ordinary storage question as container reuse. Over-refusal is not
@@ -350,8 +350,8 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             rf"\b(?:{_CHEMICAL}|empty|wash\w*|rins\w*|clean\w*)\b[\s\S]{{0,40}}"
             r"\b(?:container|bottle|drum|jerr?y ?can|tin)\b[\s\S]{0,60}"
             r"\b(?:drinking water|water|food|grain|seed|milk|carry|reuse|re-?use)\b",
-            # Disposal questions land here too — "what do I do with the empty
-            # drums?" — and that is correct: our answer IS the disposal advice
+            # Disposal questions land here too: "what do I do with the empty
+            # drums?": and that is correct: our answer IS the disposal advice
             # (triple-rinse, puncture, collection point). Refusing to improvise
             # and giving the FAO procedure are the same response.
             r"\bempty (?:drums?|containers?|cans?|bottles?)\b",
@@ -408,7 +408,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
             r"[\s\S]{0,80}\b(?:spray|apply|mix|pesticid\w*|insecticid\w*|herbicid\w*|chemical)",
         ),
         response=_refusal(
-            issue="No one under 18 may spray, mix or carry pesticides — not a child, not a strong teenager of fifteen or sixteen — and this does not depend on how careful they are. A young body absorbs more chemical for its size than an adult's, and the harm falls on organs and nerves that are still developing.",
+            issue="No one under 18 may spray, mix or carry pesticides, not a child, not a strong teenager of fifteen or sixteen, and this does not depend on how careful they are. A young body absorbs more chemical for its size than an adult's, and the harm falls on organs and nerves that are still developing.",
             actions=[
                 'Let the spraying wait. Almost no pest problem gets seriously worse in the few days it takes for an adult to be available.',
                 'Ask another adult, or hire one for the day.',
@@ -416,7 +416,7 @@ PROHIBITIONS: tuple[Prohibition, ...] = (
                 'Give the child other work. There is plenty; this is not it.',
             ],
             timing='Wait for an adult, however long that takes.',
-            caution='Protective equipment is made for adult bodies and does not seal on a child. Pesticide application is classified internationally as hazardous work that no one under 18 should do — including mixing, loading, spraying and washing the equipment afterwards.',
+            caution='Protective equipment is made for adult bodies and does not seal on a child. Pesticide application is classified internationally as hazardous work that no one under 18 should do, including mixing, loading, spraying and washing the equipment afterwards.',
         ),
     ),
     Prohibition(

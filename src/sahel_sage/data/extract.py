@@ -7,7 +7,7 @@ suffix-less URLs were saved as .html and run through the tag-stripper, which
 shredded them. Sniffing the bytes makes the extension irrelevant.
 
 Cleaning is delegated to :func:`sahel_sage.core.textproc.clean_extracted_text`
-— there must be exactly one garbage filter in the codebase.
+, there must be exactly one garbage filter in the codebase.
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from pathlib import Path
 from sahel_sage.core.textproc import clean_extracted_text
 from sahel_sage.data.sources import Source
 
-# Below this many cleaned words the document is essentially empty — usually a
+# Below this many cleaned words the document is essentially empty: usually a
 # scanned (image-only) PDF or an HTML error page that slipped past the fetch
 # size floor. Flagged, not discarded: a human decides whether to replace it.
 LOW_YIELD_WORDS = 500
@@ -77,7 +77,7 @@ def extract_source(source: Source, raw_dir: Path, txt_dir: Path) -> dict:
     """Extract + clean one source to ``txt_dir/<id>.txt``.
 
     -> {id, status: extracted|failed|low_yield, word_count}. Failures are
-    reported, never raised — the corpus pipeline fixes URLs and re-runs, so
+    reported, never raised, the corpus pipeline fixes URLs and re-runs, so
     one bad document must not abort the batch. The source's provenance
     fields are updated in place.
     """
