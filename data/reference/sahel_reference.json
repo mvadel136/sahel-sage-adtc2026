@@ -1,0 +1,196 @@
+{
+ "_about": "Verified reference facts shipped INSIDE the GGUF's chat template, so the bare model reads them instead of recalling them. Every entry was written against a primary source after an expert audit found the model inventing quantities (a 25 mg/kg paracetamol dose for a cow, a 100 ml/L pesticide rate, 200 kg/ha of millet seed at 100 mm depth). `text` is what reaches the model; `source` never does, and exists so any number here can be checked. Disclosed in REPORT.md: a 0.6B model cannot hold these reliably in weights, so we ship them in context.",
+ "_rules": [
+  "Every measured quantity in `text` must appear in `source`.",
+  "Terse on purpose: the whole block is budgeted at roughly 400-700 tokens because prompt processing runs at ~38-63 tok/s on the audit build and a judge waits for it.",
+  "No pesticide rates, drug doses or pre-harvest intervals. Those are refused by inference/safety.py and must never be answerable from here."
+ ],
+ "facts": [
+  {
+   "id": "seasons",
+   "topic": "Sahel calendar",
+   "text": "The Sahel has ONE rainy season (hivernage), about June-September, and a long dry season. There is no frost and no spring/autumn. Rainfed crops are sown at the onset of the rains, not on a calendar date.",
+   "source": "Agro-pastoral calendars, CILSS/AGRHYMET; corpus sahel cluster."
+  },
+  {
+   "id": "sowing",
+   "topic": "Sowing millet and sorghum",
+   "text": "Sow after the first rain that wets the soil deeply (about 20-25 mm), typically mid-June to early July depending on the isohyet. A dry spell after sowing can kill the stand, so expect to resow; keep seed in reserve for that.",
+   "source": "ICRISAT Pearl Millet: Crop Management and Seed Production Manual."
+  },
+  {
+   "id": "millet_spacing",
+   "topic": "Millet seed rate and spacing",
+   "text": "Pearl millet: about 4 kg of seed per hectare (range 3-6). Sow in pockets 80 cm apart, or 1 m apart where rainfall is below 400 mm. Sow 2-3 cm deep only; deeper and the seedling cannot reach the surface. Thin to about 3 plants per pocket after emergence.",
+   "source": "ICRISAT Pearl Millet manual: seed rate 3-6 kg/ha (about 4 kg/ha typical), pockets 80x80 cm or 1x1 m below 400 mm rainfall, sowing depth 2-3 cm, thin to 3 plants per hill."
+  },
+  {
+   "id": "striga",
+   "topic": "Striga (purple parasitic weed)",
+   "text": "Purple flowering weeds attached to sorghum or millet roots are striga, a root parasite in the field, not a storage or animal problem. Pull striga before it flowers so it cannot seed, and burn what you pull. Rotate or intercrop with cowpea or groundnut, which make it germinate and die. Striga is worst on poor soil, so add manure.",
+   "source": "The genus Striga: a witch profile (PMC6638688); legume trap crops in sorghum, northern Nigeria."
+  },
+  {
+   "id": "faw",
+   "topic": "Fall armyworm on maize",
+   "text": "Caterpillars in the whorl of young maize leaving moist frass like wet sawdust are fall armyworm (Spodoptera frugiperda). It is an insect, not a fungus, and fungicide does nothing. Scout weekly, hand-pick larvae and egg masses, put dry sand or wood ash into the whorl, and use neem, Bt or NPV where available.",
+   "source": "FAO Integrated Management of the Fall Armyworm on Maize."
+  },
+  {
+   "id": "ppr",
+   "topic": "PPR in goats and sheep",
+   "text": "Fever with runny nose and eyes, mouth sores or erosions, and deaths in goats or sheep is most likely PPR, peste des petits ruminants. It is a disease of small ruminants, not of poultry. It spreads fast by contact: separate sick animals, stop movement, call the veterinary service. The PPR vaccine protects survivors for life.",
+   "source": "WOAH disease card: peste des petits ruminants."
+  },
+  {
+   "id": "newcastle",
+   "topic": "Newcastle disease in village chickens",
+   "text": "Village chickens dying suddenly in large numbers, healthy one day and dead the next, is typically Newcastle disease. The control is VACCINATION, not sanitation: the thermotolerant I-2 vaccine, one eye drop, repeated every 3-4 months because it does not protect a chicken for life. It needs no cold chain, which is why it works for village chicken flocks.",
+   "source": "FAO, Controlling Newcastle Disease in Village Chickens: I-2 thermotolerant vaccine, eye-drop, ~8 weeks at 28C, every 3-4 months."
+  },
+  {
+   "id": "haemonchus",
+   "topic": "Anaemia in small ruminants",
+   "text": "A sheep or goat that is thin with pale gums or pale inner eyelids while still eating normally is showing anaemia, most often from Haemonchus contortus, a blood-feeding stomach worm. Check the eyelid colour using FAMACHA scoring and treat only the palest animals, which keeps the worms from becoming drug-resistant. Also look for swelling under the jaw.",
+   "source": "FAMACHA (WormBoss); FAMACHA validation in goats, PMID 11445151."
+  },
+  {
+   "id": "camel_feed",
+   "topic": "Dry-season feeding of camels and small ruminants",
+   "text": "Feeding animals in the late dry season: the limiting nutrient is protein, not energy. Browse from trees and shrubs, and legume haulms such as groundnut and cowpea, supply it; cereal straw does not. Store haulms dry and off the ground at harvest. How far an animal can graze is limited by water, not by feed alone.",
+   "source": "FAO feeding of ruminants in dry-season Sahelian systems; corpus livestock cluster."
+  },
+  {
+   "id": "salinity",
+   "topic": "Salty soil on irrigated plots",
+   "text": "A white salt crust means salts must be washed below the roots and drained away. Make sure drainage works FIRST, then apply water beyond the crop's needs to leach the salt down. Leaching without drainage raises the water table and makes it worse. Drip irrigation alone does not fix salinity because it leaves almost no leaching fraction. Gypsum helps sodic soil, not plain salinity.",
+   "source": "FAO Irrigation and Drainage Paper 29 rev.1; FAO Soils Bulletin 39."
+  },
+  {
+   "id": "manure",
+   "topic": "Using scarce manure",
+   "text": "Where manure is limited, place a small amount in the planting pocket with the seed rather than spreading it thinly over the whole field. Targeted micro-dosing gives far more yield per unit of manure than broadcasting.",
+   "source": "ICRISAT micro-dosing trials, Sahel; corpus soil cluster."
+  },
+  {
+   "id": "water",
+   "topic": "Keeping rain on the field",
+   "text": "On crusted or sloping land use zai planting pits with a handful of manure, demi-lunes (half-moon catchments), and stone lines along the contour (cordons pierreux). These are built by hand, hold runoff where the crop is, and rebuild soil over several seasons.",
+   "source": "WOCAT SLM technologies, Burkina Faso and Niger; corpus sahel cluster."
+  },
+  {
+   "id": "dunes",
+   "topic": "Sand encroachment",
+   "text": "Stop moving sand mechanically first, then biologically. Set palisades of millet stalks, palm fronds or dead branches in a checkerboard, placed across the dominant wind direction, then plant fixing species such as Euphorbia balsamifera, Leptadenia pyrotechnica, Balanites or Acacia tortilis behind them. Shovelling sand without a windbreak has to be repeated every season.",
+   "source": "FAO/GGWI dune fixation practice, Mauritania and Niger; corpus sahel cluster."
+  },
+  {
+   "id": "grain_storage",
+   "topic": "Storing grain without insects",
+   "text": "Dry cereal grain hard first, to about 13% moisture, so a kernel does not dent when pressed. Clean the store and remove old grain before the new harvest enters. Then hermetic bags kill storage weevils by using up the oxygen inside, with no chemical: PICS triple bagging. Woven sacks let air through and do not protect grain.",
+   "source": "Purdue PICS bags grain storage guide: dry maize to 13% moisture (13-13.5%) before hermetic storage; triple-layer bags filled and sealed; FAO post-harvest handling."
+  },
+  {
+   "id": "aflatoxin",
+   "topic": "Mould and aflatoxin in groundnuts",
+   "text": "Aflatoxin comes from mould growing on damp groundnut, a groundnut problem specifically. Harvest at maturity without delay, dry the pods upward off bare ground and never in a heap, and store only at low moisture. Never eat, feed or press mouldy groundnuts; sorting visible mould reduces but does not remove the risk.",
+   "source": "Codex CXP 59-2005, prevention of aflatoxin in peanuts: dry kernels to 6-8% moisture; FAO water-activity guidance, Aspergillus flavus does not grow below aw 0.70."
+  },
+  {
+   "id": "cowpea_pests",
+   "topic": "Cowpea insect pests",
+   "text": "Black insects clustered on cowpea growing tips with curling leaves are aphids, not armyworm. They suck sap and spread virus. Wash them off, leave ladybirds alone, and cut out badly infested tips. Flower thrips and pod borers attack later, at flowering and podding.",
+   "source": "Farmers' Guide to Cowpea Production in West Africa, IITA; corpus pest cluster."
+  },
+  {
+   "id": "colostrum",
+   "topic": "Newborn lambs and kids",
+   "text": "A newborn kid or lamb must take colostrum within the first 24 hours; the gut absorbs antibodies only for the first 24 to 36 hours. Help a weak kid onto the teat, or feed milked colostrum by bottle. Keep it dry and out of the wind.",
+   "source": "Sheep and Goat Production Handbook for Ethiopia, ESGPIP/USAID/Langston University."
+  },
+  {
+   "id": "compost",
+   "topic": "Making compost",
+   "text": "Compost is layered dry material (straw, residues) with fresh material (dung, green weeds), kept as moist as a wrung-out cloth and turned so air reaches the middle. A turned heap is ready in about two months. Composting is farming and is in scope.",
+   "source": "Soil Management: Compost Production and Use in Tropical and Subtropical Environments, FAO; An Extension Manual on Compost."
+  },
+  {
+   "id": "vegetable_storage",
+   "topic": "Curing and storing onions",
+   "text": "Onions rot in store when they were not cured. After lifting, dry them with tops on, in shade with moving air, until the necks are tight and skins rustle. Then store in a single layer or netted bags. Never a sealed sack, never a damp floor.",
+   "source": "Small-scale Postharvest Handling Practices: A Manual for Horticultural Crops, FAO."
+  },
+  {
+   "id": "tomato_problems",
+   "topic": "Tomato wilting and leaf problems",
+   "text": "Tomato wilting in afternoon heat and recovering at night is water stress or root damage. Wilting that never recovers, with yellow lower leaves and browning inside the cut stem, is a soil-borne wilt: remove those plants, do not replant tomato there. Blight instead shows dark spreading leaf lesions.",
+   "source": "Tomato Production Guide; Agroecological Vegetable Production: A Field Manual."
+  },
+  {
+   "id": "rangeland",
+   "topic": "Grazing management",
+   "text": "Rangeland recovers from rest and rotation, not from walking the herd further. Rest a patch through the growing season so grasses set seed. Spread watering points so one well is not trampled bare. Cut and store surplus grass while green.",
+   "source": "Sustainable Rangeland Management in Sub-Saharan Africa - Guidelines to Good Practice."
+  },
+  {
+   "id": "trypanosomiasis",
+   "topic": "Animal trypanosomiasis (nagana)",
+   "text": "Steady loss of condition with pale gums and watery eyes, in tsetse country, can be animal trypanosomiasis. It is diagnosed from blood, not appearance. Use tsetse traps, avoid riverine thicket at midday. Treatment is a veterinary decision.",
+   "source": "A Field Guide for the Diagnosis, Treatment and Prevention of African Animal Trypanosomiasis, FAO."
+  },
+  {
+   "id": "fmnr",
+   "topic": "Farmer managed natural regeneration",
+   "text": "The cheapest trees are already in the field, as stumps and roots that resprout. Select the strongest stems, prune the rest, and protect them from fire and free grazing. Regenerated trees cut wind, hold soil and give dry-season fodder without buying seedlings.",
+   "source": "Farmer Managed Natural Regeneration (FMNR) Field Manual; Regeneration naturelle assistee, Sahel."
+  },
+  {
+   "id": "microdose",
+   "topic": "Fertiliser microdosing",
+   "text": "Where fertiliser is scarce, place a small pinch in the planting hole with the seed instead of broadcasting. The root reaches it immediately and nothing is wasted between rows. Cover it with soil. Follow the rate on the product or from the extension service.",
+   "source": "Procedure for Planting Using Microdoses of Fertilizer; ICRISAT Sahel practice."
+  },
+  {
+   "id": "dry_season_feed",
+   "topic": "Dry-season feeding from residues",
+   "text": "When pasture is finished, crop residues carry animals through. Groundnut and cowpea haulms are the best, cereal straw the poorest. Store haulms dry and off the ground at harvest. Chop coarse straw and mix in legume haulm so animals eat it; straw alone will not maintain an animal.",
+   "source": "Feeding Goats, ELKS Technical Bulletin 4; Sheep and Goat Production Handbook for Ethiopia."
+  },
+  {
+   "id": "poultry_housing",
+   "topic": "Village poultry husbandry",
+   "text": "Village flocks are lost to predators, damp and chick mortality as much as to disease. A raised night shelter that closes, dry litter, chicks fed separately, and clean water daily save more birds than medicine. Isolate new or sick birds.",
+   "source": "Small-scale Poultry Production: Technical Guide, FAO; Improving Village Chicken Production."
+  },
+  {
+   "id": "groundnut",
+   "topic": "Groundnut production and lifting",
+   "text": "Lift groundnut when the inside of the shell has darkened and most pods are mature; later and pods break off in the soil. Dry with pods upward off bare ground, never in a heap. Groundnut needs light well-drained soil and calcium at pegging.",
+   "source": "A Farmer's Guide to Profitable Groundnut Production in Nigeria; Groundnut Seed Production Manual."
+  },
+  {
+   "id": "sorghum",
+   "topic": "Sorghum agronomy",
+   "text": "Sorghum tolerates drought better than maize and recovers from dry spells that would kill it, but suffers from birds and from striga. Sow on the ridge in heavy soil, thin early, and choose a variety whose cycle matches your rainfall.",
+   "source": "Sorghum Training Manual, farmer field and business school modules; Handbook on Improved Agronomic Practices for Sorghum, North East Nigeria."
+  },
+  {
+   "id": "goat_health",
+   "topic": "Common goat ailments",
+   "text": "Most goat losses come from worms, diarrhoea, pneumonia after cold wet nights, and foot problems in muddy pens. Check gums for anaemia, check the dung, check breathing. Quarantine new animals and keep bedding dry.",
+   "source": "Goatkeepers' Animal Health Care Manual, 2nd edition; Sheep and Goat Production Handbook for Ethiopia."
+  },
+  {
+   "id": "weather_advice",
+   "topic": "Weather and planting decisions",
+   "text": "You cannot know this season's rainfall in advance; for forecasts send the farmer to the national meteorological service or rural radio. What holds every year: sow rainfed crops at the onset of the rains — as a rule of thumb, after about 20 mm of rain has fallen over 3 days, not after one light shower. Early sowing uses the flush of soil nitrogen released by the first rains and escapes many pests; late sowing invites pest and disease attack. Check the field a few days after emergence and re-sow any gaps at once, keeping seed in reserve in case a dry spell kills the first sowing.",
+   "source": "Farm Africa maize manual: 'Planting should be done on the onset of rains. Early planting takes advantage of the nitrogen flush effect... Farmers should avoid late planting since it leads to increased incidences of pests and disease attacks'; 'gaps in the row... should be addressed immediately by gap filling.' ICRISAT groundnut (Nigeria): 'Groundnut should be sowed immediately after the onset of the rainy season.' Onset criterion: Sivakumar (1988), Agricultural and Forest Meteorology, ICRISAT Niger — onset of rains defined as 20 mm of rainfall received over 3 consecutive days after 1 May, with no dry spell exceeding 7 days in the following 30 days."
+  },
+  {
+   "id": "market_advice",
+   "topic": "Market and selling decisions",
+   "text": "Current market prices cannot be known offline — the farmer must check the nearest market or rural radio. What holds generally: prices are lowest at harvest when everyone sells and rise later in the season, so a farmer who dries grain properly and stores it in sealed hermetic bags can sell when prices are better instead of selling at the worst moment. Sorting and grading produce fetches a higher price. Never sell or buy a sick animal.",
+   "source": "GIZ post-harvest management manual: 'It increases income as producers can sell excess produce when prices get better'; 'Sorting and grading will enable the crop to be sold at much high prices'; hermetic storage units and bags section. Goatkeepers' Animal Health Care Manual: 'Never sell or buy a sick animal.' Seasonal harvest-time price troughs: FAO warrantage / inventory-credit literature (Niger)."
+  }
+ ]
+}

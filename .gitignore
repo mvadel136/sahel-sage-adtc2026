@@ -1,0 +1,48 @@
+# ADTC rule: never commit model weights
+model/*.gguf
+model/llama-server.log
+*.gguf
+
+# Secrets
+.env
+
+# Python
+.pytest_cache/
+artifacts/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Profiler outputs (regenerated per run)
+submission.json
+audit.json
+verdict.json
+
+# Working files
+*.partial
+.DS_Store
+
+# Dataset factory artifacts: reproducible from the scripts + corpus_sources.json.
+# The scripts, the source list and the summary stats are versioned; the bulk is not.
+training/corpus_raw/
+training/corpus_txt/
+training/distilled/
+training/wolof/
+training/replay/
+training/dataset-v1/
+!training/dataset-v1/stats.json
+training/*.log
+.venv/
+training/kaggle/chunks.jsonl
+training/distilled/pilot/
+training/wolof_kallaama/
+training/kaggle/train-dataset/train_*.jsonl
+training/distilled/
+# Rendered training corpora: regenerated exactly by scripts/build_dataset_*.py
+# from the versioned corpus + data/reference/. The manifest, stats and verify
+# reports ARE versioned, because those are the evidence; the bulk is not, and
+# train_raw.jsonl for v6 is 97 MB, which GitHub rejects outright.
+datasets/mix/*/train.jsonl
+datasets/mix/*/train_raw.jsonl
+datasets/mix/*/train_chatml.jsonl

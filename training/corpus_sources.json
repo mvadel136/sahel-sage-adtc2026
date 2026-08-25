@@ -1,0 +1,871 @@
+[
+  {
+    "id": "mofa-ghana-maize-guide",
+    "title": "Guide to Maize Production",
+    "org": "Ministry of Food and Agriculture, Ghana (CSIR/IITA)",
+    "url": "https://mofa.gov.gh/site/images/pdf/production_guides/GUIDE_TO_MAIZE_PRODUCTION.pdf",
+    "topics": [
+      "maize",
+      "production",
+      "extension"
+    ],
+    "lang": "en",
+    "license_note": "Government of Ghana public extension document",
+    "cluster": "crops"
+  },
+  {
+    "id": "farmafrica-maize-manual",
+    "title": "Maize Production Training Manual for extension workers and village-based advisors",
+    "org": "Farm Africa / AGRA",
+    "url": "https://www.farmafrica.org/wp-content/uploads/2025/11/Farm-Africa-Maize-Production-Training-Manual.pdf",
+    "topics": [
+      "maize",
+      "production",
+      "training",
+      "extension"
+    ],
+    "lang": "en",
+    "license_note": "Publicly distributed NGO training manual",
+    "cluster": "crops"
+  },
+  {
+    "id": "africarice-lowland-rice-handbook",
+    "title": "Growing lowland rice: a production handbook",
+    "org": "Africa Rice Center (WARDA) / FAO",
+    "url": "https://www.fao.org/fileadmin/user_upload/ivc/docs/Growing%20lowland%20rice_%20production%20handbook_prepress%20final%20version_19-05-08_low%20res.pdf",
+    "topics": [
+      "rice",
+      "production",
+      "lowland"
+    ],
+    "lang": "en",
+    "license_note": "AfricaRice/FAO public document",
+    "cluster": "crops"
+  },
+  {
+    "id": "africarice-upland-rice-handbook",
+    "title": "Growing upland rice: a production handbook",
+    "org": "Africa Rice Center (WARDA) / FAO",
+    "url": "https://www.fao.org/fileadmin/user_upload/ivc/docs/uplandrice.pdf",
+    "topics": [
+      "rice",
+      "production",
+      "upland"
+    ],
+    "lang": "en",
+    "license_note": "AfricaRice/FAO public document",
+    "cluster": "crops"
+  },
+  {
+    "id": "fao-riz-pluvial-gipd",
+    "title": "Guide pratique pour la gestion integree de la production du riz pluvial (APRAO/GIPD, Mali)",
+    "org": "FAO",
+    "url": "https://www.fao.org/fileadmin/user_upload/spid/docs/Mali/APRAO_GIPD_GuideProductionRizPluvial.pdf",
+    "topics": [
+      "rice",
+      "production",
+      "ipm",
+      "rainfed"
+    ],
+    "lang": "fr",
+    "license_note": "FAO CC BY-NC-SA / public document",
+    "cluster": "crops"
+  },
+  {
+    "id": "iita-growing-cassava-manual",
+    "title": "Growing Cassava: A Training Manual from Production to Postharvest",
+    "org": "IITA",
+    "url": "https://seedtracker.org/cassava/wp-content/uploads/2018/01/Growing-Cassava-A-Training-Manual-from-Production-to-Postharvest.pdf",
+    "topics": [
+      "cassava",
+      "production",
+      "postharvest",
+      "training"
+    ],
+    "lang": "en",
+    "license_note": "IITA open publication",
+    "cluster": "crops"
+  },
+  {
+    "id": "fao-cassava-save-and-grow",
+    "title": "Save and Grow: Cassava - A guide to sustainable production intensification",
+    "org": "FAO",
+    "url": "https://openknowledge.fao.org/server/api/core/bitstreams/4c82dcdb-2e82-4dd9-8c4f-617596ed8c12/content",
+    "topics": [
+      "cassava",
+      "production",
+      "soil",
+      "pest-management"
+    ],
+    "lang": "en",
+    "license_note": "FAO CC BY-NC-SA 3.0 IGO",
+    "cluster": "crops"
+  },
+  {
+    "id": "icrisat-sorghum-nigeria",
+    "title": "Handbook on Improved Agronomic Practices for Sorghum Production in North East Nigeria",
+    "org": "ICRISAT",
+    "url": "https://oar.icrisat.org/11531/1/Handbook%20on%20Sorghum%20production%20for%20NE%20printed%20version.pdf",
+    "topics": [
+      "sorghum",
+      "production",
+      "agronomy"
+    ],
+    "lang": "en",
+    "license_note": "ICRISAT open access repository (CC BY-NC-SA)",
+    "cluster": "crops"
+  },
+  {
+    "id": "kalro-sorghum-training-manual",
+    "title": "Sorghum Training Manual (farmer field and business school modules, Kenya)",
+    "org": "KALRO",
+    "url": "https://keep.kalro.org/appfiles/media/vc_files/sorghum-training-manual-8-12-20.pdf",
+    "topics": [
+      "sorghum",
+      "production",
+      "training"
+    ],
+    "lang": "en",
+    "license_note": "KALRO public extension document",
+    "cluster": "crops"
+  },
+  {
+    "id": "icrisat-pearl-millet-nigeria",
+    "title": "Handbook on Improved Pearl Millet Production Practices in Nigeria",
+    "org": "ICRISAT",
+    "url": "https://oar.icrisat.org/11530/1/Hand%20book%20on%20Millet%20production%20printed%20version.pdf",
+    "topics": [
+      "millet",
+      "production",
+      "agronomy"
+    ],
+    "lang": "en",
+    "license_note": "ICRISAT open access repository (CC BY-NC-SA)",
+    "cluster": "crops"
+  },
+  {
+    "id": "worldveg-tomato-icg",
+    "title": "Suggested Cultural Practices for Tomato (International Cooperators' Guide)",
+    "org": "World Vegetable Center",
+    "url": "https://worldveg.tind.io/record/39591/files/00-508%20Intl%20Cooperators%20Guide_cultural%20practices%20for%20tomato%20(rev%20April%202021).pdf",
+    "topics": [
+      "tomato",
+      "nursery",
+      "transplanting",
+      "fertilization",
+      "pest-management"
+    ],
+    "lang": "en",
+    "license_note": "WorldVeg cooperators' guide, free educational/extension use",
+    "cluster": "hort"
+  },
+  {
+    "id": "worldveg-onion-icg",
+    "title": "Suggested Cultural Practices for Onion",
+    "org": "World Vegetable Center",
+    "url": "https://worldveg.tind.io/record/35054/files/d015767.pdf",
+    "topics": [
+      "onion",
+      "seedbed",
+      "irrigation",
+      "curing",
+      "storage"
+    ],
+    "lang": "en",
+    "license_note": "WorldVeg training guide, free educational use",
+    "cluster": "hort"
+  },
+  {
+    "id": "worldveg-chili-pepper-icg",
+    "title": "Suggested Cultural Practices for Chili Pepper",
+    "org": "World Vegetable Center",
+    "url": "https://worldveg.tind.io/record/39488/files/05-620%20Intl%20Cooperators%20Guide_cultural%20practices%20for%20chili%20pepper%20(rev%20Apr2021).pdf",
+    "topics": [
+      "hot-pepper",
+      "seedling-raising",
+      "fertilization",
+      "ipm"
+    ],
+    "lang": "en",
+    "license_note": "WorldVeg cooperators' guide, free educational use",
+    "cluster": "hort"
+  },
+  {
+    "id": "worldveg-cabbage-icg",
+    "title": "Suggested Cultural Practices for Heading Chinese Cabbage",
+    "org": "World Vegetable Center",
+    "url": "https://worldveg.tind.io/record/39430/files/e03413.pdf",
+    "topics": [
+      "cabbage",
+      "brassica",
+      "transplanting",
+      "pest-management"
+    ],
+    "lang": "en",
+    "license_note": "WorldVeg cooperators' guide, free educational use",
+    "cluster": "hort"
+  },
+  {
+    "id": "worldveg-agroecological-veg-manual",
+    "title": "Agroecological Vegetable Production: A Field Manual",
+    "org": "World Vegetable Center",
+    "url": "https://worldveg.org/wp-content/uploads/2024/06/24-1077_Agroecology-Kenya_compressed-82.pdf",
+    "topics": [
+      "market-gardening",
+      "compost",
+      "soil-fertility",
+      "agroecology",
+      "ipm",
+      "irrigation"
+    ],
+    "lang": "en",
+    "license_note": "WorldVeg 2024, CC BY-SA 3.0",
+    "cluster": "hort"
+  },
+  {
+    "id": "mofa-ghana-tomato-guide",
+    "title": "Tomato Production Guide",
+    "org": "Ministry of Food and Agriculture, Ghana",
+    "url": "https://mofa.gov.gh/site/images/pdf/production_guides/TOMATO_Production_Guide.pdf",
+    "topics": [
+      "tomato",
+      "west-africa",
+      "nursery",
+      "fertilizer-rates",
+      "pests"
+    ],
+    "lang": "en",
+    "license_note": "Government of Ghana public extension material",
+    "cluster": "hort"
+  },
+  {
+    "id": "mofa-ghana-compost-manual",
+    "title": "An Extension Manual on Compost for Sustainable Crop Production",
+    "org": "Ministry of Food and Agriculture, Ghana",
+    "url": "https://mofa.gov.gh/site/images/pdf/production_guides/Manual_on_Compost.pdf",
+    "topics": [
+      "composting",
+      "organic-matter",
+      "soil-fertility",
+      "manure"
+    ],
+    "lang": "en",
+    "license_note": "Government of Ghana public extension material",
+    "cluster": "hort"
+  },
+  {
+    "id": "ashc-isfm-handbook",
+    "title": "Handbook for Integrated Soil Fertility Management",
+    "org": "Africa Soil Health Consortium / CABI",
+    "url": "https://cgspace.cgiar.org/server/api/core/bitstreams/828ccca7-e14f-4bc2-a7de-c26b0ff02646/content",
+    "topics": [
+      "isfm",
+      "soil-fertility",
+      "fertilizer-use",
+      "legumes",
+      "organic-inputs"
+    ],
+    "lang": "en",
+    "license_note": "ASHC 2012, CC BY 3.0",
+    "cluster": "hort"
+  },
+  {
+    "id": "fao-compost-tropical-soils-bulletin",
+    "title": "Soil Management: Compost Production and Use in Tropical and Subtropical Environments",
+    "org": "FAO",
+    "url": "https://www.fao.org/4/s8930e/s8930e.pdf",
+    "topics": [
+      "composting",
+      "organic-matter",
+      "soil-fertility",
+      "manure",
+      "tropical-soils"
+    ],
+    "lang": "en",
+    "license_note": "FAO Soils Bulletin 56, non-commercial educational use with attribution",
+    "cluster": "hort"
+  },
+  {
+    "id": "ifdc-fertilizer-microdosing",
+    "title": "Procedure for Planting Using Microdoses of Fertilizer",
+    "org": "IFDC",
+    "url": "https://api.hub.ifdc.org/server/api/core/bitstreams/74ad0c82-3935-4609-9eaa-a27c6c12f178/content",
+    "topics": [
+      "microdosing",
+      "placement-fertilization",
+      "sahel",
+      "soil-fertility"
+    ],
+    "lang": "en",
+    "license_note": "IFDC extension material, open access",
+    "cluster": "hort"
+  },
+  {
+    "id": "fao-irrigation-techniques-smallholders",
+    "title": "Irrigation Techniques for Small-scale Farmers: Key Practices for DRR Implementers",
+    "org": "FAO",
+    "url": "https://openknowledge.fao.org/server/api/core/bitstreams/7ff68d8c-23c7-4ad9-b8ad-5fc513224c93/content",
+    "topics": [
+      "small-scale-irrigation",
+      "drip",
+      "treadle-pump",
+      "vegetable-gardens",
+      "water-management"
+    ],
+    "lang": "en",
+    "license_note": "FAO open access, CC BY-NC-SA",
+    "cluster": "hort"
+  },
+  {
+    "id": "cirad-isra-maraichage-senegal",
+    "title": "Guide pratique du maraichage au Senegal",
+    "org": "ISRA / CIRAD",
+    "url": "https://open-library.cirad.fr/files/4/751__Guide_pratique_du_maraichage_au_Senegal.pdf",
+    "topics": [
+      "maraichage",
+      "onion",
+      "tomato",
+      "okra",
+      "cabbage",
+      "fertilisation",
+      "irrigation",
+      "sahel"
+    ],
+    "lang": "fr",
+    "license_note": "CIRAD open library, attribute ISRA/CIRAD",
+    "cluster": "hort"
+  },
+  {
+    "id": "fao-village-chicken-manual",
+    "title": "Improving Village Chicken Production: A Manual for Field Workers and Trainers",
+    "org": "FAO / KYEEMA / ACIAR",
+    "url": "https://www.fao.org/3/ax269e/ax269e.pdf",
+    "topics": [
+      "poultry",
+      "village-poultry",
+      "husbandry",
+      "health",
+      "vaccination"
+    ],
+    "lang": "en",
+    "license_note": "FAO 2010, reproduction for educational/non-commercial use with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-smallscale-poultry-guide",
+    "title": "Small-scale Poultry Production: Technical Guide",
+    "org": "FAO",
+    "url": "https://www.fao.org/3/y5169e/y5169e.pdf",
+    "topics": [
+      "poultry",
+      "feeding",
+      "housing",
+      "incubation",
+      "disease-control"
+    ],
+    "lang": "en",
+    "license_note": "FAO 2004 (Sonaiya & Swan), educational/non-commercial reuse with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-aviculture-familiale-fr",
+    "title": "Production en Aviculture Familiale: Un Manuel Technique",
+    "org": "FAO",
+    "url": "https://www.fao.org/3/y5169f/y5169f.pdf",
+    "topics": [
+      "poultry",
+      "aviculture-villageoise",
+      "alimentation",
+      "sante-animale"
+    ],
+    "lang": "fr",
+    "license_note": "FAO 2004, French edition, educational/non-commercial reuse with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-newcastle-village-chickens-field-manual",
+    "title": "Controlling Newcastle Disease in Village Chickens: A Field Manual",
+    "org": "FAO / ACIAR (Alders & Spradbrow)",
+    "url": "https://www.fao.org/3/ah930e/ah930e.pdf",
+    "topics": [
+      "poultry",
+      "newcastle-disease",
+      "vaccination",
+      "disease-control"
+    ],
+    "lang": "en",
+    "license_note": "ACIAR/FAO, free non-commercial distribution with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "arc-goatkeepers-health-manual",
+    "title": "Goatkeepers' Animal Health Care Manual (2nd edition)",
+    "org": "ARC-Onderstepoort Veterinary Institute",
+    "url": "https://www.arc.agric.za/arc-ovi/Product%20Catalogue%20Library/Goatkeepers%20Animal%20Health%20Care%20Manual.pdf",
+    "topics": [
+      "goats",
+      "health",
+      "disease-recognition",
+      "deworming",
+      "famacha",
+      "treatment"
+    ],
+    "lang": "en",
+    "license_note": "ARC-OVI public product catalogue, free PDF; permission required for redistribution",
+    "cluster": "livestock"
+  },
+  {
+    "id": "esgpip-sheep-goat-handbook-ethiopia",
+    "title": "Sheep and Goat Production Handbook for Ethiopia",
+    "org": "ESGPIP / USAID / Langston University",
+    "url": "https://archive.org/download/SheepGoatHandbook/Sheep_Goat_%20Handbook.pdf",
+    "topics": [
+      "sheep",
+      "goats",
+      "husbandry",
+      "breeding",
+      "feeding",
+      "health",
+      "housing"
+    ],
+    "lang": "en",
+    "license_note": "USAID-funded publication, Internet Archive copy; free reproduction with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-ppr-field-manual",
+    "title": "Recognizing Peste des Petits Ruminants: A Field Manual",
+    "org": "FAO EMPRES",
+    "url": "https://www.fao.org/4/x1703e/x1703e00.pdf",
+    "topics": [
+      "goats",
+      "sheep",
+      "ppr",
+      "disease-recognition",
+      "clinical-signs",
+      "vaccination"
+    ],
+    "lang": "en",
+    "license_note": "FAO 1999, educational/non-commercial reuse with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-trypanosomosis-field-guide",
+    "title": "A Field Guide for the Diagnosis, Treatment and Prevention of African Animal Trypanosomosis",
+    "org": "FAO",
+    "url": "https://www.fao.org/4/x0413e/x0413e00.pdf",
+    "topics": [
+      "cattle",
+      "camels",
+      "trypanosomosis",
+      "nagana",
+      "diagnosis",
+      "treatment",
+      "tsetse"
+    ],
+    "lang": "en",
+    "license_note": "FAO 1998, educational/non-commercial reuse with acknowledgement",
+    "cluster": "livestock"
+  },
+  {
+    "id": "ilri-eadd-feeding-dairy-cattle",
+    "title": "Feeding Dairy Cattle in East Africa: A Manual for Smallholder Dairy Farmers and Extension Workers",
+    "org": "ILRI / EADD",
+    "url": "https://cgspace.cgiar.org/bitstreams/13ee5db4-0781-4092-a353-72c3931dce2d/download",
+    "topics": [
+      "cattle",
+      "dairy",
+      "feeding",
+      "forage",
+      "rations"
+    ],
+    "lang": "en",
+    "license_note": "ILRI CGSpace open access (CC BY 4.0)",
+    "cluster": "livestock"
+  },
+  {
+    "id": "ilri-feeding-goats",
+    "title": "Feeding Goats (ELKS Technical Bulletin 4)",
+    "org": "ILRI",
+    "url": "https://cgspace.cgiar.org/bitstreams/08e80c99-1305-41d1-8adc-92f775fe7fa8/download",
+    "topics": [
+      "goats",
+      "feeding",
+      "fodder-trees",
+      "rations"
+    ],
+    "lang": "en",
+    "license_note": "ILRI 2013 CGSpace open access (CC BY 4.0)",
+    "cluster": "livestock"
+  },
+  {
+    "id": "farmafrica-camel-husbandry",
+    "title": "Camel Husbandry and Production: Best Practices from FARM-Africa's Pastoralist Development Project",
+    "org": "FARM-Africa (FAO repository)",
+    "url": "https://www.fao.org/3/x6172e/x6172e.pdf",
+    "topics": [
+      "camels",
+      "pastoralists",
+      "husbandry",
+      "animal-health",
+      "drylands"
+    ],
+    "lang": "en",
+    "license_note": "FARM-Africa 2002 via FAO repository, non-commercial educational reuse",
+    "cluster": "livestock"
+  },
+  {
+    "id": "fao-faw-ffs-maize-africa",
+    "title": "Integrated management of the Fall Armyworm on maize: A guide for Farmer Field Schools in Africa",
+    "org": "FAO",
+    "url": "https://openknowledge.fao.org/server/api/core/bitstreams/c43afcac-6262-4152-afd4-70cd4ac46584/content",
+    "topics": [
+      "fall-armyworm",
+      "ipm",
+      "maize",
+      "farmer-field-school",
+      "scouting"
+    ],
+    "lang": "en",
+    "license_note": "FAO publication 2018, open-access repository (CC BY-NC-SA 3.0 IGO)",
+    "cluster": "pest"
+  },
+  {
+    "id": "cimmyt-faw-africa-ipm-guide",
+    "title": "Fall Armyworm in Africa: A Guide for Integrated Pest Management",
+    "org": "CIMMYT / USAID",
+    "url": "https://repository.cimmyt.org/server/api/core/bitstreams/5f933e59-ad3a-4643-a91e-377f9d913370/content",
+    "topics": [
+      "fall-armyworm",
+      "ipm",
+      "biocontrol",
+      "pesticide-safety"
+    ],
+    "lang": "en",
+    "license_note": "CIMMYT open repository (CC BY-NC-SA 4.0)",
+    "cluster": "pest"
+  },
+  {
+    "id": "cabi-faw-community-monitoring-tot",
+    "title": "Community-Based Fall Armyworm Monitoring, Early Warning and Management: Training of Trainers Manual",
+    "org": "CABI / Plantwise",
+    "url": "https://www.cabi.org/wp-content/uploads/ToT-manual.pdf",
+    "topics": [
+      "fall-armyworm",
+      "ipm",
+      "scouting",
+      "thresholds",
+      "extension-training"
+    ],
+    "lang": "en",
+    "license_note": "CABI free public download",
+    "cluster": "pest"
+  },
+  {
+    "id": "plantwise-spodoptera-id-ghana",
+    "title": "How to identify Spodoptera armyworms on maize (Factsheet for Farmers, Ghana)",
+    "org": "CABI Plantwise",
+    "url": "https://factsheetadmin.plantwise.org/Uploads/PDFs/20187800457.pdf",
+    "topics": [
+      "fall-armyworm",
+      "african-armyworm",
+      "pest-identification",
+      "maize"
+    ],
+    "lang": "en",
+    "license_note": "Plantwise Factsheets for Farmers (CC BY-NC-SA)",
+    "cluster": "pest"
+  },
+  {
+    "id": "fao-faw-ffs-maize-afrique-fr",
+    "title": "Gestion integree de la chenille legionnaire d'automne sur le mais - guide pour les champs-ecoles des producteurs en Afrique",
+    "org": "FAO",
+    "url": "https://openknowledge.fao.org/server/api/core/bitstreams/8437de84-044a-4fa8-9ce0-7575ece6532d/content",
+    "topics": [
+      "fall-armyworm",
+      "ipm",
+      "maize",
+      "farmer-field-school"
+    ],
+    "lang": "fr",
+    "license_note": "FAO publication, open repository (CC BY-NC-SA 3.0 IGO)",
+    "cluster": "pest"
+  },
+  {
+    "id": "plantwise-striga-hermonthica-kenya",
+    "title": "Striga hermonthica (purple witchweed) - Factsheet for Farmers (Kenya)",
+    "org": "CABI Plantwise",
+    "url": "https://factsheetadmin.plantwise.org/Uploads/PDFs/20167800564.pdf",
+    "topics": [
+      "striga",
+      "parasitic-weed",
+      "weed-management",
+      "maize",
+      "sorghum"
+    ],
+    "lang": "en",
+    "license_note": "Plantwise Factsheets for Farmers (CC BY-NC-SA)",
+    "cluster": "pest"
+  },
+  {
+    "id": "icipe-push-pull-striga-stemborer-primer",
+    "title": "A Primer on Planting and Managing Push-Pull Fields for Stemborer and Striga Weed Control in Maize",
+    "org": "icipe",
+    "url": "https://upscale-hub.eu/wp-content/uploads/2022/05/A-primer-on-planting-and-managing-push-pull-fields-for-stemborer-and-striga-weed-control-in-maize.pdf",
+    "topics": [
+      "striga",
+      "push-pull",
+      "stemborer",
+      "ipm",
+      "desmodium"
+    ],
+    "lang": "en",
+    "license_note": "icipe publication, openly hosted by EU UPSCALE project",
+    "cluster": "pest"
+  },
+  {
+    "id": "purdue-pics-bags-grain-storage-guide",
+    "title": "A Guide on the Use of PICS Bags for Grain Storage (E-265-W)",
+    "org": "Purdue University Extension",
+    "url": "https://extension.entm.purdue.edu/publications/E-265.pdf",
+    "topics": [
+      "pics-bags",
+      "hermetic-storage",
+      "grain-storage",
+      "post-harvest",
+      "storage-pests"
+    ],
+    "lang": "en",
+    "license_note": "Purdue Extension publication, free download",
+    "cluster": "pest"
+  },
+  {
+    "id": "nri-wfp-grain-postharvest-training-manual",
+    "title": "Training Manual for Improving Grain Postharvest Handling and Storage",
+    "org": "NRI / WFP",
+    "url": "https://documents.wfp.org/stellent/groups/public/documents/reports/wfp250916.pdf",
+    "topics": [
+      "post-harvest",
+      "grain-storage",
+      "drying",
+      "storage-pests",
+      "grain-quality"
+    ],
+    "lang": "en",
+    "license_note": "NRI for WFP/FAO, distributed free for training use",
+    "cluster": "pest"
+  },
+  {
+    "id": "iita-aflasafe-aflatoxin-farmers-guide",
+    "title": "Farmers' Guide to Management of Aflatoxins in Maize and Groundnuts in Africa",
+    "org": "IITA / Aflasafe",
+    "url": "https://aflasafe.com/wp-content/uploads/pdf/TrainingManual_WestAfrica.pdf",
+    "topics": [
+      "aflatoxin",
+      "post-harvest",
+      "drying",
+      "sorting",
+      "groundnut",
+      "maize"
+    ],
+    "lang": "en",
+    "license_note": "IITA training manual, free public download",
+    "cluster": "pest"
+  },
+  {
+    "id": "giz-postharvest-management-practices-manual",
+    "title": "Post Harvest Management Practices Training Manual for Trainers",
+    "org": "GIZ",
+    "url": "https://www.giz.de/en/downloads/giz2024-en-post-harvest-management-practices-training-manual-for-trainers.pdf",
+    "topics": [
+      "post-harvest",
+      "vegetables",
+      "legumes",
+      "grain-storage",
+      "processing"
+    ],
+    "lang": "en",
+    "license_note": "GIZ 2024, free download, attribution required",
+    "cluster": "pest"
+  },
+  {
+    "id": "worldveg-smallscale-postharvest-horticulture",
+    "title": "Small-scale Postharvest Handling Practices: A Manual for Horticultural Crops (3rd edition)",
+    "org": "World Vegetable Center / UC Davis",
+    "url": "https://worldveg.tind.io/record/65985/files/Small-scale%20postharvest%20handling%20practices-A%20manual%20for%20horticultural%20crops%20(3rd%20edition).pdf",
+    "topics": [
+      "post-harvest",
+      "vegetables",
+      "fruits",
+      "cooling",
+      "packing",
+      "storage"
+    ],
+    "lang": "en",
+    "license_note": "UC Davis / WorldVeg, free educational use",
+    "cluster": "pest"
+  },
+  {
+    "id": "icrisat-groundnut-nigeria",
+    "title": "A Farmer's Guide to Profitable Groundnut Production in Nigeria",
+    "org": "ICRISAT",
+    "url": "https://oar.icrisat.org/8856/1/2015-084%20Gnut%20Production%20in%20Nigeria.pdf",
+    "topics": [
+      "groundnut",
+      "drylands",
+      "crop-management"
+    ],
+    "lang": "en",
+    "license_note": "ICRISAT Open Access Repository, non-commercial reuse with attribution",
+    "cluster": "sahel"
+  },
+  {
+    "id": "icrisat-groundnut-seed-manual",
+    "title": "Groundnut Seed Production Manual (bilingual EN/FR)",
+    "org": "ICRISAT",
+    "url": "https://oar.icrisat.org/420/1/CO_200803.pdf",
+    "topics": [
+      "groundnut",
+      "seed-systems",
+      "west-africa"
+    ],
+    "lang": "en",
+    "license_note": "ICRISAT OAR 2008, non-commercial reuse with attribution",
+    "cluster": "sahel"
+  },
+  {
+    "id": "iita-cowpea-west-africa",
+    "title": "Farmers' Guide to Cowpea Production in West Africa",
+    "org": "IITA",
+    "url": "https://biblio.iita.org/documents/U09BkDugjeCowpeaNothomDev.pdf-2d43f99e2931b42cabd0c29954f0d2c9.pdf",
+    "topics": [
+      "cowpea",
+      "west-africa",
+      "pest-management"
+    ],
+    "lang": "en",
+    "license_note": "IITA repository (Dugje et al. 2009), free non-commercial use",
+    "cluster": "sahel"
+  },
+  {
+    "id": "wvi-fmnr-field-manual",
+    "title": "Farmer Managed Natural Regeneration (FMNR) Field Manual",
+    "org": "World Vision International",
+    "url": "https://www.wvi.org/sites/default/files/2022-11/FMNR-Field-Manual_DIGITAL_English.pdf",
+    "topics": [
+      "fmnr",
+      "agroforestry",
+      "land-restoration",
+      "drylands"
+    ],
+    "lang": "en",
+    "license_note": "World Vision International, free practitioner use",
+    "cluster": "sahel"
+  },
+  {
+    "id": "icraf-rna-sahel",
+    "title": "Regeneration naturelle assistee - Gestion des arbres champetres au Sahel",
+    "org": "ICRAF",
+    "url": "https://www.cifor-icraf.org/publications/downloads/Publications/PDFS/MN11028.pdf",
+    "topics": [
+      "fmnr",
+      "agroforestry",
+      "parkland-trees",
+      "sahel"
+    ],
+    "lang": "fr",
+    "license_note": "ICRAF technical manual 2011, non-commercial reproduction permitted",
+    "cluster": "sahel"
+  },
+  {
+    "id": "icraf-faidherbia-wasat",
+    "title": "Faidherbia albida in the West African Semi-Arid Tropics",
+    "org": "ICRAF / ICRISAT",
+    "url": "https://oar.icrisat.org/991/1/RA_00220.pdf",
+    "topics": [
+      "faidherbia",
+      "agroforestry",
+      "parkland",
+      "semi-arid"
+    ],
+    "lang": "en",
+    "license_note": "ICRISAT OAR co-publication, non-commercial reuse with attribution",
+    "cluster": "sahel"
+  },
+  {
+    "id": "fao-water-harvesting-manual",
+    "title": "Water Harvesting: A Manual for the Design and Construction of Water Harvesting Schemes for Plant Production",
+    "org": "FAO",
+    "url": "https://www.samsamwater.com/library/Water_harvesting_-_Critchley.pdf",
+    "topics": [
+      "water-harvesting",
+      "runoff-farming",
+      "drylands"
+    ],
+    "lang": "en",
+    "license_note": "FAO 1991 (Critchley & Siegert); PDF mirror, FAO original is HTML-only",
+    "cluster": "sahel"
+  },
+  {
+    "id": "wocat-water-harvesting-guidelines",
+    "title": "Water Harvesting: Guidelines to Good Practice",
+    "org": "WOCAT / IFAD / CDE",
+    "url": "https://wocat.net/documents/85/WaterHarvesting_lowresolution.pdf",
+    "topics": [
+      "water-harvesting",
+      "zai",
+      "half-moons",
+      "soil-water-conservation"
+    ],
+    "lang": "en",
+    "license_note": "WOCAT/CDE 2013, free download, non-commercial use with attribution",
+    "cluster": "sahel"
+  },
+  {
+    "id": "wocat-rangeland-ssa",
+    "title": "Sustainable Rangeland Management in Sub-Saharan Africa - Guidelines to Good Practice",
+    "org": "WOCAT / CDE / World Bank",
+    "url": "https://wocat.net/documents/913/E_online_Wocat_Rangeland_April25.pdf",
+    "topics": [
+      "rangeland",
+      "pasture",
+      "pastoralism",
+      "grazing",
+      "drought"
+    ],
+    "lang": "en",
+    "license_note": "Liniger & Mekdaschi Studer 2019 for TerrAfrica/World Bank, free download",
+    "cluster": "sahel"
+  },
+  {
+    "id": "fao-date-palm-cultivation",
+    "title": "Date palm cultivation (FAO Plant Production and Protection Paper 156, 2nd ed.)",
+    "org": "FAO",
+    "url": "https://openknowledge.fao.org/server/api/core/bitstreams/b00b90c3-c397-4a6c-822e-e00c70bf2565/content",
+    "topics": [
+      "date-palm",
+      "oasis",
+      "orchard-management",
+      "pests"
+    ],
+    "lang": "en",
+    "license_note": "FAO 2024, CC BY-NC-SA 3.0 IGO",
+    "cluster": "sahel"
+  },
+  {
+    "id": "giz-ces-sahel",
+    "title": "Bonnes pratiques de conservation des eaux et des sols au Sahel",
+    "org": "GIZ / SNRD Africa",
+    "url": "https://www.snrd-africa.net/wp-content/uploads/2017/04/Good-Practices_FR.pdf",
+    "topics": [
+      "soil-water-conservation",
+      "zai",
+      "demi-lunes",
+      "cordons-pierreux",
+      "sahel"
+    ],
+    "lang": "fr",
+    "license_note": "GIZ SNRD Africa, free download, non-commercial use with attribution",
+    "cluster": "sahel"
+  }
+]

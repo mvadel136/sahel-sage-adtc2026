@@ -1,0 +1,52 @@
+# Retrieval and evidence-pack behaviour.
+# Overrides: SAHEL_<SECTION>_<KEY> environment variables, so the threshold below
+# is SAHEL_CONFIDENCE_THRESHOLD.
+#
+# Read by core.config.load_retrieval(); carried to the request path on
+# AppContext.confidence_threshold. tests/unit/test_config.py fails if this file
+# stops being read — it was written, cited in REPORT.md, and ignored by every
+# code path for two days.
+
+[retrieval]
+# Passages retrieved, scored for coverage, and shown to the model.
+#
+# Raised 4 -> 8 on 2026-08-13. At k=4 the coverage score was structurally biased
+# against long questions: four ~220-word chunks cannot contain the vocabulary of
+# a 22-term question, so the IDF denominator grew with question length while the
+# numerator saturated. Both official competition prompts scored ~0.55 and were
+# refused despite being squarely inside the corpus's subject matter.
+#
+# Measured on 300 labelled in-corpus + 20 adversarial out-of-corpus questions:
+#   k=4   J 0.353   short-vs-long coverage gap 0.264
+#   k=8   J 0.477   gap 0.158   <- adopted
+#   k=12  J 0.423   gap 0.146
+# Two rejected fixes, both measured: scoring only the top-m IDF terms made the
+# gap worse; dropping unseen terms destroyed specificity.
+k = 8
+# Max chunks from any single document (diversity guard).
+max_per_doc = 2
+# Reciprocal-rank-fusion constant.
+rrf_k = 60
+
+[confidence]
+# Sufficiency threshold on IDF-weighted term coverage (retrieval/coverage.py).
+# Below this the app REFUSES. It used to answer anyway behind a caution banner;
+# an expert audit showed the banner changed nothing about the
+# advice underneath it, so the model is no longer called at all below this line.
+#
+# Re-swept at k=8 (recall@8 = 0.873, 262 positives / 20 negatives). The curve has
+# two near-equal Youden peaks rather than one optimum:
+#   0.66  sens 0.939  spec 0.550  J 0.489
+#   0.72  sens 0.874  spec 0.600  J 0.474   <- shipped
+#   0.82  sens 0.782  spec 0.700  J 0.482
+#
+# 0.72 is kept for three reasons. The cost asymmetry now favours specificity —
+# since ADR-006 a false positive means answering with no evidence, which is the
+# failure that produced the audit's dangerous answers, while a false negative is
+# only a refusal. But the negative set is 20 adversarial questions, so those
+# specificity figures carry roughly +/-0.11 and do not justify choosing 0.82 over
+# 0.66 on their own. And 0.66 happens to be the lowest value that serves both of
+# our own showcase prompts, which is precisely the reason not to pick it.
+#
+# To move off 0.72, enlarge the negative set first.
+threshold = 0.72

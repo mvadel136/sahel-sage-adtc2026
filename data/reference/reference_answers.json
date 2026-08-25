@@ -1,0 +1,360 @@
+{
+ "_about": "The answer we want, for each verified fact. Kept beside the facts and the questions so the three stay in step: sahel_reference.json is what is TRUE, reference_questions.json is how it is ASKED, and this is how we REPLY. Training rows are built from all three (training/reference_qa.py), so the weights teach the same answer the embedded reference block teaches. Every quantity here must also appear in the fact's source; the dataset gate enforces it.",
+ "_shape": "issue = one or two sentences naming the problem. actions = ordered, each doable with what a smallholder has. timing = when. caution = the thing that causes harm if ignored, which must be a real hazard and never a referral.",
+ "answers": {
+  "seasons": {
+   "issue": "Your farming year here runs on the rains, not on a calendar of four seasons.",
+   "actions": [
+    "Plan sowing, weeding and harvest around the start and end of the rains, which fall roughly June to September.",
+    "Use the dry season for land preparation, repairs, manure spreading and getting stores ready.",
+    "Plan fodder and water for the late dry season, when feed is scarcest."
+   ],
+   "timing": "Make the plan before the rains begin.",
+   "caution": "Advice written for spring and autumn does not apply here. There is no frost, and one wet season carries the whole year's grain."
+  },
+  "sowing": {
+   "issue": "Sowing date is set by the rains, not by a date. Sowing too early into a false start kills the stand.",
+   "actions": [
+    "Wait for a rain that wets the soil deeply, about 20 to 25 mm, not a light shower.",
+    "Sow as soon as that rain has fallen so the crop uses the whole season.",
+    "Keep seed back in reserve, because a dry spell after sowing may force you to sow again."
+   ],
+   "timing": "Usually mid-June to early July, earlier in the wetter south and later in the drier north.",
+   "caution": "If a dry spell kills the seedlings, resow rather than waiting. A late stand still yields; an empty field does not."
+  },
+  "millet_spacing": {
+   "issue": "Your seed rate and sowing depth decide whether the crop comes up at all.",
+   "actions": [
+    "Use about 4 kg of seed per hectare; between 3 and 6 kg is the normal range.",
+    "Sow in pockets about 80 cm apart, or 1 m apart where rainfall is below 400 mm.",
+    "Sow 2 to 3 cm deep only.",
+    "After the seedlings are up, thin to about 3 plants per pocket."
+   ],
+   "timing": "Sow at the onset of the rains; thin one to two weeks after emergence.",
+   "caution": "Sowing deeper than 2 to 3 cm is the common reason a field fails to emerge: the seedling cannot reach the surface."
+  },
+  "striga": {
+   "issue": "Purple flowering weeds attached to sorghum or millet roots are Striga, a parasite living off your crop, not an ordinary weed.",
+   "actions": [
+    "Pull the Striga out by hand before it flowers, so it cannot set seed.",
+    "Burn or bury what you pull; never put seeded plants on the compost.",
+    "Rotate or intercrop with cowpea or groundnut, which make Striga germinate and then die without a host.",
+    "Add manure or nitrogen, because Striga is worst on poor and exhausted soil.",
+    "Sow a tolerant variety where one is available locally."
+   ],
+   "timing": "Pull before flowering, every season, and keep doing it for several years.",
+   "caution": "Striga seed stays alive in the soil for 10 to 20 years, so one good year does not end it. Herbicide is not a solution for smallholder sorghum."
+  },
+  "faw": {
+   "issue": "The caterpillars in the whorls of your young maize, leaving moist frass like wet sawdust, are fall armyworm. This is an insect, not a disease.",
+   "actions": [
+    "Walk the field weekly and look into the whorls of young plants.",
+    "Crush the egg masses on the underside of leaves and pick out the caterpillars by hand.",
+    "Put a pinch of dry sand or wood ash into the whorl of attacked plants.",
+    "Use neem preparations, Bt or NPV where they are available."
+   ],
+   "timing": "Start scouting as soon as the maize is up, and act while the plants are still young.",
+   "caution": "Fungicide does nothing to fall armyworm; it wastes money and leaves the crop unprotected."
+  },
+  "ppr": {
+   "issue": "Fever with runny nose and eyes, sores in the mouth, and deaths among goats or sheep is most likely peste des petits ruminants (PPR).",
+   "actions": [
+    "Report it to the veterinary services straight away; PPR is a notifiable disease.",
+    "Separate sick animals from the rest of the flock now.",
+    "Stop moving animals off the farm and stop selling them until you have advice.",
+    "Have the healthy animals vaccinated against PPR."
+   ],
+   "timing": "Report and separate the same day you see it.",
+   "caution": "Do not treat this as a poultry disease. Newcastle disease is a chicken virus and does not infect goats or sheep."
+  },
+  "newcastle": {
+   "issue": "Your village chickens dying suddenly in large numbers, healthy one day and dead the next, is typically Newcastle disease.",
+   "actions": [
+    "Vaccinate the flock with the thermotolerant I-2 vaccine, given as an eye drop.",
+    "Repeat the vaccination every 3 to 4 months.",
+    "Separate sick birds and do not move birds between compounds while deaths are happening.",
+    "Report a sudden mass death to the veterinary services, so avian influenza can be ruled out."
+   ],
+   "timing": "Vaccinate before the season when losses usually happen, and keep to the repeat schedule.",
+   "caution": "Cleaning and better feeding will not stop Newcastle disease. Vaccination is the control, and one dose does not protect a chicken for life."
+  },
+  "haemonchus": {
+   "issue": "A sheep or goat that is thin with pale gums or pale inner eyelids while still eating normally is anaemic, most often from a blood-feeding stomach worm.",
+   "actions": [
+    "Turn back the lower eyelid and look at the colour; the paler it is, the worse the anaemia.",
+    "Use FAMACHA scoring to decide which animals need treating, and treat only the palest ones.",
+    "Check under the jaw for soft swelling, which is a sign the anaemia is advanced.",
+    "Ask your veterinary auxiliary which product to use and at what dose for the animal's weight."
+   ],
+   "timing": "Check the flock regularly through and after the rains, when worm burdens are highest.",
+   "caution": "Treating every animal every time is what makes the worms resistant to the drugs. Leaving the healthy ones untreated is deliberate and protects the treatment for when you need it."
+  },
+  "camel_feed": {
+   "issue": "In the late dry season your animals lose condition because the feed left to them is short of protein, not only short of energy.",
+   "actions": [
+    "Use browse from trees such as Acacia and Balanites, which holds protein when the grass is gone.",
+    "Feed crop residues and stover, and store them at harvest before they are lost.",
+    "Add an oilcake such as cottonseed or groundnut cake as the protein supplement.",
+    "Keep salt and a mineral lick available, and water the animals regularly."
+   ],
+   "timing": "Store residues at harvest; start supplementing before the animals lose condition, not after.",
+   "caution": "Molasses alone supplies energy and will not correct a protein shortage, so animals keep losing weight on it."
+  },
+  "salinity": {
+   "issue": "A white salt crust means salt has built up in the root zone and must be washed down and drained away.",
+   "actions": [
+    "Check first that the plot can drain; open or repair the drains before anything else.",
+    "Then apply water beyond what the crop needs, so the extra water carries salt below the roots.",
+    "Grow more salt-tolerant crops or varieties while the soil recovers.",
+    "Have the water and soil tested if you can, so you know whether it is salinity or sodicity."
+   ],
+   "timing": "Leach before planting, and keep the drains clear through the season.",
+   "caution": "Leaching without working drainage raises the water table and makes the problem worse. Drip irrigation alone does not fix salinity, because it leaves almost no water to carry the salt down."
+  },
+  "manure": {
+   "issue": "When manure is scarce, how you place it matters more than how much you have.",
+   "actions": [
+    "Put a small handful of manure into the planting pocket with the seed.",
+    "Treat the pockets you can reach well rather than spreading a thin layer over the whole field.",
+    "Combine it with planting pits so the manure and the water are held in the same place."
+   ],
+   "timing": "Place it at sowing, into the pocket.",
+   "caution": "Spreading a little manure thinly across a large field gives far less yield than concentrating it where the seed goes."
+  },
+  "water": {
+   "issue": "On your crusted or sloping land the rain runs off before it can soak in, so your crop sees only part of what falls.",
+   "actions": [
+    "Dig zai planting pits and put a handful of manure in each one.",
+    "Build demi-lunes, half-moon shaped catchments opening uphill, to hold runoff.",
+    "Lay stone lines along the contour to slow water across the slope.",
+    "Start on the worst ground and extend a little more each season."
+   ],
+   "timing": "Build in the dry season, before the rains, when the work can be done and the soil is workable.",
+   "caution": "These are built by hand and pay back over several seasons, so do not judge them by the first year alone."
+  },
+  "dunes": {
+   "issue": "Sand encroaching on your garden has to be stopped mechanically first and held biologically afterwards.",
+   "actions": [
+    "Set palisades of millet stalks, palm fronds or dead branches in a checkerboard pattern.",
+    "Place them across the direction the wind usually comes from.",
+    "Plant fixing species behind the palisades, such as Euphorbia balsamifera, Leptadenia pyrotechnica, Balanites or Acacia tortilis.",
+    "Grow a live windbreak around the garden so the protection lasts."
+   ],
+   "timing": "Put the palisades up before the windy season, and plant with the rains.",
+   "caution": "Shovelling the sand away without a windbreak has to be repeated every season and never ends."
+  },
+  "grain_storage": {
+   "issue": "Weevils in stored grain are prevented by drying the grain properly and then keeping air away from it.",
+   "actions": [
+    "Dry the grain until a kernel does not dent when you press it, about 13% moisture.",
+    "Clean the store and take out all the old grain before the new harvest goes in.",
+    "Fill hermetic bags such as PICS triple-layer bags completely and tie them tightly.",
+    "Leave the bags closed; the insects inside die as the oxygen is used up."
+   ],
+   "timing": "Dry and bag immediately after harvest, before insects get established.",
+   "caution": "Ordinary woven sacks let air through and will not protect the grain. Never put crop insecticide on grain that people are going to eat."
+  },
+  "aflatoxin": {
+   "issue": "Mould on your groundnuts produces aflatoxin, a poison that stays in the nuts and cannot be cooked out.",
+   "actions": [
+    "Harvest the groundnuts at maturity without leaving them in the ground.",
+    "Dry the pods off the bare soil, on a mat or rack, to about 6 to 8% moisture.",
+    "Sort out and throw away shrivelled, discoloured and insect-bored kernels, which carry most of the poison.",
+    "Store the groundnuts in their shells, off the floor and away from the walls."
+   ],
+   "timing": "Dry immediately after lifting, and sort before storing.",
+   "caution": "Never eat, feed or press mouldy groundnuts. Aflatoxin survives roasting, boiling and oil extraction, so it passes into the food and into the animals."
+  },
+  "cowpea_pests": {
+   "issue": "Black insects clustered on cowpea growing tips, with curling leaves, are aphids. They suck sap and spread virus. They are not armyworm, which chews leaves and lives in maize whorls.",
+   "actions": [
+    "Look closely at the growing tips and the underside of leaves to confirm small soft-bodied insects, not caterpillars.",
+    "Wash the colonies off with water, or rub them off the tips by hand where the patch is small.",
+    "Leave ladybirds and hoverflies alone; they eat aphids and are usually already present.",
+    "Cut off and destroy badly infested tips rather than treating the whole field.",
+    "Keep scouting weekly, because flower thrips and pod borers attack later, at flowering and podding."
+   ],
+   "timing": "Scout weekly from bud stage onward; aphids build up fastest in dry spells.",
+   "caution": "Do not reach for a chemical first. If you do use one, follow the rate on the product label and ask the extension service which product is registered for cowpea."
+  },
+  "colostrum": {
+   "issue": "A newborn kid or lamb that is not suckling is losing the only window it has for colostrum, the first milk that carries the mother's immunity to your animal.",
+   "actions": [
+    "Get colostrum into your kid within the first 24 hours; after that the gut absorbs almost none, because it is only permeable for the first 24 to 36 hours.",
+    "Hold the kid to the teat and squeeze a little milk onto its mouth to start it suckling.",
+    "If it still will not suckle, milk the doe and feed that colostrum by bottle.",
+    "If the doe has none, use colostrum from another doe or ewe that has just kidded.",
+    "Keep the kid dry and out of the wind; a chilled newborn stops trying to feed."
+   ],
+   "timing": "Within the first hours, and certainly inside the first 24 hours.",
+   "caution": "A kid that is still weak after feeding, or is cold and limp, needs an animal health worker or veterinarian the same day."
+  },
+  "compost": {
+   "issue": "Compost turns crop residues and dung, which you already have, into fertiliser. A heap that is not breaking down is usually too dry, too woody, or never turned.",
+   "actions": [
+    "Layer dry material such as straw and crop residues with fresh material such as dung and green weeds.",
+    "Keep the heap as moist as a wrung-out cloth; water it if it dries out.",
+    "Turn the heap so air reaches the middle, moving the outside to the centre.",
+    "Chop coarse stalks before adding them, or they will still be whole months later.",
+    "Keep seeded weeds and diseased plants out unless the heap heats strongly."
+   ],
+   "timing": "A turned heap is ready in about two months, so start well before you need it. An unturned heap takes considerably longer.",
+   "caution": "Composting is farming and is squarely within what I can help with. Spread finished compost and work it in rather than leaving it on the surface to dry out."
+  },
+  "vegetable_storage": {
+   "issue": "Onions that rot within weeks of harvest were almost always stored before they were cured. Curing dries the neck and skins so rot cannot get into your bulbs.",
+   "actions": [
+    "Lift your onions and leave the tops on to begin with.",
+    "Dry them in shade with air moving through, not in direct sun and not in a closed room.",
+    "Wait until the necks are tight and the outer skins rustle when handled.",
+    "Store in a single layer on a rack, or in netted bags that let air through.",
+    "Sort out any soft, thick-necked or damaged bulbs first; one rotting bulb spoils those around it."
+   ],
+   "timing": "Cure straight after lifting; check the store every couple of weeks and remove any bulb going soft.",
+   "caution": "Never store onions in a sealed plastic sack or on a damp floor. Both trap moisture and guarantee rot."
+  },
+  "tomato_problems": {
+   "issue": "Tomato that wilts in afternoon heat and recovers overnight is usually water stress or root damage. Wilting that does not recover is a different and more serious problem.",
+   "actions": [
+    "Check soil moisture at depth before assuming disease; dry root zone with hot afternoons explains recovery at night.",
+    "Look for root damage from hoeing or nematodes if watering is adequate.",
+    "If plants wilt and never recover, cut a stem and look for browning inside; that points to a soil-borne wilt.",
+    "Pull and destroy plants with a soil-borne wilt, and do not replant tomato in that spot.",
+    "Dark spreading lesions on leaves in humid weather are blight instead, which is a leaf disease, not a wilt."
+   ],
+   "timing": "Check in the early morning; a plant still wilted at dawn is not suffering from heat.",
+   "caution": "Do not spray a fungicide for what is a watering problem. If you are unsure which it is, take a whole affected plant to the extension agent."
+  },
+  "rangeland": {
+   "issue": "Your rangeland recovers from rest and rotation, not from walking the herd further. Bare ground around your water points is trampling, not drought alone.",
+   "actions": [
+    "Rest a patch through the growing season so grasses can flower and set seed.",
+    "Rotate grazing between areas rather than holding animals in one place.",
+    "Spread watering points so the herd does not concentrate and trample one spot.",
+    "Cut and store surplus grass while it is still green, for the dry season.",
+    "Protect regenerating shrubs and trees from fire and from free grazing."
+   ],
+   "timing": "Rest during the rains, when grasses are growing and setting seed.",
+   "caution": "Recovery takes seasons, not weeks. Reducing herd pressure early costs less than restoring bare ground later."
+  },
+  "trypanosomiasis": {
+   "issue": "Steady loss of condition with pale gums and watery eyes, in tsetse country, can be animal trypanosomiasis in your herd. It looks like heavy worms or poor feeding, so it is often missed.",
+   "actions": [
+    "Ask an animal health worker to examine blood; it cannot be diagnosed by appearance.",
+    "Rule out worms and poor nutrition at the same time, since they occur together.",
+    "Use tsetse traps and targets around grazing and watering areas.",
+    "Keep animals out of riverine thicket in the middle of the day, where tsetse rest.",
+    "Treat the herd, not just the sick animal, if trypanosomiasis is confirmed."
+   ],
+   "timing": "Act as soon as condition drops; animals decline steadily and quietly.",
+   "caution": "Trypanocide choice and dosing are veterinary decisions. Wrong or repeated dosing drives resistance."
+  },
+  "fmnr": {
+   "issue": "The cheapest trees in the Sahel are already in your field, as stumps and roots that resprout. Regeneration works where planting seedlings often fails.",
+   "actions": [
+    "Find stumps and roots that are sending up shoots after the rains.",
+    "Select the strongest few stems on each stump and prune the rest.",
+    "Protect the selected stems from fire and from free grazing.",
+    "Prune side branches as they grow, and use the cuttings for fodder or firewood.",
+    "Agree with neighbours and herders which fields are under regeneration."
+   ],
+   "timing": "Select and prune early in the rains, when regrowth is visible.",
+   "caution": "Regenerated trees cut wind, hold soil and drop leaf litter, but they take seasons. Protection from grazing is the part that usually fails."
+  },
+  "microdose": {
+   "issue": "Broadcasting a small quantity of fertiliser across a whole field wastes most of it between the rows. Placing it with the seed puts it where the young root can reach.",
+   "actions": [
+    "Put a very small pinch in the planting hole together with the seed.",
+    "Cover it with soil so the seed is not sitting directly on concentrated fertiliser.",
+    "Treat the pinch as a starter, not a full dressing; it feeds early growth.",
+    "Concentrate what you have on the best-managed plots rather than spreading it thin everywhere.",
+    "Combine with manure or compost, which supplies what a pinch cannot."
+   ],
+   "timing": "At sowing, in the planting hole.",
+   "caution": "Follow the rate printed on the product or given by the extension service. Too much in the hole can scorch the seedling."
+  },
+  "dry_season_feed": {
+   "issue": "When pasture is finished, crop residues carry animals through the dry season, but they differ enormously in quality.",
+   "actions": [
+    "Save groundnut and cowpea haulms; these are the best residues you have.",
+    "Store haulms dry, off the ground and under cover, straight after harvest.",
+    "Chop coarse cereal straw so animals waste less of it.",
+    "Mix poor straw with a little legume haulm so animals will actually eat it.",
+    "Keep clean water available; animals eat less dry feed when short of water."
+   ],
+   "timing": "Collect and store residues at harvest, not when pasture has already run out.",
+   "caution": "Cereal straw alone will not maintain an animal. Pregnant and lactating females need the better residues first."
+  },
+  "poultry_housing": {
+   "issue": "Beyond disease, your village flock is lost to predators, damp and chick mortality. Simple husbandry saves more of your birds than any medicine.",
+   "actions": [
+    "Build a simple raised night shelter that closes securely against predators.",
+    "Keep litter clean and dry; damp bedding kills chicks.",
+    "Feed chicks separately so adults do not take their feed.",
+    "Give clean water every day, in a container the birds cannot foul.",
+    "Isolate new or sick birds away from the flock."
+   ],
+   "timing": "Shut birds in every night, and check the shelter for gaps before the rains.",
+   "caution": "Sudden deaths of many healthy birds is a different problem and points to Newcastle disease, which is prevented by vaccination, not by housing."
+  },
+  "groundnut": {
+   "issue": "Groundnut lifted too late loses pods in the soil, and groundnut dried badly develops mould. Both are decided in the days around your harvest.",
+   "actions": [
+    "Check maturity by opening pods; the inside of the shell darkens as they mature.",
+    "Lift when most pods are mature rather than waiting for the haulms to die back completely.",
+    "Dry the crop with pods upward, off bare ground.",
+    "Never dry in a heap; the middle stays damp and moulds.",
+    "Store only when the pods are properly dry, in a ventilated place."
+   ],
+   "timing": "Lift at maturity and dry immediately; delays at either step cost the crop.",
+   "caution": "Mouldy groundnut may carry aflatoxin. Never eat, feed or press mouldy kernels, however good the rest of the sack looks."
+  },
+  "sorghum": {
+   "issue": "Sorghum tolerates drought better than maize and recovers from dry spells that would kill maize, but it suffers from birds and from Striga.",
+   "actions": [
+    "Choose sorghum over maize where rainfall is low or unreliable.",
+    "Pick a variety whose cycle matches your rainfall rather than the longest-season one available.",
+    "Sow on the ridge in heavy soil so the crop is not waterlogged.",
+    "Thin early so the remaining plants have moisture to finish.",
+    "Plan for bird scaring at grain filling, or grow varieties less attractive to birds."
+   ],
+   "timing": "Sow at the onset of the rains; thin within the first weeks.",
+   "caution": "Purple flowering weeds on the roots are Striga, which is worst on poor soil and needs its own management."
+  },
+  "goat_health": {
+   "issue": "Most goat losses come from a small set of causes: worms, diarrhoea, pneumonia after cold wet nights, and foot problems in muddy pens. Check your animals for all four.",
+   "actions": [
+    "Look at the gums; pale gums point to anaemia, usually from worms.",
+    "Look at the dung for scouring, and at the breathing for pneumonia.",
+    "Keep bedding dry and pens well drained, which prevents both pneumonia and foot problems.",
+    "Quarantine newly bought animals before mixing them with the herd.",
+    "Separate any animal that is scouring or feverish from the rest."
+   ],
+   "timing": "Check the flock daily; problems caught on the first day are far cheaper to treat.",
+   "caution": "Anything with fever, or that spreads through the herd, needs a veterinarian or animal health worker. Do not choose or dose a drug yourself."
+  },
+  "weather_advice": {
+   "issue": "Nobody can tell you this season's rainfall in advance, and you should not trust anyone who claims to. What can be said with confidence is how to time your sowing against the rains you actually receive.",
+   "actions": [
+    "Sow rainfed crops at the onset of the rains, when the wet season has clearly established, not after a single early shower.",
+    "Sow early within that window: the first rains release a flush of nitrogen in the soil that an early-sown crop captures, and early crops escape many pests.",
+    "Avoid late sowing; it invites heavier pest and disease attack.",
+    "Walk the field a few days after emergence and re-sow any gaps in the rows at once.",
+    "For a seasonal forecast, listen to rural radio or ask the extension service for the national meteorological outlook."
+   ],
+   "timing": "Decide at the onset of the rains each year; there is no fixed calendar date, because the onset shifts from year to year and from zone to zone.",
+   "caution": "A single early rainstorm is not the onset. Sowing on one shower risks losing the seed to the dry days that often follow."
+  },
+  "market_advice": {
+   "issue": "Prices are usually lowest at harvest, when everyone sells at once, and rise later in the season. You cannot check today's price from here, but you can choose when and in what condition you sell.",
+   "actions": [
+    "Dry the grain properly and store it in sealed hermetic bags, so you can sell later in the season when prices are better instead of at the worst moment.",
+    "Sort and grade your produce before selling; graded produce fetches a higher price.",
+    "Check prices at the nearest market or on rural radio before agreeing to a trader's offer.",
+    "Sell only what you must at harvest, and keep the household's food stock separate from the grain you plan to trade."
+   ],
+   "timing": "Decide at harvest: what to sell now, what to store for the price rise later in the season, and what the family will eat.",
+   "caution": "Never sell or buy a sick animal. Storing grain only pays if it is dry and the store is sealed; damp or infested grain loses more value than the price gains."
+  }
+ }
+}

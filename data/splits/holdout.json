@@ -1,0 +1,51 @@
+{
+  "frozen_at": "2026-08-11",
+  "seed": 42,
+  "rule": "one doc per cluster (seed-42) incl. one French; sixth doc from the largest cluster (seed-43); never edited after freeze",
+  "doc_ids": [
+    "africarice-upland-rice-handbook",
+    "ashc-isfm-handbook",
+    "cabi-faw-community-monitoring-tot",
+    "fao-faw-ffs-maize-afrique-fr",
+    "fao-ppr-field-manual",
+    "icraf-faidherbia-wasat"
+  ],
+  "detail": [
+    {
+      "id": "africarice-upland-rice-handbook",
+      "cluster": "crops",
+      "lang": "en",
+      "title": "Growing upland rice: a production handbook"
+    },
+    {
+      "id": "ashc-isfm-handbook",
+      "cluster": "hort",
+      "lang": "en",
+      "title": "Handbook for Integrated Soil Fertility Management"
+    },
+    {
+      "id": "fao-ppr-field-manual",
+      "cluster": "livestock",
+      "lang": "en",
+      "title": "Recognizing Peste des Petits Ruminants: A Field Manual"
+    },
+    {
+      "id": "fao-faw-ffs-maize-afrique-fr",
+      "cluster": "pest",
+      "lang": "fr",
+      "title": "Gestion integree de la chenille legionnaire d'automne sur le mais - guide pour les champs-ecoles des producteurs en Afrique"
+    },
+    {
+      "id": "icraf-faidherbia-wasat",
+      "cluster": "sahel",
+      "lang": "en",
+      "title": "Faidherbia albida in the West African Semi-Arid Tropics"
+    },
+    {
+      "id": "cabi-faw-community-monitoring-tot",
+      "cluster": "pest",
+      "lang": "en",
+      "title": "Community-Based Fall Armyworm Monitoring, Early Warning and Management: Training of Trainers Manual"
+    }
+  ]
+}
