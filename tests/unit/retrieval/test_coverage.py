@@ -53,3 +53,18 @@ def test_covered_question_scores_above_uncovered(conn):
 def test_empty_inputs_are_not_confident(conn):
     assert coverage_confidence(conn, [], ["text"]) == 0.0
     assert coverage_confidence(conn, ["millet"], []) == 0.0
+
+
+def test_bullet_artifacts_are_stripped_from_passages():
+    """PDF extraction strands bullet glyphs mid-sentence in about a tenth of
+    the library ("...from the nose. •• •• Sores in the mouth..."). The model
+    copies them into its answers where a citation belongs, so they are removed
+    as the passage leaves the index — the same cleaned text then reaches the
+    prompt, the numeric gate and the reader."""
+    from sahel_sage.core.textproc import strip_bullet_artifacts
+
+    dirty = "A clear discharge from the nose. •• •• Sores in the mouth. •• Low fever."
+    clean = strip_bullet_artifacts(dirty)
+    assert "•" not in clean
+    assert "Sores in the mouth." in clean
+    assert "  " not in clean

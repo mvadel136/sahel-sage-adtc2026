@@ -87,6 +87,18 @@
   }
 }
 *{box-sizing:border-box}
+/* Every remaining scroll surface gets the same quiet bar. The file shipped
+   with no scrollbar styling at all, so a raw OS bar sat inside a designed
+   panel. */
+*{scrollbar-width:thin; scrollbar-color:rgba(120,110,95,.45) transparent}
+::-webkit-scrollbar{width:11px; height:11px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(120,110,95,.42); border-radius:99px;
+  border:3px solid transparent; background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:rgba(120,110,95,.68);
+  border:3px solid transparent; background-clip:content-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 html{scroll-behavior:smooth}
 body{
   margin:0; background:var(--ground); color:var(--ink);
@@ -130,15 +142,31 @@ body::after{
 @keyframes pulse{50%{opacity:.3}}
 
 /* ---------------- shell ---------------- */
-.shell{display:grid; grid-template-columns:minmax(0,1fr) 304px; min-height:calc(100vh - 54px)}
+.shell{display:grid; grid-template-columns:minmax(0,1fr) 304px;
+       align-items:start; min-height:calc(100vh - 54px)}
 .work{min-width:0; padding:0 44px 210px; max-width:960px; justify-self:stretch}
 
 /* ---------------- instrument rail ---------------- */
+/* The rail used to be its own scroll box (height:100vh-54px; overflow:auto)
+   holding 1,139px of content in a 746px window: the last three blocks were
+   unreachable unless the reader discovered a nested scrollbar, and that bar
+   sat inside a designed panel. The column now flows with the page, and only
+   the live instruments stay pinned. */
 .rail{
   border-left:1px solid var(--hairline); padding:26px 24px 210px;
-  font-family:var(--mono); position:sticky; top:54px; align-self:start;
-  height:calc(100vh - 54px); overflow:auto;
+  font-family:var(--mono); align-self:start;
 }
+/* The instruments were pinned here at first, and the pinned block painted
+   over the rail sections that scrolled under it: clicking "Hazard Gate"
+   landed its block behind the instruments. One plain column reads better
+   than a clever one. */
+.railtop{}
+.rail .blk{scroll-margin-top:88px}
+.rail .blk.flash{animation:blkflash 1.4s ease-out}
+@keyframes blkflash{
+  0%{background:rgba(200,150,60,.20)}
+  100%{background:transparent}}
+@media (prefers-reduced-motion: reduce){ .rail .blk.flash{animation:none} }
 .blk{padding:0 0 22px; margin-bottom:22px; border-bottom:1px solid var(--hairline-soft)}
 .blk:last-child{border-bottom:0}
 .lbl{display:flex; justify-content:space-between; align-items:baseline;
@@ -295,9 +323,29 @@ canvas#shelfbig{width:100%; height:190px; display:block}
 .copybtn:hover,.copybtn:focus-visible{color:var(--amber)}
 
 /* ---------------- shelf overlay ---------------- */
-#shelfpanel{position:fixed; inset:54px 304px 0 0; z-index:35; background:var(--ground);
-            border-right:1px solid var(--hairline); overflow:auto; padding:34px 44px}
-#shelfpanel[hidden]{display:none}
+/* The shelf used to be a panel sized to the console's rail column (inset
+   54px 304px 0 0), so opening it over the hero left a 304px strip of dune
+   down the right edge and it read as broken. It is now a sheet on a scrim:
+   the scrim covers everything, the sheet is the paper on top of it, and both
+   can animate because visibility replaces the display:none of [hidden]. */
+#shelfpanel{position:fixed; inset:0; z-index:35; display:grid;
+            grid-template-rows:1fr; align-items:stretch;
+            background:rgba(10,14,12,.62); backdrop-filter:blur(3px);
+            opacity:0; visibility:hidden;
+            transition:opacity .2s cubic-bezier(.22,1,.36,1),
+                       visibility 0s linear .2s}
+#shelfpanel.open{opacity:1; visibility:visible; transition-delay:0s}
+#shelfpanel .sheet{background:var(--ground); overflow:auto;
+            padding:34px 44px; width:min(980px, 100%); justify-self:start;
+            border-right:1px solid var(--hairline);
+            transform:translateY(10px);
+            transition:transform .22s cubic-bezier(.22,1,.36,1)}
+#shelfpanel.open .sheet{transform:none}
+body.sheet-open{overflow:hidden}
+@media (prefers-reduced-motion: reduce){
+  #shelfpanel, #shelfpanel .sheet{transition:none}
+  #shelfpanel .sheet{transform:none}
+}
 #shelfpanel h2{font:700 26px/1.1 var(--display); margin:0 0 4px}
 #shelfpanel .sub{font:11px/1.7 var(--mono); letter-spacing:.18em; text-transform:uppercase;
                  color:var(--quiet); margin-bottom:22px}
@@ -355,9 +403,13 @@ kbd{font:inherit; border:1px solid var(--hairline-soft); border-bottom-width:2px
 #herovid{position:absolute; left:50%; top:0; transform:translateX(-50%);
          width:115%; height:115%; object-fit:cover; object-position:top;
          pointer-events:none; opacity:0}
+/* The scrim used to thin out to .18 at 34% height, which is exactly the band
+   the headline occupies: amber type landed on the brightest part of the dune.
+   It now deepens through the text band and keeps the crest luminous above it. */
 .scrim{position:absolute; inset:0;
-       background:linear-gradient(to bottom, rgba(13,21,18,.42) 0%,
-         rgba(13,21,18,.18) 34%, rgba(13,21,18,.34) 68%, rgba(13,21,18,.9) 100%)}
+       background:linear-gradient(to bottom, rgba(13,21,18,.46) 0%,
+         rgba(13,21,18,.28) 20%, rgba(13,21,18,.46) 48%,
+         rgba(13,21,18,.60) 72%, rgba(13,21,18,.93) 100%)}
 .hero-head{position:relative; z-index:1; display:flex; align-items:center;
            justify-content:center; gap:clamp(18px,2.8vw,28px); flex:none; width:100%;
            max-width:760px; margin:0 auto;
@@ -392,7 +444,7 @@ kbd{font:inherit; border:1px solid var(--hairline-soft); border-bottom-width:2px
 .tava{width:var(--ts); height:var(--ts); border-radius:50%; background:#1a221d;
       border:1px solid rgba(255,255,255,.4); padding:5px; display:grid;
       place-items:center; position:relative; transition:transform .35s var(--ease)}
-.tava + .tava{margin-left:calc(var(--ts) * -0.42)}
+.tava + .tava{margin-left:calc(var(--ts) * -0.26)}   /* was -0.42: each mark hid the next one's letter */
 .tava i{width:100%; height:100%; border-radius:50%; background:#fff; display:grid;
         place-items:center; font:500 calc(var(--ts) * 0.34)/1 var(--mono);
         font-style:normal; color:#111; letter-spacing:.02em}
@@ -409,12 +461,15 @@ kbd{font:inherit; border:1px solid var(--hairline-soft); border-bottom-width:2px
           overflow:visible}
 .headline span{display:block; white-space:nowrap; color:#fff;
   font-variation-settings:"opsz" 42;
-  font:700 clamp(2.6rem,7vw,6.2rem)/1.14 var(--display); letter-spacing:-.04em; padding-top:.04em;
+  font:700 clamp(2.6rem,7vw,6.2rem)/1.14 var(--display); letter-spacing:-.028em; padding-top:.04em;
+  text-shadow:0 2px 30px rgba(8,12,10,.5);
   opacity:0; transform:translateY(14px);
   animation:headlineFade .85s cubic-bezier(0.22,1,0.36,1) forwards}
 .headline .hl1{animation-delay:.12s}
 .headline .hl2{animation-delay:.3s}
-.headline em{font-style:normal; color:var(--amber-hi, #f2c063)}
+/* The one word the whole product is about. Tight tracking turned "ffl" into a
+   smear, so this word alone gets its letters back. */
+.headline em{font-style:normal; color:var(--amber-hi, #f2c063); letter-spacing:-.008em}
 /* subhead + cta */
 .subhead{max-width:min(520px,92%); margin:0 0 clamp(18px,3vh,28px);
          color:#d0d0d0; opacity:.85; font:400 clamp(14.5px,1.6vw,17px)/1.55 var(--body)}
@@ -543,17 +598,13 @@ body.has-hero.console-inview .askbar{opacity:1; pointer-events:auto}
     <button class="cta anim-pulse" id="heroCta" style="--d:.4s">Consult the advisor</button>
   </div>
   <div class="hero-stats">
-    <div class="stat anim" style="--d:.5s"><span class="sicon">#</span>
-      <span class="sval" data-target="56" data-dec="0" data-suffix="">0</span>
+    <div class="stat anim" style="--d:.5s"><span class="sval" data-target="56" data-dec="0" data-suffix="">0</span>
       <span class="slab">Field manuals</span></div>
-    <div class="stat anim" style="--d:.58s"><span class="sicon">%</span>
-      <span class="sval" data-target="11050" data-dec="0" data-suffix="" data-thousands="1">0</span>
+    <div class="stat anim" style="--d:.58s"><span class="sval" data-target="11050" data-dec="0" data-suffix="" data-thousands="1">0</span>
       <span class="slab">Passages indexed</span></div>
-    <div class="stat anim" style="--d:.66s"><span class="sicon">&lt;</span>
-      <span class="sval" data-target="341" data-dec="0" data-suffix=" MB">0</span>
+    <div class="stat anim" style="--d:.66s"><span class="sval" data-target="341" data-dec="0" data-suffix=" MB">0</span>
       <span class="slab">On disk, CPU only</span></div>
-    <div class="stat anim" style="--d:.74s"><span class="sicon">*</span>
-      <span class="sval" data-target="100" data-dec="1" data-suffix="">0</span>
+    <div class="stat anim" style="--d:.74s"><span class="sval" data-target="100" data-dec="1" data-suffix="">0</span>
       <span class="slab">Sperf, self-reported</span></div>
   </div>
 </section>
@@ -600,6 +651,9 @@ body.has-hero.console-inview .askbar{opacity:1; pointer-events:auto}
 
   <!-- ================= instrument rail ================= -->
   <aside class="rail" aria-label="Instruments">
+    <!-- The live instruments stay pinned; the reference blocks below scroll
+         with the page, so the column needs no scrollbar of its own. -->
+    <div class="railtop">
     <div class="blk">
       <div class="lbl">Coverage <span class="val" id="gaugeval">·</span></div>
       <div class="gauge" id="gauge"><div class="fill" id="gaugefill"></div><div class="thr" title="refuse line 0.72"></div></div>
@@ -614,6 +668,7 @@ body.has-hero.console-inview .askbar{opacity:1; pointer-events:auto}
       <div class="lbl">Model</div>
       <div class="kv" id="modelInfo">…</div>
     </div>
+    </div><!-- /.railtop -->
     <div class="blk">
       <div class="lbl">Shelf</div>
       <canvas id="shelfmini" title="open the shelf" aria-label="Open the library shelf"></canvas>
@@ -637,13 +692,15 @@ body.has-hero.console-inview .askbar{opacity:1; pointer-events:auto}
 </div>
 
 <!-- ================= shelf overlay ================= -->
-<section id="shelfpanel" hidden aria-label="The library shelf">
-  <div class="shelfhead">
-    <div><h2>The shelf</h2>
-      <div class="sub" id="shelfsub">indexed on this computer · no internet required</div></div>
-    <button class="closeshelf" id="closeshelf" aria-label="Close the shelf">close &#10005;</button>
+<section id="shelfpanel" aria-label="The library shelf" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="The library shelf">
+    <div class="shelfhead">
+      <div><h2>The shelf</h2>
+        <div class="sub" id="shelfsub">indexed on this computer · no internet required</div></div>
+      <button class="closeshelf" id="closeshelf" aria-label="Close the shelf">close &#10005;</button>
+    </div>
+    <div id="shelflist"></div>
   </div>
-  <div id="shelflist"></div>
 </section>
 
 <!-- ================= ask slip ================= -->
@@ -863,9 +920,32 @@ async function openShelf(){
   ).join("");
   $("#shelfsub").textContent =
     `${list.length} manuals · ${list.reduce((a, d) => a + d.chunks, 0).toLocaleString("en")} passages · indexed on this computer`;
-  $("#shelfpanel").hidden = false;
+  showShelf();
 }
-$("#closeshelf").onclick = () => $("#shelfpanel").hidden = true;
+
+let shelfOpener = null;
+function showShelf(){
+  const panel = $("#shelfpanel");
+  shelfOpener = document.activeElement;
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  document.body.classList.add("sheet-open");
+  $("#closeshelf").focus({preventScroll:true});
+}
+function hideShelf(){
+  const panel = $("#shelfpanel");
+  if (!panel.classList.contains("open")) return;
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("sheet-open");
+  shelfOpener?.focus?.({preventScroll:true});
+  shelfOpener = null;
+}
+$("#closeshelf").onclick = hideShelf;
+// A click on the scrim, not on the paper, closes the sheet.
+$("#shelfpanel").addEventListener("click", ev => {
+  if (ev.target === $("#shelfpanel")) hideShelf();
+});
 
 /* ---------------- status ---------------- */
 let ready = false;
@@ -990,6 +1070,10 @@ function ask(){
   $("#q").value = ""; $("#q").style.height = "auto";
   turn.scrollIntoView({behavior:"smooth", block:"start"});
 
+  let follow = true;
+  const releaseFollow = ev => { if (ev.deltaY < 0) follow = false; };
+  addEventListener("wheel", releaseFollow, {passive:true});
+
   const ansEl = document.getElementById(id + "-a");
   const metaEl = document.getElementById(id + "-m");
   let buffer = "", confidence = null, nCites = 0, refused = false;
@@ -1043,8 +1127,19 @@ function ask(){
           buffer += data.t;
           sparkTick();
           ansEl.innerHTML = formatAnswer(buffer, id, true);
-          const nearBottom = innerHeight + scrollY >= document.body.scrollHeight - 280;
-          if (nearBottom) scrollTo({top: document.body.scrollHeight});
+          // Follow the words, not the page. Scrolling to
+          // document.body.scrollHeight put the evidence list and the bottom
+          // padding in view while the answer was still being written above
+          // the fold. This keeps the last line just above the ask bar, and
+          // stops the moment the reader scrolls up for themselves.
+          // behavior:"instant" is deliberate: the root scrolls smoothly for
+          // navigation, but a queued smooth animation per token stalls the
+          // follow completely (measured: frozen 138px down for 40 seconds).
+          if (follow){
+            const askH = document.querySelector(".askbar")?.getBoundingClientRect().height || 120;
+            const want = scrollY + ansEl.getBoundingClientRect().bottom - (innerHeight - askH - 28);
+            if (want > scrollY) scrollTo({top: want, behavior: "instant"});
+          }
         }
         else if (ev === "contract"){
           confidence = data.confidence;
@@ -1098,8 +1193,7 @@ function ask(){
   }).finally(() => {
     clearInterval(tick); currentAbort = null; setBusy(false);
     sparkRun(false);
-    setTimeout(() => pipe(null), 2600);
-  });
+    setTimeout(() => pipe(null), 2600); removeEventListener("wheel", releaseFollow); });
 }
 
 function renderSources(id, citations, ansEl){
@@ -1159,7 +1253,7 @@ document.addEventListener("keydown", e => {
     e.preventDefault(); $("#q").focus();
   }
   if (e.key === "Escape"){
-    if (!$("#shelfpanel").hidden){ $("#shelfpanel").hidden = true; return; }
+    if ($("#shelfpanel").classList.contains("open")){ hideShelf(); return; }
     document.querySelectorAll("details.src[open]").forEach(d => d.open = false);
   }
 });
@@ -1253,7 +1347,15 @@ const HERO_VIDEO_B64 = "AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAmGbW9vdgAA
   $("#hnavShelf").onclick = ev => { ev.preventDefault(); openShelf(); };
   $("#hnavGate").onclick = ev => {
     ev.preventDefault();
-    document.getElementById("hticks").scrollIntoView({behavior:"smooth", block:"center"});
+    // block:"center" used to leave the page at an arbitrary offset with the
+    // header cut. Land it under the header (scroll-margin-top) and flash the
+    // block, so the click has a visible result.
+    const gate = document.getElementById("hticks").closest(".blk")
+              || document.getElementById("hticks");
+    gate.scrollIntoView({behavior:"smooth", block:"start"});
+    gate.classList.remove("flash");
+    void gate.offsetWidth;
+    gate.classList.add("flash");
   };
   /* the ask slip appears once the console is actually in view */
   new IntersectionObserver(entries => {
@@ -1263,8 +1365,16 @@ const HERO_VIDEO_B64 = "AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAmGbW9vdgAA
 })();
 
 function dismissHero(){
-  document.getElementById("hero")?.remove();
+  const hero = document.getElementById("hero");
+  if (!hero) return;
+  // Removing a full-viewport hero while the reader is scrolled past it pulls
+  // the page up under them. Take the scroll position with it, so the console
+  // stays exactly where their eyes already are.
+  const shift = hero.getBoundingClientRect().height;
+  const y = window.scrollY;
+  hero.remove();
   document.body.classList.remove("has-hero");
+  window.scrollTo({top: Math.max(0, y - shift), behavior: "instant"});
 }
 
 renderExamples(); loadStatus(); initShelves(); drawSpark();

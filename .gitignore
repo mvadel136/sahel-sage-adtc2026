@@ -47,8 +47,6 @@ datasets/mix/*/train.jsonl
 datasets/mix/*/train_raw.jsonl
 datasets/mix/*/train_chatml.jsonl
 
-# Claude Code state
-.claude/
 
 # Local demo/working files (video master, narration script, screenshot staging)
 sahel_sage_demo.mp4

@@ -198,9 +198,14 @@ dataset manifest. A six-document holdout
 the mixer by assertion. **Languages:** the mix is English-only. Wolof is
 in-progress, not delivered: the Kallaama corpus (Gauthier, Ndiaye & Guissé
 2024, Lacuna Fund, CC-BY 4.0) is extracted and unit-tested, but no Wolof output
-has had native-speaker review, so none ships. **Tools:** llama.cpp (MIT),
-lm-evaluation-harness, PyTorch/PEFT (QLoRA r=32, α=64, 3 epochs, seed 42),
-SQLite FTS5, FastAPI.
+has had native-speaker review, so none ships. **Licences.** The shipped
+model is a fine-tune of **Qwen3-0.6B (Apache-2.0)**; the training data was
+distilled with **Qwen2.5-7B-Instruct-AWQ (Apache-2.0)**; this repository is
+released under **Apache-2.0** (see `LICENSE`). The corpus is publicly
+distributed extension and training material from public-sector and
+CGIAR-family publishers, cited per document in `training/corpus_sources.json`.
+**Tools:** llama.cpp (MIT), lm-evaluation-harness (MIT),
+PyTorch/PEFT (QLoRA r=32, α=64, 3 epochs, seed 42), SQLite FTS5, FastAPI.
 
 ## 6. Limitations
 

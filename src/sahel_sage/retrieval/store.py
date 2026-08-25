@@ -11,6 +11,7 @@ import sqlite3
 from pathlib import Path
 
 from sahel_sage.retrieval.evidence import Citation
+from sahel_sage.core.textproc import strip_bullet_artifacts
 from sahel_sage.retrieval.query import match_variants
 from sahel_sage.retrieval.rank import cap_per_doc, pool_size, rrf_fuse
 
@@ -66,7 +67,7 @@ class Retriever:
                         title=row["title"],
                         org=row["org"],
                         section=row["section"] or "",
-                        text=row["text"],
+                        text=strip_bullet_artifacts(row["text"]),
                         score=round(score, 5),
                         url=row["url"] or "",
                     )

@@ -51,6 +51,22 @@ def line_is_text(line: str) -> bool:
     return good / len(toks) >= 0.5
 
 
+#: Bullet glyphs that PDF extraction leaves stranded mid-sentence, e.g.
+#: "A clear discharge from the nose. •• •• Sores in the mouth". They survive
+#: chunking in about a tenth of the library, and the model copies them into
+#: its answers where a citation belongs.
+_STRAY_BULLETS = re.compile(r"(?:[•·▪◦]\s*){1,}")
+
+
+def strip_bullet_artifacts(text: str) -> str:
+    """Remove stranded bullet glyphs from an extracted passage.
+
+    Called on the passage as it leaves the index, so the same cleaned text
+    reaches the prompt, the numeric gate and the reader's screen.
+    """
+    return re.sub(r"[ \t]{2,}", " ", _STRAY_BULLETS.sub("", text)).strip()
+
+
 def clean_extracted_text(text: str) -> str:
     """Drop page numbers, repeated header/footer noise, and garbage lines."""
     lines = [line.strip() for line in text.splitlines()]
