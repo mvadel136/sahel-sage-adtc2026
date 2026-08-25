@@ -244,7 +244,7 @@ The two-minute demonstration video accompanies the Devpost submission.
 
 ## 8. Reproducibility
 
-`uv`-managed Python package; **368 tests passing** (`pytest`), including
+`uv`-managed Python package; **369 tests passing** (`pytest`), including
 agreement of the chat template with the training renderer and the verified
 fact base's quantity-traceability gate. An append-only measurement ledger (internal, available on request) backs
 every number in this report, and
