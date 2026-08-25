@@ -49,9 +49,16 @@ uv sync --all-extras && uv run pytest
 
 ## What it looks like
 
-Screenshots of the live console (offline, on this laptop) are in
-[`docs/screenshots/`](docs/screenshots/) and in [REPORT.md §7](REPORT.md).
-The two-minute demonstration video accompanies the Devpost submission.
+**[▶ Watch the two-minute demo](docs/demo.mp4)** (narrated; the console answering
+live, fully offline).
+
+| | |
+|---|---|
+| ![The landing view: dune footage embedded in the single offline file, live status, count-up statistics](docs/screenshots/01-console-hero.jpg) | ![A cited answer: pipeline stepper, coverage 0.86 against the 0.72 refuse line, live tokens per second, retrieval-strength bars](docs/screenshots/02-cited-answer.jpg) |
+| ![An evidence passage opened: the exact manual excerpt behind citation 1, on device](docs/screenshots/03-evidence-passage.jpg) | ![A hazard-class refusal, stamped REFUSED IN CODE, with the coverage gauge stopping short of the refuse line](docs/screenshots/04-safety-refusal.jpg) |
+| ![The working console in the dark theme: the shelf drawn as 56 spines sized by real passage counts](docs/screenshots/05-console-dark.jpg) | ![The console on a phone](docs/screenshots/06-mobile.jpg) |
+
+More detail in [REPORT.md §7](REPORT.md).
 
 ## What is in this repository
 
